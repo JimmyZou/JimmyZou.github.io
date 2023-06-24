@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Liyi Zhou</title>
+    <meta name="description" content="Liyi Zhou's personal website." />
+    <meta name="keywords" content="blockchain, security, machine learning" />
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+</head>
+
+<body>
+
+    <h1>Blog Human Shape Reconstruction</h1>
+    <h2>Contents&lt;a name=&quot;contents&quot;&gt;&lt;/a&gt;</h2>
+    <ul>
+        <li><a href="#point-cloud">From Point-cloud</a></li>
+        <li><a href="#RGBD">From (multi-view) RGBD</a></li>
+        <li><a href="#RGB">From (multi-view) RGB</a></li>
+        <li><a href="#diffusion">Diffusion Modles</a></li>
+        <li><a href="#resources">Resources</a></li>
+    </ul>
+    <hr>
+    <hr>
+    <h2>From Pointcloud&lt;a name=&quot;point-cloud&quot;&gt;&lt;/a&gt;</h2>
+    <h3>[CVPR 2023] CloSET: Modeling Clothed Humans on Continuous Surface with Explicit Template Decomposition <a
+            href="http://www.liuyebin.com/closet/">[pdf]</a></h3>
+    <p><em>Hongwen Zhang, Siyou Lin, Ruizhi Shao, Yuxiang Zhang, Zerong Zheng, Han Huang, Yandong Guo, Yebin Liu</em>
+        &lt;!-- - <img src="../assets/fig_human_shape_recon/1.png" alt=""> --&gt;</p>
+    <ul>
+        <li>&lt;img src=&quot;../assets/fig_human_shape_recon/1.png&quot; width=&quot;600&quot;/&gt;</li>
+        <li>. In this paper, we revisit point-based solutions and propose to decompose explicit garment-related
+            templates
+            and then add pose-dependent wrinkles to them.</li>
+        <li>Additionally, to tackle the seam artifact issues in recent state-of-the-art point-based methods, we propose
+            to
+            learn point features on a body surface, which establishes a continuous and compact feature space to capture
+            the
+            fine-grained and pose-dependent clothing geometry.</li>
+        <li>In THuman-CloSET, there are more than 2,000 scans of 15 outfits with a large variation in clothing style,
+            including T-shirts, pants, skirts, dresses, jackets, and coats, to name a few.</li>
+    </ul>
+    <h3>[NeurIPS 2021] Garment4D: Garment Reconstruction from Point Cloud Sequences <a
+            href="https://arxiv.org/abs/2112.04159">[pdf]</a><a href="https://github.com/hongfz16/Garment4D">[code]</a>
+    </h3>
+    <p><em>Fangzhou Hong, Liang Pan, Zhongang Cai, Ziwei Liu</em></p>
+    <ul>
+        <li>&lt;img src=&quot;../assets/fig_human_shape_recon/4.jpg&quot; width=&quot;600&quot;/&gt;</li>
+        <li>we propose a principled framework, Garment4D, that uses 3D point cloud sequences of dressed humans for
+            garment
+            reconstruction.</li>
+        <li>Firstly, 3D inputs eliminate scale and pose ambiguities that are difficult to avoid when using 2D images.
+            Secondly, exploiting temporal information is important for garment dynamics capturing, at which there are
+            few
+            attempts. Thirdly, recent development in 3D sensors (e.g. LiDAR) has reduced the cost and difficulties in
+            obtaining point clouds, which makes it easier to leverage 3D point clouds for research problems and
+            commercial
+            applications.</li>
+        <li>CLOTH3D is a large scale synthetic dataset with rich garment shapes and styles and abundant human pose
+            sequences. We sample point sets from 3D human models to produce the point cloud sequence inputs.</li>
+    </ul>
+    <h3>[ICCV 2021] The Power of Points for Modeling Humans in Clothing <a
+            href="https://arxiv.org/abs/2109.01137">[pdf]</a><a href="https://qianlim.github.io/POP">[code]</a></h3>
+    <p><em>Qianli Ma, Jinlong Yang, Siyu Tang, Michael J. Black</em></p>
+    <ul>
+        <li>&lt;img src=&quot;../assets/fig_human_shape_recon/2.jpg&quot; width=&quot;600&quot;/&gt;</li>
+    </ul>
+    <h3>[ECCV 2022] Learning Implicit Templates for Point-based Clothed Human Modeling <a
+            href="https://arxiv.org/abs/2207.06955">[pdf]</a><a href="https://github.com/jsnln/fite">[code]</a></h3>
+    <p><em>Siyou Lin, Hongwen Zhang, Zerong Zheng, Ruizhi Shao, Yebin Liu</em></p>
+    <ul>
+        <li>&lt;img src=&quot;../assets/fig_human_shape_recon/3.png&quot; width=&quot;600&quot;/&gt;</li>
+        <li>Our framework first learns implicit surface templates representing the coarse clothing topology, and then
+            employs the templates to guide the generation of point sets which further capture pose-dependent clothing
+            deformations such as wrinkles.</li>
+        <li>Our task is to learn animatable clothed human avatars with realistic posedependent clothing deformations
+            from a
+            set of posed scans, under a multi-outfit setting.</li>
+        <li>&lt;img src=&quot;../assets/fig_human_shape_recon/5.jpg&quot; width=&quot;600&quot;/&gt;</li>
+    </ul>
+    <h3>[3DV 2022] Neural Point-based Shape Modeling of Humans in Challenging Clothing <a
+            href="https://arxiv.org/abs/2209.06814">[pdf]</a><a href="https://qianlim.github.io/SkiRT">[code]</a></h3>
+    <p><em>Qianli Ma, Jinlong Yang, Michael J. Black, Siyu Tang</em></p>
+    <h3>[CVPR 2021] SCANimate: Weakly supervised learning of skinned clothed avatar networks <a
+            href="https://arxiv.org/abs/2104.03313">[pdf]</a></h3>
+    <p><em>Shunsuke Saito, Jinlong Yang, Qianli Ma, and Michael J Black</em></p>
+    <h2><a href="#contents">[back to top]</a></h2>
+    <h2>From (multi-view) RGBD&lt;a name=&quot;RGBD&quot;&gt;&lt;/a&gt;</h2>
+    <h3>[SIGGRAPH 2023] AvatarReX: Real-time Expressive Full-body Avatars <a
+            href="https://liuyebin.com/AvatarRex/">[pdf]</a></h3>
+    <p><em>Zerong Zheng, Xiaochen Zhao, Hongwen Zhang, Boning Liu, Yebin Liu</em></p>
+    <h3>[ICCV 2021] DeepMultiCap: Performance Capture of Multiple Characters Using Sparse Multiview Cameras <a
+            href="http://www.liuyebin.com/dmc/dmc.html">[pdf]</a><a
+            href="https://github.com/DSaurus/DeepMultiCap/tree/main">[code]</a></h3>
+    <p><em>Yang Zheng, Ruizhi Shao, Yuxiang Zhang, Tao Yu, Zerong Zheng, Qionghai Dai, Yebin Liu.</em></p>
+    <ul>
+        <li>To tackle with the serious occlusion challenge for close interacting scenes, we combine a recently proposed
+            pixelaligned implicit function with parametric model for robust reconstruction of the invisible surface
+            areas.
+        </li>
+        <li>With estimated SMPL models and segmented multi-view, we design a spatial attentionaware network and temporal
+            fusion method to reconstruct each character separately.</li>
+    </ul>
+    <h2><a href="#contents">[back to top]</a></h2>
+    <h2>From (multi-view) RGB&lt;a name=&quot;RGB&quot;&gt;&lt;/a&gt;</h2>
+    <h3>[CVPR 2019] PIFu: Pixel-Aligned Implicit Function for High-Resolution Clothed Human Digitization <a
+            href="https://arxiv.org/pdf/1905.05172.pdf">[pdf]</a></h3>
+    <p><em>Shunsuke Saito, Zeng Huang, Ryota Natsume, Shigeo Morishima, Angjoo Kanazawa, Hao Li</em></p>
+    <ul>
+        <li>We propose a new Pixel-aligned Implicit Function (PIFu) representation for 3D deep learning for the
+            challenging
+            problem of textured surface inference of clothed 3D humans from a single or multiple input images.</li>
+        <li>We sample points using a mixture of uniform volume samples and importance sampling around the surface using
+            Gaussian perturbation around uniformly sampled surface points.</li>
+    </ul>
+    <h3>[CVPR 2020] PIFuHD: Multi-Level Pixel-Aligned Implicit Function for High-Resolution 3D Human Digitization <a
+            href="https://shunsukesaito.github.io/PIFuHD/">[pdf]</a></h3>
+    <p><em>Shunsuke Saito, Tomas Simon, Jason Saragih, Hanbyul Joo</em></p>
+    <ul>
+        <li>Unlike voxel-based methods, PIFu does not produce a discretized volume as output, so training can be
+            performed
+            by sampling 3D points and computing the occupancy loss at the sampled locations, without generating 3D
+            meshes.
+            During inference, 3D space is uniformly sampled to infer the occupancy and the final iso-surface is
+            extracted
+            with a threshold of 0.5 using marching cubes</li>
+        <li>Since curvature is the second-order derivative of surface geometry, importance sampling based on curvature
+            significantly enhances details and fidelity.</li>
+    </ul>
+    <h3>[CVPR 2022] DoubleField: Bridging the Neural Surface and Radiance Fields for High-fidelity Human Reconstruction
+        and
+        Rendering <a href="http://www.liuyebin.com/dbfield/dbfield.html">[pdf]</a></h3>
+    <p><em>Ruizhi Shao, Hongwen Zhang, He Zhang, Mingjia Chen, Yanpei Cao, Tao Yu, Yebin Liu</em></p>
+    <ul>
+        <li>We introduce DoubleField, a novel framework combining the merits of both surface field in PIFu and radiance
+            field in PixelNeRF for high-fidelity human reconstruction and rendering.</li>
+        <li>The surface-guided sampling strategy will determine the intersection points in the surface field at first
+            and
+            then perform fine-grained sampling around the intersected surface.</li>
+        <li>view-to-view transformer adopts an encoder-decoder architecture that leverages the observations of the point
+            x
+            from all input views, and more importantly, the direction dq of the query view to predict the color feature
+            ec
+            for view-dependent rendering.</li>
+        <li>In the finetuning phase, the network takes the ultra-high-resolution images from the sparse multi-view of a
+            specific human as input and finetune the network parameters in a self-supervised manner using differentiable
+            rendering loss.</li>
+    </ul>
+    <h3>[ECCV 2022] DiffuStereo: High Quality Human Reconstruction via Diffusion-based Stereo Using Sparse Cameras <a
+            href="http://www.liuyebin.com/diffustereo/diffustereo.html">[pdf]</a></h3>
+    <p><em>Ruizhi Shao, Zerong Zheng, Hongwen Zhang, Jingxiang Sun, Yebin Liu.</em></p>
+    <ul>
+        <li>We design a new diffusion kernel and additional stereo constraints to facilitate stereo matching and depth
+            estimation in the network. Given a set of sparse-view color images of a human, the proposed multi-level
+            diffusion-based stereo network can produce highly accurate depth maps, which are then converted into a
+            high-quality 3D human model through an efficient multi-view fusion strategy.</li>
+        <li>Specifically, our diffusion-based stereo contains a forward process and a reverse process to obtain the
+            final
+            high-quality disparity map. In the forward process, the initial disparity maps are diffused to the maps with
+            noise distribution. In the reverse process, the high-quality disparity maps will be recovered from the noisy
+            maps with the condition of several stereo-related features.</li>
+        <li>The final mesh can be reconstructed from the final point cloud pf using Poisson Reconstruction. (Poisson
+            surface
+            reconstruction)</li>
+    </ul>
+    <h2><a href="#contents">[back to top]</a></h2>
+    <h2>Diffusion Model&lt;a name=&quot;diffusion&quot;&gt;&lt;/a&gt;</h2>
+    <h3>This repository contains a collection of resources and papers on Diffusion Models. <a
+            href="https://github.com/heejkoo/Awesome-Score-based-Diffusion-Models">[code]</a></h3>
+    <h3>[NeurIPS 2020] Denoising Diffusion Probabilistic Models <a href="https://arxiv.org/abs/2006.11239">[pdf]</a>
+    </h3>
+    <p><em>Jonathan Ho, Ajay Jain, Pieter Abbeel</em></p>
+    <h3>[arXiv 2022] Diffusion Models: A Comprehensive Survey of Methods and Applications <a
+            href="https://arxiv.org/pdf/2209.00796.pdf">[pdf]</a></h3>
+    <p><em>Ling Yang, Zhilong Zhang, Yang Song, Shenda Hong, Runsheng Xu, Yue Zhao, Wentao Zhang, Bin Cui, Ming-Hsuan
+            Yang</em></p>
+    <h3>[CVPR 2022] High-Resolution Image Synthesis with Latent Diffusion Models <a
+            href="https://github.com/CompVis/stable-diffusion">[code]</a> <a
+            href="https://openaccess.thecvf.com/content/CVPR2022/papers/Rombach_High-Resolution_Image_Synthesis_With_Latent_Diffusion_Models_CVPR_2022_paper.pdf">[pdf]</a>
+        <a
+            href="https://openaccess.thecvf.com/content/CVPR2022/supplemental/Rombach_High-Resolution_Image_Synthesis_CVPR_2022_supplemental.pdf">[supp]</a>
+    </h3>
+    <p><em>Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, Björn Ommer</em></p>
+    <ul>
+        <li>However, since these models typically operate directly in pixel space, optimization of powerful DMs often
+            consumes hundreds of GPU days and inference is expensive due to sequential evaluations. To enable DM
+            training on
+            limited computational resources while retaining their quality and flexibility, we apply them in the latent
+            space
+            of powerful pretrained autoencoders.</li>
+    </ul>
+    <h3>[ICLR 2023] MDM: Human Motion Diffusion Model <a href="https://guytevet.github.io/mdm-page/">[code]</a></h3>
+    <p><em>Guy Tevet, Sigal Raab, Brian Gordon, Yonatan Shafir, Daniel Cohen-Or, Amit H. Bermano</em></p>
+    <ul>
+        <li>&lt;img src=&quot;../assets/fig_human_shape_recon/6.jpg&quot; width=&quot;600&quot;/&gt;</li>
+    </ul>
+    <h3>Blog: What are Diffusion Models? <a
+            href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/">[project]</a></h3>
+    <h2><a href="#contents">[back to top]</a></h2>
+    <h2>Resources&lt;a name=&quot;resources&quot;&gt;&lt;/a&gt;</h2>
+    <h3>Volumetric TSDF Fusion of RGB-D Images in Python <a
+            href="https://github.com/andyzeng/tsdf-fusion-python">[code]</a>
+    </h3>
+    <h3>THUman5.0 dataset <a href="https://github.com/DSaurus/DiffuStereo/blob/master/DATASET.md">[code]</a></h3>
+    <h3>A Large-Scale Semantic and Emotional Multi-Modal Dataset for Conversational Gestures Synthesis [[project]](A
+        Large-Scale Semantic and Emotional Multi-Modal Dataset for Conversational Gestures Synthesis)</h3>
+    <h3>HuMMan: Multi-Modal 4D Human Dataset for Versatile Sensing and Modeling <a
+            href="https://caizhongang.github.io/projects/HuMMan/">[project]</a></h3>
+    <p><a href="#contents">[back to top]</a></p>
+
+</body>
