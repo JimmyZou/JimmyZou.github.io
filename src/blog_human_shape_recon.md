@@ -1,43 +1,42 @@
 # Blog Human Shape Reconstruction
-## Contents<a name="contents"></a>
 
- - [From Point-cloud](#point-cloud)
- - [From (multi-view) RGBD](#RGBD)
- - [From (multi-view) RGB](#RGB)
- - [Diffusion Modles](#diffusion)
+## Contents
+
+ - [From Pointcloud](#from-pointcloud)
+ - [From Multi-view RGBD](#from-multi-view-rgbd)
+ - [From Multi-view RGB](#from-multi-view-rgb)
+ - [Diffusion Modles](#diffusion-models)
  - [Resources](#resources)
----
 
 ---
 
-## From Pointcloud<a name="point-cloud"></a>
+## From Pointcloud
 
 ### [CVPR 2023] CloSET: Modeling Clothed Humans on Continuous Surface with Explicit Template Decomposition [[pdf]](http://www.liuyebin.com/closet/)
 _Hongwen Zhang, Siyou Lin, Ruizhi Shao, Yuxiang Zhang, Zerong Zheng, Han Huang, Yandong Guo, Yebin Liu_
-<!-- - ![](../assets/fig_human_shape_recon/1.png) -->
-- <img src="../assets/fig_human_shape_recon/1.png" width="600"/>
-- . In this paper, we revisit point-based solutions and propose to decompose explicit garment-related templates and then add pose-dependent wrinkles to them.
+![](../assets/fig_human_shape_recon/1.png)
+- In this paper, we revisit point-based solutions and propose to decompose explicit garment-related templates and then add pose-dependent wrinkles to them.
 - Additionally, to tackle the seam artifact issues in recent state-of-the-art point-based methods, we propose to learn point features on a body surface, which establishes a continuous and compact feature space to capture the fine-grained and pose-dependent clothing geometry.
 - In THuman-CloSET, there are more than 2,000 scans of 15 outfits with a large variation in clothing style, including T-shirts, pants, skirts, dresses, jackets, and coats, to name a few.
 
 
 ### [NeurIPS 2021] Garment4D: Garment Reconstruction from Point Cloud Sequences [[pdf]](https://arxiv.org/abs/2112.04159)[[code]](https://github.com/hongfz16/Garment4D)
 _Fangzhou Hong, Liang Pan, Zhongang Cai, Ziwei Liu_
-- <img src="../assets/fig_human_shape_recon/4.jpg" width="600"/>
+![](../assets/fig_human_shape_recon/4.png)
 - we propose a principled framework, Garment4D, that uses 3D point cloud sequences of dressed humans for garment reconstruction.
 - Firstly, 3D inputs eliminate scale and pose ambiguities that are difficult to avoid when using 2D images. Secondly, exploiting temporal information is important for garment dynamics capturing, at which there are few attempts. Thirdly, recent development in 3D sensors (e.g. LiDAR) has reduced the cost and difficulties in obtaining point clouds, which makes it easier to leverage 3D point clouds for research problems and commercial applications.
 - CLOTH3D is a large scale synthetic dataset with rich garment shapes and styles and abundant human pose sequences. We sample point sets from 3D human models to produce the point cloud sequence inputs.
 
 ### [ICCV 2021] The Power of Points for Modeling Humans in Clothing [[pdf]](https://arxiv.org/abs/2109.01137)[[code]](https://qianlim.github.io/POP)
 _Qianli Ma, Jinlong Yang, Siyu Tang, Michael J. Black_
-- <img src="../assets/fig_human_shape_recon/2.jpg" width="600"/>
+![](../assets/fig_human_shape_recon/2.png)
 
 ### [ECCV 2022] Learning Implicit Templates for Point-based Clothed Human Modeling [[pdf]](https://arxiv.org/abs/2207.06955)[[code]](https://github.com/jsnln/fite)
 _Siyou Lin, Hongwen Zhang, Zerong Zheng, Ruizhi Shao, Yebin Liu_
-- <img src="../assets/fig_human_shape_recon/3.png" width="600"/>
+![](../assets/fig_human_shape_recon/3.png)
+![](../assets/fig_human_shape_recon/5.jpg)
 - Our framework first learns implicit surface templates representing the coarse clothing topology, and then employs the templates to guide the generation of point sets which further capture pose-dependent clothing deformations such as wrinkles.
 - Our task is to learn animatable clothed human avatars with realistic posedependent clothing deformations from a set of posed scans, under a multi-outfit setting.
-- <img src="../assets/fig_human_shape_recon/5.jpg" width="600"/>
 
 ### [3DV 2022] Neural Point-based Shape Modeling of Humans in Challenging Clothing [[pdf]](https://arxiv.org/abs/2209.06814)[[code]](https://qianlim.github.io/SkiRT)
 _Qianli Ma, Jinlong Yang, Michael J. Black, Siyu Tang_
@@ -47,8 +46,9 @@ _Shunsuke Saito, Jinlong Yang, Qianli Ma, and Michael J Black_
   
 
 [[back to top]](#contents)
+
 ---
-## From (multi-view) RGBD<a name="RGBD"></a>
+## From Multi-view RGBD
 
 ### [SIGGRAPH 2023] AvatarReX: Real-time Expressive Full-body Avatars [[pdf]](https://liuyebin.com/AvatarRex/)
 _Zerong Zheng, Xiaochen Zhao, Hongwen Zhang, Boning Liu, Yebin Liu_
@@ -60,6 +60,7 @@ _Yang Zheng, Ruizhi Shao, Yuxiang Zhang, Tao Yu, Zerong Zheng, Qionghai Dai, Yeb
 
 
 [[back to top]](#contents)
+
 ---
 ## From (multi-view) RGB<a name="RGB"></a>
 ### [CVPR 2019] PIFu: Pixel-Aligned Implicit Function for High-Resolution Clothed Human Digitization [[pdf]](https://arxiv.org/pdf/1905.05172.pdf)
@@ -87,8 +88,9 @@ _Ruizhi Shao, Zerong Zheng, Hongwen Zhang, Jingxiang Sun, Yebin Liu._
 - The final mesh can be reconstructed from the final point cloud pf using Poisson Reconstruction. (Poisson surface reconstruction)
 
 [[back to top]](#contents)
+
 ---
-## Diffusion Model<a name="diffusion"></a>
+## Diffusion Model
 
 ### This repository contains a collection of resources and papers on Diffusion Models. [[code]](https://github.com/heejkoo/Awesome-Score-based-Diffusion-Models)
 
@@ -104,14 +106,15 @@ _Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, Björn Ommer_
 
 ### [ICLR 2023] MDM: Human Motion Diffusion Model [[code]](https://guytevet.github.io/mdm-page/)
 _Guy Tevet, Sigal Raab, Brian Gordon, Yonatan Shafir, Daniel Cohen-Or, Amit H. Bermano_
-- <img src="../assets/fig_human_shape_recon/6.jpg" width="600"/>
+![](../assets/fig_human_shape_recon/6.jpg)
 
 ### Blog: What are Diffusion Models? [[project]](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 
 
 [[back to top]](#contents)
+
 ---
-## Resources<a name="resources"></a>
+## Resources
 
 ### Volumetric TSDF Fusion of RGB-D Images in Python [[code]](https://github.com/andyzeng/tsdf-fusion-python)
 
@@ -119,8 +122,10 @@ _Guy Tevet, Sigal Raab, Brian Gordon, Yonatan Shafir, Daniel Cohen-Or, Amit H. B
 ### THUman5.0 dataset [[code]](https://github.com/DSaurus/DiffuStereo/blob/master/DATASET.md)
 
 
-### A Large-Scale Semantic and Emotional Multi-Modal Dataset for Conversational Gestures Synthesis [[project]](A Large-Scale Semantic and Emotional Multi-Modal Dataset for Conversational Gestures Synthesis)
+### A Large-Scale Semantic and Emotional Multi-Modal Dataset for Conversational Gestures Synthesis 
 
 ### HuMMan: Multi-Modal 4D Human Dataset for Versatile Sensing and Modeling [[project]](https://caizhongang.github.io/projects/HuMMan/)
 
 [[back to top]](#contents)
+
+---
