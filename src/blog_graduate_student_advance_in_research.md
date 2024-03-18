@@ -55,7 +55,8 @@
     - **代码自动格式化**（插件：Black Formatter）。**代码整齐是非常有必要的好习惯**，能够降低bug的出现概率，也方便自己理解和查找所写的代码，提高效率。shift+ctrl+p之后，输入“format with ...”，就能设置每次保存文件后自动格式化代码。
     - **markdown**（插件：Markdown All in One）。非常推荐用markdown写文档，原因在于可以方便地插入公式、图片和表格，同时可以通过插件很方便地转化为html、pdf等格式。
     - **github**（自带GitHub，插件：GitHub Copilot）。VSCode本身自带GitHub，需要本地配置git环境（windows和mac的配置方式不一样）。GitHub Copilot能自动根据上下文联想代码，能够节省很多时间，特别是写重复代码的时候（需要付费，10 USD/月）。同时，需要学习git常用的命令，例如git clone, git clone, git config, git commit, git push等，但是VSCode有图形界面能够把代码push到仓库中，比较方便。
-    - **project page**作为项目的展示界面，可以在代码仓库中单独创建```docs/index.html```来
+    - **个人和项目网页部署**。首先需要创建自己的个人网页，例如[我自己的页面](https://github.com/JimmyZou/JimmyZou.github.io)，主要包含css style文件和index.html文件，然后可以在```Settings->Pages```中进行部署，注意github账号名```xxx```可能需要对应```xxx.github.io```。可以在代码仓库中单独创建```docs/```来创建，例如[这个页面](https://github.com/JimmyZou/project_page_example)对应的[仓库地址](https://jimmyzou.github.io/project_page_example/)。
+    - **其他插件**。同样可以安装对应插件以打开html，pdf，MP4等文件，这样如果结果在服务器上就不用下载到本地再打开查看。
 
 - **Linux系统相关**
   - [命令行大全](https://zhuanlan.zhihu.com/p/420247468)，以下列举常用的命令：
@@ -70,10 +71,11 @@
     - conda安装torch时，可以选择对应的cuda版本，因为conda在安装torch时会同时安装cuda，所以安装时选择好对应的cuda版本。其次，pytorch3d的安装也可以通过conda，从而避免版本冲突导致的无法使用的问题。而pip是没法做到这一点的。
   - docker
 - **Latex相关**
-  - Overleaf
-  - 公式编写
-  - 文献管理
-  - 图和表格
+  - **Overleaf在线编辑**。写论文通常会使用latex，通常会议、期刊或毕业论文已经提供了对应的模板，写论文需要做的就是往模板里添加自己的内容。
+  - **公式编写**。可以参考这个[指导教程](https://zhuanlan.zhihu.com/p/570153914)，并在overleaf上自己创建一个项目尝试编辑公式。主要用到的有：各种符号，特殊字符、上标，下标，分式，多行公式并列等。
+  - **文献管理**。参考[BibTeX攻略](https://zhuanlan.zhihu.com/p/682054783)。通常，google scholar里，某一篇文献下面有```cite```，其中有```BibTex```，然后粘贴到```.bib```文件中即可。
+    - <img src="../assets/fig_guidance/bibtex.png" alt="alt text" style="width:400px" />
+  - **图和表格**。论文里的图一定要用**矢量图**（即无限放大不会变模糊的图），通常会在幻灯片里整合，然后将某一页单独保存为pdf，然后进行适当地裁剪，然后放到论文里。表格可以参考[这篇论文](https://www.overleaf.com/read/tgbfrnwrwczz#6dc036)里的模板，需要自学怎么合并左右或上下单元格等命令。
 
 #### 2. 文档
 
