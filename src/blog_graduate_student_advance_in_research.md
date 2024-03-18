@@ -48,15 +48,27 @@
 
 #### 1. 代码
 
+- **VSCode相关**
+  - [VSCode](https://zhuanlan.zhihu.com/p/675265926)几乎集成了所有写代码所需要的功能。下面列举几个常用的功能：
+    - **ssh远程连接**（插件：Remote-SSH, Remote - SSH: Editing Configuration Files, Remote Explorer）。在Remote Explorer的config文件中，可以配置对应的格式。
+      - <img src="../assets/fig_guidance/ssh_config.png" alt="alt text" style="width:400px" />
+    - **代码自动格式化**（插件：Black Formatter）。**代码整齐是非常有必要的好习惯**，能够降低bug的出现概率，也方便自己理解和查找所写的代码，提高效率。shift+ctrl+p之后，输入“format with ...”，就能设置每次保存文件后自动格式化代码。
+    - **markdown**（插件：Markdown All in One）。非常推荐用markdown写文档，原因在于可以方便地插入公式、图片和表格，同时可以通过插件很方便地转化为html、pdf等格式。
+    - **github**（自带GitHub，插件：GitHub Copilot）。VSCode本身自带GitHub，需要本地配置git环境（windows和mac的配置方式不一样）。GitHub Copilot能自动根据上下文联想代码，能够节省很多时间，特别是写重复代码的时候（需要付费，10 USD/月）。同时，需要学习git常用的命令，例如git clone, git clone, git config, git commit, git push等，但是VSCode有图形界面能够把代码push到仓库中，比较方便。
+    - **project page**作为项目的展示界面，可以在代码仓库中单独创建```docs/index.html```来
+
 - **Linux系统相关**
-  - 命令行
-  - conda
+  - [命令行大全](https://zhuanlan.zhihu.com/p/420247468)，以下列举常用的命令：
+    - cd, ls, mkdir, rm, top, htop, mv, cp, nohup, df, pwd
+    - scp, rsync, tar, zip, wget, vim
+    - ps, kill, pkill
+    - tmux, watch, nvidia-smi
+    - **需要熟练掌握以上每一个命令行的用处**。由于有些命令比较复杂，建议在自己的文档里把常用的命令模板加上，例如“rsync -avP -e "ssh -i C:/Users/xxx/.ssh/xxx" ./amass* xxx@119.xxx.xxx.xxx:/data”。这样能够提高工作效率。
+  - python的安装与使用（conda的虚拟环境管理）
+    - 选择安装[miniconda](https://blog.csdn.net/m0_73625420/article/details/128313467)，较为节省空间。然后使用conda创建若干个虚拟环境。
+    - conda与pip安装模块的区别：conda能够自动匹配合适的模块版本，pip只默认安装最新的模块版本。所以尽量使用conda install来安装模块，如果没有比如opencv-python，可以再用pip install。
+    - conda安装torch时，可以选择对应的cuda版本，因为conda在安装torch时会同时安装cuda，所以安装时选择好对应的cuda版本。其次，pytorch3d的安装也可以通过conda，从而避免版本冲突导致的无法使用的问题。而pip是没法做到这一点的。
   - docker
-- **VScode相关**
-  - ssh
-  - black formatter
-  - markdown
-  - github和网页
 - **Latex相关**
   - Overleaf
   - 公式编写
@@ -77,7 +89,7 @@
 
 #### 4. 课程
 
-#### 5.
+#### 5. 英语
 
 ---
 ### 培养科研能力 research capability
