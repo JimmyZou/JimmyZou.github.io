@@ -73,18 +73,29 @@
 
 - 画论文中的插图
 - 做汇报
+  - 如何做学术报告幻灯片 [[Link]](https://pengsida.notion.site/slides-810f02670691444f8c94cc3d5b76dcbc)
 
 #### 4. 课程
 
 #### 5.
 
 ---
-### 三、论文撰写 paper writing
+### 培养科研能力 research capability
+
+科研能力
+
+入门3D Vision的科研[[Link]](https://github.com/pengsida/learning_research/blob/master/getting_started_in_research.md)
+
+博士生应该具有的能力、如何锻炼这些能力、如何做科研项目[[Link]](https://github.com/pengsida/learning_research/blob/master/getting_advanced_in_research.md)[[link]](https://pengsida.notion.site/research-project-b43507ef26d044bd888ac29f4736e116)
 
 ---
-### 四、
+### 四、论文撰写 paper writing
+
+论文写作模板[[Link]](https://pengsida.notion.site/c1a22465a0fa4b15a12985223916048e)
+
+
 
 ---
 ### 参考文档 Reference
-[Learning Research by Sida Peng from ZJU](https://github.com/pengsida/learning_research)
+[1] [Learning Research by Sida Peng from ZJU](https://github.com/pengsida/learning_research)
 
