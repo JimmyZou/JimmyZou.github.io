@@ -46,17 +46,17 @@
 ---
 ### 二、科研必备技能 research skills
 
-#### 1. 代码
+#### 1. 代码相关
 
 - **VSCode相关**
   - [VSCode](https://zhuanlan.zhihu.com/p/675265926)几乎集成了所有写代码所需要的功能。下面列举几个常用的功能：
     - **ssh远程连接**（插件：Remote-SSH, Remote - SSH: Editing Configuration Files, Remote Explorer）。在Remote Explorer的config文件中，可以配置对应的格式。
-      - <img src="../assets/fig_guidance/ssh_config.png" alt="alt text" style="width:400px" />
+      - <img src="../assets/fig_guidance/ssh_config.png" alt="alt text" style="width:300px" />
     - **代码自动格式化**（插件：Black Formatter）。**代码整齐是非常有必要的好习惯**，能够降低bug的出现概率，也方便自己理解和查找所写的代码，提高效率。shift+ctrl+p之后，输入“format with ...”，就能设置每次保存文件后自动格式化代码。
     - **markdown**（插件：Markdown All in One）。非常推荐用markdown写文档，原因在于可以方便地插入公式、图片和表格，同时可以通过插件很方便地转化为html、pdf等格式。
     - **github**（自带GitHub，插件：GitHub Copilot）。VSCode本身自带GitHub，需要本地配置git环境（windows和mac的配置方式不一样）。GitHub Copilot能自动根据上下文联想代码，能够节省很多时间，特别是写重复代码的时候（需要付费，10 USD/月）。同时，需要学习git常用的命令，例如git clone, git clone, git config, git commit, git push等，但是VSCode有图形界面能够把代码push到仓库中，比较方便。
     - **个人和项目网页部署**。首先需要创建自己的个人网页，例如[我自己的页面](https://github.com/JimmyZou/JimmyZou.github.io)，主要包含css style文件和index.html文件，然后可以在```Settings->Pages```中进行部署，注意github账号名```xxx```可能需要对应```xxx.github.io```。可以在代码仓库中单独创建```docs/```来创建，例如[这个页面](https://github.com/JimmyZou/project_page_example)对应的[仓库地址](https://jimmyzou.github.io/project_page_example/)。
-    - **其他插件**。同样可以安装对应插件以打开html，pdf，MP4等文件，这样如果结果在服务器上就不用下载到本地再打开查看。
+    - **其他插件**。同样可以安装对应插件以打开html，pdf，MP4等文件，这样如果结果在服务器上就不用下载到本地再打开查看。另外，还有markdown自动转为html文件的插件，可以将markdown写的文档自动转为html，这样就可以在个人网页上显示你的文档了。
 
 - **Linux系统相关**
   - [命令行大全](https://zhuanlan.zhihu.com/p/420247468)，以下列举常用的命令：
@@ -79,9 +79,16 @@
 
 #### 2. 文档
 
-- 课程学习文档
-- 论文阅读文档
-- 实验日志文档
+**<u>写文档是一个非常有必要的习惯，是对平时工作的一个记录和积累，在需要用到的时候可以给你提供便利，磨刀不误砍柴功，例如将来某个时候需要参考、做汇报时需要素材、需要经常解决常见问题等等。</u>**
+
+- **课程学习文档**
+  - 样例来自于我们组的同学：[随机过程]()、[机器学习]()
+  - 如果文档太长，可以在markdown中设置目录跳转，如下图所示：
+    - <img src="../assets/fig_guidance/markdown目录.png" alt="alt text" style="width:400px" />
+    - <img src="../assets/fig_guidance/markdown目录2.png" alt="alt text" style="width:200px" />
+  - 但是发现转成html之后，目录跳转功能没法使用，暂未解决。**（解决有奖！）**
+- **论文阅读文档**
+- **实验日志文档**
 
 #### 3. PPT
 

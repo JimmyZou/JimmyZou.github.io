@@ -3,946 +3,1083 @@
 
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Blog</title>
-    <meta name="description" content="Shihao Zou's blog page." />
-    <meta name="keywords" content="human shape reconstruction" />
-    <link rel="stylesheet" href="https://latex.now.sh/style.css">
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <meta charset="UTF-8" />
+        <title>Blog</title>
+        <meta name="description" content="Shihao Zou's blog page." />
+        <meta name="keywords" content="human shape reconstruction" />
+        <link rel="stylesheet" href="css/style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <style>
-    body {
-        max-width: 120ch;
-        min-height: 100vh;
-    }
+        body {
+                max-width: 120ch;
+                min-height: 100vh;
+        }
 
-    h1 {
-        font-size: 2.0rem;
-    }
+        h1 {
+                font-size: 2.0rem;
+        }
 
-    h2 {
-        font-size: 1.2rem;
-    }
+        h2 {
+                font-size: 1.2rem;
+        }
 
-    h3 {
-        font-size: 1.0rem;
-    }
+        h3 {
+                font-size: 1.0rem;
+        }
 
-    h4 {
-        font-size: 1.0rem;
-    }
+        h4 {
+                font-size: 1.0rem;
+        }
 </style>
 
 <body>
-    <h1>Blog Event-Based Vision</h1>
-    <h2>Contents</h2>
-    <ul>
-        <li><a href="#event-based-vision">Event-based vision</a></li>
-        <li><a href="#spiking-neural-networks">Spiking Neural Networks</a></li>
-        <li><a href="#6d-pose-estimation">6D Pose Estimation</a></li>
-        <li><a href="#optimization-human-shape-reconstruction">Optimization Human Shape Reconstruction</a></li>
-        <li><a href="#video-prediction-and-pose-transfer">Video prediction and Pose transfer</a></li>
-        <li><a href="#representation-learning">Representation learning</a></li>
-        <li><a href="#others">Others</a></li>
-        <li><a href="#transformer">Transformer</a></li>
-    </ul>
-    <hr>
-    <h2>Event-based vision</h2>
-    <h3>research group: <a href="http://rpg.ifi.uzh.ch/research_dvs.html">http://rpg.ifi.uzh.ch/research_dvs.html</a>
-    </h3>
-    <h3>resources: <a
-            href="https://github.com/uzh-rpg/event-based_vision_resources">https://github.com/uzh-rpg/event-based_vision_resources</a>
-    </h3>
-    <h3>advantages</h3>
-    <ul>
-        <li>Event cameras have several advantages over traditional cameras: a latency in the order of microseconds, a
-            very high dynamic range (140 dB compared to 60 dB of traditional cameras), and very low power consumption
-            (10mW vs 1.5W of traditional cameras). Moreover, since all pixels capture light independently, such sensors
-            do not suffer from motion blur.</li>
-    </ul>
-    <h3>[TPAMI 2020] Event-based Vision: A Survey <a href="https://arxiv.org/abs/1904.08405">[pdf]</a></h3>
-    <p><em>Guillermo Gallego, Tobi Delbruck, Garrick Orchard, Chiara Bartolozzi, Brian Taba, Andrea Censi, Stefan
-            Leutenegger, Andrew Davison, Joerg Conradt, Kostas Daniilidis, Davide Scaramuzza</em></p>
-    <h3>[CVPR 2020] EventCap: Monocular 3D Capture of High-Speed Human Motions using an Event Camera <a
-            href="https://arxiv.org/abs/1908.11505">[pdf]</a></h3>
-    <p><em>Lan Xu, Weipeng Xu, Vladislav Golyanik, Marc Habermann, Lu Fang, Christian Theobalt</em></p>
-    <h3>[ECCV 2020] Spike-FlowNet: Event-based Optical Flow Estimation with Energy-Efficient Hybrid Neural Networks <a
-            href="https://arxiv.org/abs/2003.06696">[pdf]</a></h3>
-    <p><em>Chankyu Lee, Adarsh Kumar Kosta, Alex Zihao Zhu, Kenneth Chaney, Kostas Daniilidis, Kaushik Roy</em></p>
-    <ul>
-        <li>SNN decodes event streams and ANN encodes optical flow. Simplest IF neuron model is used in this paper.</li>
-        <li>Self-supervised warping loss (optical flow between neighboring frames).</li>
-    </ul>
-    <h3>[CVPR 2020] Single Image Optical Flow Estimation With an Event Camera <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Pan_Single_Image_Optical_Flow_Estimation_With_an_Event_Camera_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Liyuan Pan, Miaomiao Liu, Richard Hartley</em></p>
-    <h3>[CVPR 2018] Pwc-net: Cnns for optical flow using pyramid, warping, and cost volume <a
-            href="https://arxiv.org/abs/1709.02371">[pdf]</a> <a href="https://github.com/NVlabs/PWC-Net">[code]</a>
-    </h3>
-    <p><em>Deqing Sun, Xiaodong Yang, Ming-Yu Liu, Jan Kautz</em></p>
-    <h3>[CVPR 2020] Learning to Super Resolve Intensity Images From Events <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/I._Learning_to_Super_Resolve_Intensity_Images_From_Events_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>S. Mohammad Mostafavi I., Jonghyun Choi, Kuk-Jin Yoon</em></p>
-    <h3>[CVPR 2020] Learning Event-Based Motion Deblurring <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Jiang_Learning_Event-Based_Motion_Deblurring_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Zhe Jiang, Yu Zhang, Dongqing Zou, Jimmy Ren, Jiancheng Lv, Yebin Liu</em></p>
-    <h3>[CVPR 2020] Video to Events: Recycling Video Datasets for Event Cameras <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Gehrig_Video_to_Events_Recycling_Video_Datasets_for_Event_Cameras_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Daniel Gehrig, Mathias Gehrig, Javier Hidalgo-Carrio, Davide Scaramuzza</em></p>
-    <h3>[CVPR 2020] 4D Visualization of Dynamic Events From Unconstrained Multi-View Videos <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Bansal_4D_Visualization_of_Dynamic_Events_From_Unconstrained_Multi-View_Videos_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Aayush Bansal, Minh Vo, Yaser Sheikh, Deva Ramanan, Srinivasa Narasimhan</em></p>
-    <h3>[CVPR 2020] Globally Optimal Contrast Maximisation for Event-Based Motion Estimation <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Globally_Optimal_Contrast_Maximisation_for_Event-Based_Motion_Estimation_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Daqi Liu, Alvaro Parra, Tat-Jun Chin</em></p>
-    <h3>[CVPR 2020] Learning Visual Motion Segmentation Using Event Surfaces <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Mitrokhin_Learning_Visual_Motion_Segmentation_Using_Event_Surfaces_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Anton Mitrokhin, Zhiyuan Hua, Cornelia Fermuller, Yiannis Aloimonos</em></p>
-    <h3>[CVPR 2020] EventSR: From Asynchronous Events to Image Reconstruction, Restoration, and Super-Resolution via
-        End-to-End Adversarial Learning <a href="https://arxiv.org/pdf/2003.07640.pdf">[pdf]</a></h3>
-    <p><em>Lin Wang, Tae-Kyun Kim, and Kuk-Jin Yoon</em></p>
-    <h3>[ICCV 2019] Learning an event sequence embedding for dense event-based deep stereo <a
-            href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Tulyakov_Learning_an_Event_Sequence_Embedding_for_Dense_Event-Based_Deep_Stereo_ICCV_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Stepan Tulyakov, Francois Fleuret, Martin Kiefel, Peter Gehler, Michael Hirsch</em></p>
-    <h3>[ICCV 2019] End-to-End Learning of Representations for Asynchronous Event-Based Data <a
-            href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Gehrig_End-to-End_Learning_of_Representations_for_Asynchronous_Event-Based_Data_ICCV_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Daniel Gehrig, Antonio Loquercio, Konstantinos G. Derpanis, Davide Scaramuzza</em></p>
-    <h3>[CVPR 2019] Event-based High Dynamic Range Image and Very High Frame Rate Video Generation using Conditional
-        Generative Adversarial Networks <a href="https://arxiv.org/abs/1811.08230">[pdf]</a></h3>
-    <p><em>S. Mohammad Mostafavi I., Lin Wang, Yo-Sung Ho, Kuk-Jin Yoon</em></p>
-    <h3>[CVPR 2019] Unsupervised Event-Based Learning of Optical Flow, Depth, and Egomotion <a
-            href="https://arxiv.org/abs/1812.08156">[pdf]</a></h3>
-    <p><em>Alex Zihao Zhu, Liangzhe Yuan, Kenneth Chaney, Kostas Daniilidis</em></p>
-    <h3>[IROS 2018] Event-based Moving Object Detection and Tracking <a
-            href="https://arxiv.org/abs/1803.04523">[pdf]</a></h3>
-    <p><em>Anton Mitrokhin, Cornelia Fermuller, Chethan Parameshwara, Yiannis Aloimonos</em></p>
-    <h3>[CVPR 2019] Bringing a Blurry Frame Alive at High Frame-Rate With an Event Camera <a
-            href="https://arxiv.org/abs/1811.10180">[pdf]</a></h3>
-    <p><em>Liyuan Pan, Cedric Scheerlinck, Xin Yu, Richard Hartley, Miaomiao Liu, Yuchao Dai</em></p>
-    <h3>[CVPR 2019] Focus Is All You Need: Loss Functions For Event-based Vision <a
-            href="https://arxiv.org/abs/1904.07235">[pdf]</a></h3>
-    <p><em>Guillermo Gallego, Mathias Gehrig, Davide Scaramuzza</em></p>
-    <h3>[CVPR 2019] Event Cameras, Contrast Maximization and Reward Functions: An Analysis <a
-            href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Stoffregen_Event_Cameras_Contrast_Maximization_and_Reward_Functions_An_Analysis_CVPR_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Timo Stoffregen, Lindsay Kleeman</em></p>
-    <h3>[TPAMI 2018] Event-based, 6-DOF Camera Tracking from Photometric Depth Maps <a
-            href="http://rpg.ifi.uzh.ch/docs/PAMI17_Gallego.pdf">[pdf]</a></h3>
-    <p><em>Guillermo Gallego, Jon E.A. Lund, Elias Mueggler, Henri Rebecq, Tobi Delbruck, Davide Scaramuzza</em></p>
-    <h3>[IJCV 2017, BMVC 2016] EMVS: Event-based Multi-View Stereo - 3D Reconstruction with an Event Camera in Real-Time
-        <a href="https://supitalp.github.io/research/publication/emvs_ijcv/">[pdf]</a>
-    </h3>
-    <p><em>Henri Rebecq, Guillermo Gallego, Elias Mueggler, Davide Scaramuzza</em></p>
-    <h3>[ECCV 2018] Asynchronous, Photometric Feature Tracking using Events and Frames <a
-            href="https://arxiv.org/abs/1807.09713">[pdf]</a></h3>
-    <p><em>Daniel Gehrig, Henri Rebecq, Guillermo Gallego, Davide Scaramuzza</em></p>
-    <h3>[CVPR 2018] A Unifying Contrast Maximization Framework for Event Cameras, with Applications to Motion, Depth and
-        Optical Flow Estimation <a href="https://arxiv.org/abs/1804.01306">[pdf]</a></h3>
-    <p><em>Guillermo Gallego, Henri Rebecq, Davide Scaramuzza</em></p>
-    <ul>
-        <li>We present a unifying framework to solve several computer vision problems with event cameras: motion, depth
-            and optical flow estimation. The main idea of our framework is to find the point trajectories on the image
-            plane that are best aligned with the event data by maximizing an objective function: the contrast of an
-            image of warped events. Our method implicitly handles data association between the events, and therefore,
-            does not rely on additional appearance information about the scene. In addition to accurately recovering the
-            motion parameters of the problem, our framework produces motion-corrected edge-like images with high dynamic
-            range that can be used for further scene analysis.</li>
-    </ul>
-    <h3>[ECCV 2018] Semi-Dense 3D Reconstruction with a Stereo Event Camera <a
-            href="https://arxiv.org/abs/1807.07429">[pdf]</a></h3>
-    <p><em>Yi Zhou, Guillermo Gallego, Henri Rebecq, Laurent Kneip, Hongdong Li, Davide Scaramuzza</em></p>
-    <h3>[CVPR 2019, TPAMI 2020] Events-to-Video: Bringing Modern Computer Vision to Event Cameras <a
-            href="https://arxiv.org/abs/1904.08298">[pdf]</a> <a href="https://arxiv.org/pdf/1906.07165.pdf">[pdf]</a>
-    </h3>
-    <p><em>Henri Rebecq, René Ranftl, Vladlen Koltun, Davide Scaramuzza</em></p>
-    <ul>
-        <li>Since <strong>the output of event cameras is fundamentally different from conventional cameras</strong>, it
-            is commonly accepted that they require the development of specialized algorithms to accommodate the
-            particular nature of events.</li>
-        <li>We propose a novel recurrent network to reconstruct videos from a stream of events, and train it on a large
-            amount of simulated event data.</li>
-    </ul>
-    <h3>[ECCV 2018 workshop] Unsupervised event-based optical flow using motion compensation <a
-            href="https://arxiv.org/abs/1812.08156">[pdf]</a></h3>
-    <p><em>Alex Zihao Zhu, Liangzhe Yuan, Kenneth Chaney, Kostas Daniilidis</em></p>
-    <h3>[Scientific Report] A Spiking Neural Network Model of Depth from Defocus for Event-based Neuromorphic Vision <a
-            href="https://www.nature.com/articles/s41598-019-40064-0.pdf">[pdf]</a></h3>
-    <p><em>Germain Haessig, Xavier Berthelon, Sio-Hoi Ieng &amp; Ryad Benosman</em></p>
-    <h3>[CVPR 2017] A Low Power, Fully Event-Based Gesture Recognition System <a
-            href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Amir_A_Low_Power_CVPR_2017_paper.pdf">[pdf]</a>
-        <a href="http://research.ibm.com/dvsgesture/">[dataset]</a>
-    </h3>
-    <p><em>Arnon Amir, Brian Taba, David Berg, Timothy Melano, Jeffrey McKinstry, Carmelo Di Nolfo, Tapan Nayak,
-            Alexander Andreopoulos, Guillaume Garreau, Marcela Mendoza, Jeff Kusnitz, Michael Debole, Steve Esser, Tobi
-            Delbruck, Myron Flickner, and Dharmendra Modha</em></p>
-    <h3>[CVPR 2019] EV-Gait: Event-Based Robust Gait Recognition Using Dynamic Vision Sensors <a
-            href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_EV-Gait_Event-Based_Robust_Gait_Recognition_Using_Dynamic_Vision_Sensors_CVPR_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Yanxiang Wang, Bowen Du, Yiran Shen, Kai Wu, Guangrong Zhao, Jianguo Sun, Hongkai Wen</em></p>
-    <h3>[CVPR workshop 2019] DHP19: Dynamic Vision Sensor 3D Human Pose Dataset <a
-            href="http://openaccess.thecvf.com/content_CVPRW_2019/papers/EventVision/Calabrese_DHP19_Dynamic_Vision_Sensor_3D_Human_Pose_Dataset_CVPRW_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Enrico Calabrese, Gemma Taverni, Christopher Awai Easthope, Sophie Skriabine, Federico Corradi, Luca
-            Longinotti, Kynan Eng, Tobi Delbruck</em></p>
-    <h3>[RoSS 2018] EV-FlowNet: Self-supervised optical flow estimation for event-based cameras <a
-            href="https://arxiv.org/abs/1802.06898">[pdf]</a></h3>
-    <p><em>Alex Zihao Zhu, Liangzhe Yuan, Kenneth Chaney, Kostas Daniilidis</em></p>
-    <ul>
-        <li>In particular, we introduce an image based representation of a given event stream, which is fed into a
-            self-supervised neural network as the sole input. The corresponding grayscale images captured from the same
-            camera at the same time as the events are then used as a supervisory signal to provide a loss function at
-            training time, given the estimated flow from the network.</li>
-    </ul>
-    <h3>[CVPR 2016] Simultaneous Optical Flow and Intensity Estimation from an Event Camera <a
-            href="https://openaccess.thecvf.com/content_cvpr_2016/papers/Bardow_Simultaneous_Optical_Flow_CVPR_2016_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Patrick Bardow, Andrew J. Davison, Stefan Leutenegger</em></p>
-    <h3>[NNLS 2014] Event-Based Visual Flow <a href="https://ieeexplore.ieee.org/document/6589170">[pdf]</a> <a
-            href="https://github.com/winswang/event-flow">[code]</a></h3>
-    <p><em>Ryad Benosman, Charles Clercq, Xavier Lagorce, Sio-Hoi Ieng, and Chiara Bartolozzi</em></p>
-    <p><a href="#contents">[back to top]</a></p>
-    <hr>
-    <h2>Spiking Neural Networks</h2>
-    <h3>[NeurIPS 2022] Online Training Through Time for Spiking Neural Networks <a
-            href="https://arxiv.org/pdf/2210.04195.pdf">[pdf]</a></h3>
-    <p><em>Mingqing Xiao, Qingyan Meng, Zongpeng Zhang, Di He, Zhouchen Lin</em></p>
-    <h3>[NeurIPS 2022] Toward Robust Spiking Neural Network Against Adversarial Perturbation <a
-            href="https://arxiv.org/abs/2205.01625">[pdf]</a></h3>
-    <p><em>Ling Liang, Kaidi Xu, Xing Hu, Lei Deng, Yuan Xie</em></p>
-    <h3>[NeurIPS 2022] Training Spiking Neural Networks with Local Tandem Learning <a
-            href="https://arxiv.org/abs/2210.04532">[pdf]</a></h3>
-    <p><em>Qu Yang, Jibin Wu, Malu Zhang, Yansong Chua, Xinchao Wang, Haizhou Li</em></p>
-    <h3>[NeurIPS 2022] GLIF: A Unified Gated Leaky Integrate-and-Fire Neuron for Spiking Neural Networks <a
-            href="https://arxiv.org/abs/2210.13768">[pdf]</a></h3>
-    <p><em>Xingting Yao, Fanrong Li, Zitao Mo, Jian Cheng</em></p>
-    <h3>[ICLR 2022] Temporal Efficient Training of Spiking Neural Network via Gradient Re-weighting <a
-            href="https://arxiv.org/abs/2202.11946">[pdf]</a></h3>
-    <p><em>Shikuang Deng, Yuhang Li, Shanghang Zhang, Shi Gu</em></p>
-    <h3>[CVPR 2022] Event Transformer. A sparse-aware solution for efficient event data processing <a
-            href="https://arxiv.org/abs/2204.03355">[pdf]</a></h3>
-    <p><em>Alberto Sabater, Luis Montesano, Ana C. Murillo</em></p>
-    <ul>
-        <li>Event cameras are sensors of great interest for many applications that run in low-resource and challenging
-            environments. They log sparse illumination changes with high temporal resolution and high dynamic range,
-            while they present minimal power consumption. However, top-performing methods often ignore specific
-            event-data properties, leading to the development of generic but computationally expensive algorithms.
-            Efforts toward efficient solutions usually do not achieve top-accuracy results for complex tasks. This work
-            proposes a novel framework, Event Transformer (EvT), that effectively takes advantage of event-data
-            properties to be highly efficient and accurate. We introduce a new patch-based event representation and a
-            compact transformer-like architecture to process it. EvT is evaluated on different event-based benchmarks
-            for action and gesture recognition. Evaluation results show better or comparable accuracy to the
-            state-of-the-art while requiring significantly less computation resources, which makes EvT able to work with
-            minimal latency both on GPU and CPU.</li>
-    </ul>
-    <h3>[CVPR 2022] Spiking Transformers for Event-based Single Object Tracking <a
-            href="https://zhangjiqing.com/publication/stnet/">[pdf]</a></h3>
-    <p><em>Jiqing Zhang, Bo Dong, Haiwei Zhang, Jianchuan Ding, Felix Heide, Baocai Yin, Xin Yang</em></p>
-    <ul>
-        <li>Event-based cameras bring a unique capability to tracking, being able to function in challenging real-world
-            conditions as a direct result of their high temporal resolution and high dynamic range. These imagers
-            capture events asynchronously that encode rich temporal and spatial information. However, effectively
-            extracting this information from events remains an open challenge. In this work, we propose a spiking
-            transformer network, STNet, for single object tracking. STNet dynamically extracts and fuses information
-            from both temporal and spatial domains. In particular, the proposed architecture features a transformer
-            module to provide global spatial information and a spiking neural network (SNN) module for extracting
-            temporal cues. The spiking threshold of the SNN module is dynamically adjusted based on the statistical cues
-            of the spatial information, which we find essential in providing robust SNN features. We fuse both feature
-            branches dynamically with a novel cross-domain attention fusion algorithm. Extensive experiments on two
-            event-based datasets, FE240hz and EED, validate that the proposed STNet outperforms existing
-            state-of-the-art methods in both tracking accuracy and speed with a significant margin.</li>
-        <li>The proposed SFE relies on a 3-layer LIF-based SNN [45] and a reduced Swin-transformer [33] to capture
-            informative cues from the temporal and spatial domains.</li>
-    </ul>
-    <h3>[Neurips 2021] Deep Residual Learning in Spiking Neural Networks <a
-            href="https://arxiv.org/abs/2102.04159">[pdf]</a></h3>
-    <p><em>Wei Fang, Zhaofei Yu, Yanqi Chen, Tiejun Huang, Timothée Masquelier, Yonghong Tian</em></p>
-    <ul>
-        <li>In this paper, we propose the spike element-wise (SEW) ResNet to realize residual learning in deep SNNs. We
-            prove that the SEW ResNet can easily implement identity mapping and overcome the vanishing/exploding
-            gradient problems of Spiking ResNet.</li>
-    </ul>
-    <h3>[ICCV 2019] Incorporating Learnable Membrane Time Constant to Enhance Learning of Spiking Neural Networks <a
-            href="https://arxiv.org/abs/2007.05785">[pdf]</a></h3>
-    <p><em>Wei Fang, Zhaofei Yu, Yanqi Chen, Timothee Masquelier, Tiejun Huang, Yonghong Tian</em></p>
-    <h3>[Neurips 2021] Differentiable Spike: Rethinking Gradient-Descent for Training Spiking Neural Networks <a
-            href="https://proceedings.neurips.cc/paper/2021/file/c4ca4238a0b923820dcc509a6f75849b-Paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Yuhang Li, Yufei Guo, Shanghang Zhang, Shikuang Deng, Yongqing Hai, Shi Gu</em></p>
-    <h3>[Neurips 2021] Training Feedback Spiking Neural Networks by Implicit Differentiation on the Equilibrium State <a
-            href="https://arxiv.org/pdf/2109.14247.pdf">[pdf]</a></h3>
-    <p><em>Mingqing Xiao, Qingyan Meng, Zongpeng Zhang, Yisen Wang, Zhouchen Lin</em></p>
-    <h3>[Neurips 2020] Unifying Activation- and Timing-based Learning Rules for Spiking Neural Networks <a
-            href="https://arxiv.org/abs/2006.02642">[pdf]</a></h3>
-    <p><em>Jinseok Kim, Kyungsu Kim, Jae-Joon Kim</em></p>
-    <h3>[Neurips 2020] Temporal Spike Sequence Learning via Backpropagation for Deep Spiking Neural Networks <a
-            href="https://arxiv.org/abs/2002.10085">[pdf]</a></h3>
-    <p><em>Wenrui Zhang, Peng Li</em></p>
-    <ul>
-        <li>We present a novel Temporal Spike Sequence Learning Backpropagation (TSSL-BP) method for training deep SNNs,
-            null- which breaks down error backpropagation across two types of inter-neuron and intra-neuron dependencies
-            null- and leads to improved temporal learning precision.</li>
-        <li>Wulfram Gerstner and Werner M Kistler. Spiking neuron models: Single neurons, populations, plasticity.
-            null- Cambridge university press, 2002.</li>
-    </ul>
-    <h3>[Neurips 2021] Self-Supervised Learning of Event-Based Optical Flow with Spiking Neural Networks <a
-            href="https://arxiv.org/abs/2106.01862">[pdf]</a><a href="https://github.com/tudelft/event_flow">[code]</a>
-    </h3>
-    <p><em>Jesse Hagenaars, Federico Paredes-Vallés, Guido de Croon</em></p>
-    <h3>[Neurips 2021] Sparse Spiking Gradient Descent <a href="https://arxiv.org/abs/2105.08810">[pdf]</a> <a
-            href="https://github.com/npvoid/SparseSpikingBackprop">[code]</a></h3>
-    <p><em>Nicolas Perez-Nieves, Dan F.M. Goodman</em></p>
-    <ul>
-        <li>Emre O. Neftci, Hesham Mostafa, and Friedemann Zenke. Surrogate gradient learning in
-            null- spiking neural networks: Bringing the power of gradient-based optimization to spiking neural
-            null- networks. IEEE Signal Processing Magazine, 36(6):51–63, 2019.</li>
-        <li>Friedemann Zenke and Tim P Vogels. The remarkable robustness of surrogate gradient learning
-            null- for instilling complex function in spiking neural networks. Neural Computation, 33(4):899–925, 2021.
-        </li>
-    </ul>
-    <h3>[CVPR 2021] Temporal-wise Attention Spiking Neural Networks for Event Streams Classification <a
-            href="https://arxiv.org/abs/2107.11711">[pdf]</a></h3>
-    <p><em>Man Yao, Huanhuan Gao, Guangshe Zhao, Dingheng Wang, Yihan Lin, Zhaoxu Yang, Guoqi Li</em></p>
-    <ul>
-        <li>Yin Bi, Aaron Chadha, Alhabib Abbas, Eirina Bourtsoulatze, and Yiannis Andreopoulos. Graph-based
-            spatio-temporal
-            null- feature learning for neuromorphic vision sensing. IEEE Transactions on Image Processing, 29:9084–9098,
-            2020.</li>
-        <li>Kaushik Roy, Akhilesh Jaiswal, and Priyadarshini Panda. Towards spike-based machine intelligence with
-            neuromorphic
-            null- computing. Nature, 575(7784):607–617, 2019.</li>
-        <li>Zhenzhi Wu, Hehui Zhang, Yihan Lin, Guoqi Li, Meng Wang, and Ye Tang. Liaf-net: Leaky integrate and analog
-            fire
-            null- network for lightweight and efficient spatiotemporal information processing. IEEE Transactions on
-            Neural Networks
-            null- and Learning Systems, pages 1–14, 2021.</li>
-        <li>Jie Hu, Li Shen, and Gang Sun. Squeeze-and-excitation networks. In Proceedings of the IEEE conference on
-            computer
-            null- vision and pattern recognition, pages 7132–7141, 2018.</li>
-        <li>We use the STBP [38] and the BPTT algorithm [40] to train LIF-SNNs and LIAFSNNs, respectively.</li>
-    </ul>
-    <h3>[Neurips 2018] Gradient Descent for Spiking Neural Networks <a
-            href="https://papers.nips.cc/paper/2018/file/185e65bc40581880c4f2c82958de8cfe-Paper.pdf">[pdf]</a></h3>
-    <p><em>Dongsung Huh, Terrence J. Sejnowski</em></p>
-    <ul>
-        <li>In general, the exact gradient of a dynamical system can be calculated using either Pontryagin’s minimum
-            principle [33], also known as backpropagation through time, or real-time recurrent learning, which yield
-            identical results.</li>
-    </ul>
-    <h3>[ECCV 2020] Spike-FlowNet: Event-based Optical Flow Estimation with Energy-Efficient Hybrid Neural Networks <a
-            href="https://arxiv.org/abs/2003.06696">[pdf]</a></h3>
-    <p><em>Chankyu Lee, Adarsh Kumar Kosta, Alex Zihao Zhu, Kenneth Chaney, Kostas Daniilidis, Kaushik Roy</em></p>
-    <ul>
-        <li>SNN decodes event streams and ANN encodes optical flow. Simplest IF neuron model is used in this paper.</li>
-        <li>Self-supervised warping loss (optical flow between neighboring frames).</li>
-    </ul>
-    <h3>[ArXiv 2018] Deep Learning in Spiking Neural Networks <a href="https://arxiv.org/pdf/1804.08150.pdf">[pdf]</a>
-    </h3>
-    <p><em>Amirhossein Tavanaei, Masoud Ghodrati, Saeed Reza Kheradpisheh, Timothee Masquelier, Anthony S. Maida</em>
-    </p>
-    <ul>
-        <li>Fully Connected SNNs</li>
-        <li>Spiking CNN [173] [57][165][183]</li>
-        <li>ANN-to-SNN conversion</li>
-    </ul>
-    <h3>[IROS 2022] SpikeMS: Deep Spiking Neural Network for Motion Segmentation <a
-            href="https://arxiv.org/abs/2105.06562">[pdf]</a></h3>
-    <p><em>Chethan M. Parameshwara, Simin Li, Cornelia Fermüller, Nitin J. Sanket, Matthew S. Evanusa, Yiannis
-            Aloimonos</em></p>
-    <h3>[TPAMI 2019] Unsupervised Learning of a Hierarchical Spiking Neural Network for Optical Flow Estimation: From
-        Events to Global Motion Perception <a href="https://arxiv.org/abs/1807.10936">[pdf]</a></h3>
-    <p><em>Federico Paredes-Vallés, Kirk Y. W. Scheper, Guido C. H. E. de Croon</em></p>
-    <h3>[Frontier in Neuroscience 2020] Enabling Spike-Based Backpropagation for Training Deep Neural Network
-        Architectures <a href="https://arxiv.org/abs/1903.06379">[pdf]</a></h3>
-    <p><em>Chankyu Lee, Syed Shakib Sarwar, Priyadarshini Panda, Gopalakrishnan Srinivasan, Kaushik Roy</em></p>
-    <h3>[Frontier in Neuroscience 2020] Toward Scalable, Efficient, and Accurate Deep Spiking Neural Networks With
-        Backward Residual Connections, Stochastic Softmax, and Hybridization <a
-            href="https://arxiv.org/abs/1910.13931">[pdf]</a></h3>
-    <p><em>Priyadarshini Panda, Aparna Aketi, Kaushik Roy</em></p>
-    <h3>[Frontier in Neuroscience 2018] Spatio-temporal backpropagation for training high-performance spiking neural
-        networks <a href="https://arxiv.org/abs/1706.02609">[pdf]</a></h3>
-    <p><em>Yujie Wu, Lei Deng, Guoqi Li, Jun Zhu, Luping Shi</em></p>
-    <h3>[arXiv 2019] Surrogate Gradient Learning in Spiking Neural Networks <a
-            href="https://arxiv.org/abs/1901.09948">[pdf]</a></h3>
-    <p><em>Emre O. Neftci, Hesham Mostafa, Friedemann Zenke</em></p>
-    <h3>[ICLR 2018] Deep rewiring: Training very sparse deep networks <a
-            href="https://arxiv.org/abs/1711.05136">[pd]</a></h3>
-    <p><em>Guillaume Bellec, David Kappel, Wolfgang Maass, Robert Legenstein</em></p>
-    <h3>[NeurIPS 2018] Long short-term memory and learning-to-learn in networks of spiking neurons <a
-            href="https://arxiv.org/abs/1803.09574">[pdf]</a></h3>
-    <p><em>Guillaume Bellec, Darjan Salaj, Anand Subramoney, Robert Legenstein, Wolfgang Maass</em></p>
-    <h3>[NeurIPS 2018] Slayer: Spike layer error reassignment in time <a
-            href="https://arxiv.org/abs/1810.08646">[pdf]</a></h3>
-    <p><em>Sumit Bam Shrestha, Garrick Orchard</em></p>
-    <h3>Time structure of the activity in neural network models <a
-            href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.51.738">[pdf]</a></h3>
-    <p><em>Wulfram Gerstner</em></p>
-    <ul>
-        <li>Spiking Response Model used in Slayer</li>
-    </ul>
-    <h3>[ICRA 2015] Spike time based unsupervised learning of receptive fields for event-driven vision <a
-            href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=7139786&amp;tag=1">[pdf]</a></h3>
-    <p><em>Himanshu Akolkar, Stefano Panzeri and Chiara Bartolozzi</em></p>
-    <h3>Convolutional networks for fast, energy-efficient neuromorphic computing <a
-            href="https://arxiv.org/pdf/1603.08270.pdf">[pdf]</a></h3>
-    <p><em>Steven K. Esser, Paul A. Merolla, John V. Arthur, Andrew S. Cassidy, Rathinakumar Appuswamy, Alexander
-            Andreopoulos, David J. Berg, Jeffrey L. McKinstry, Timothy Melano, Davis R. Barch, Carmelo di Nolfo, Pallab
-            Datta, Arnon Amir, Brian Taba, Myron D. Flickner, and Dharmendra S. Modha.</em></p>
-    <h3>A wafer-scale neuromorphic hardware system for large-scale neural modeling <a
-            href="https://ieeexplore.ieee.org/document/5536970">[pdf]</a></h3>
-    <p><em>Johannes Schemmel, Daniel Br¨uderle, Andreas Gr¨ubl, Matthias Hock, Karlheinz Meier, and Sebastian
-            Millner</em></p>
-    <h3>[IEEE NNLS 2018] A supervised learning algorithm for learning precise timing of multiple spikes in multilayer
-        spiking neural networks <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8305661">[pdf]</a>
-    </h3>
-    <p><em>Aboozar Taherkhani, Ammar Belatreche, Yuhua Li, Liam P. Maguire</em></p>
-    <h3>[Frontier in Neuroscience 2017] Conversion of continuous-valued deep networks to efficient eventdriven networks
-        for image classification <a href="https://www.frontiersin.org/articles/10.3389/fnins.2017.00682/full">[pdf]</a>
-    </h3>
-    <p><em>Bodo Rueckauer, Iulia-Alexandra Lungu, Yuhuang Hu, Michael Pfeiffer and Shih-Chii Liu</em></p>
-    <h3>[Frontier in Neuroscience 2016] Training Deep Spiking Neural Networks using Backpropagation <a
-            href="https://arxiv.org/abs/1608.08782">[pdf]</a></h3>
-    <p><em>Jun Haeng Lee, Tobi Delbruck, Michael Pfeiffer</em></p>
-    <h3>[Annual Review of Neuroscience 2008] Spike Timing–Dependent Plasticity: A Hebbian Learning Rule <a
-            href="https://www.annualreviews.org/doi/pdf/10.1146/annurev.neuro.31.060407.125639">[pdf]</a></h3>
-    <p><em>Natalia Caporale and Yang Dan</em></p>
-    <p><a href="#contents">[back to top]</a></p>
-    <hr>
-    <h2>6D Pose Estimation</h2>
-    <h3>[CVPR 2020] Learning deep network for detecting 3D object keypoints and 6D poses <a
-            href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhao_Learning_Deep_Network_for_Detecting_3D_Object_Keypoints_and_6D_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Wanqing Zhao, Shaobo Zhang, Ziyu Guan, Wei Zhao</em></p>
-    <h3>[CVPR 2019] Pvnet: Pixel-wise voting network for 6dof pose estimation <a
-            href="https://arxiv.org/abs/1812.11788.pdf">[pdf]</a><a href="https://zju3dv.github.io/pvnet/">[code]</a>
-    </h3>
-    <p><em>Sida Peng, Yuan Liu, Qixing Huang, Hujun Bao, Xiaowei Zhou</em></p>
-    <h3>[CVPR 2020] Pvn3d: A deep point-wise 3d keypointsvoting network for 6dof pose estimation <a
-            href="https://arxiv.org/abs/1911.04231.pdf">[pdf]</a></h3>
-    <p><em>Yisheng He, Wei Sun, Haibin Huang, Jianran Liu, Haoqiang Fan, Jian Sun</em></p>
-    <h3>[ICCV 2019] Pix2pose: Pixel-wise coordinate regression of objects for 6d pose estimation <a
-            href="https://arxiv.org/abs/1908.07433.pdf">[pdf]</a></h3>
-    <p><em>Kiru Park, Timothy Patten, Markus Vincze</em></p>
-    <h3>[CVPR 2018] Real-time seamless single shot 6d object pose prediction <a
-            href="https://arxiv.org/abs/1711.08848">[pdf]</a></h3>
-    <p><em>Bugra Tekin, Sudipta N. Sinha, Pascal Fua</em></p>
-    <h3>[ECCV 2018] DeepIM: Deep iterative matching for 6d pose estimation <a
-            href="https://arxiv.org/abs/1804.00175.pdf">[pdf]</a></h3>
-    <p><em>Yi Li, Gu Wang, Xiangyang Ji, Yu Xiang, Dieter Fox</em></p>
-    <h3>[ECCV 2018 Best Paper Award] Implicit 3D Orientation Learning for 6D Object Detection from RGB Images <a
-            href="https://arxiv.org/abs/1902.01275.pdf">[pdf]</a></h3>
-    <p><em>Martin Sundermeyer, Zoltan-Csaba Marton, Maximilian Durner, Manuel Brucker, Rudolph Triebel</em></p>
-    <h3>[ICRA 2017] 6-dof object pose from semantic keypoints <a href="https://arxiv.org/abs/1703.04670">[pdf]</a></h3>
-    <p><em>Georgios Pavlakos, Xiaowei Zhou, Aaron Chan, Konstantinos G. Derpanis, Kostas Daniilidis</em></p>
-    <h3>[ICCV 2017] BB8: A Scalable, Accurate, Robust to Partial Occlusion Method for Predicting the 3D Poses of
-        Challenging Objects without Using Depth <a href="https://arxiv.org/pdf/1703.10896.pdf">[pdf]</a></h3>
-    <p><em>Mahdi Rad, Vincent Lepetit</em></p>
-    <p><a href="#contents">[back to top]</a></p>
-    <hr>
-    <h2>Optimization Human Shape Reconstruction</h2>
-    <h3>Background studying 1</h3>
-    <ul>
-        <li>quaternion \((w, x, y, z))\)
-            <ul>
-                <li><a href="https://www.zhihu.com/question/23005815">[good tutorial]</a></li>
-                <li><a
-                        href="http://www.iri.upc.edu/files/scidoc/2068-Accurate-Computation-of-Quaternions-from-Rotation-Matrices.pdf">[Accurate
-                        Computation of Quaternions from Rotation Matrices]</a></li>
-                <li><a href="https://www2.cs.duke.edu/courses/fall13/compsci527/notes/rodrigues.pdf">[Rodrigues vector
-                        to rotation matrix]</a> <a
-                        href="https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula">[wiki]</a></li>
-            </ul>
-        </li>
-    </ul>
-    <h3>Background studying 2</h3>
-    <ul>
-        <li>TSDF <a href="https://blog.csdn.net/qq_39732684/article/details/105294993">[reference]</a>
-            <img src="./attachments/2020-polarization-clothed-human-shape.md"
-                alt="2020-polarization-clothed-human-shape">
-        </li>
-    </ul>
-    <h3>[CVPR 2018] DoubleFusion: Real-time Capture of Human Performances with Inner Body Shapes from a Single Depth
-        Sensor <a href="https://arxiv.org/abs/1804.06023">[pdf]</a></h3>
-    <p><em>Tao Yu, Zerong Zheng, Kaiwen Guo, Jianhui Zhao, Qionghai Dai, Hao Li, Gerard Pons-Moll, Yebin Liu</em></p>
-    <h3>[CVPR 2015] Dynamicfusion: Reconstruction and tracking of non-rigid scenes in real-time <a
-            href="https://grail.cs.washington.edu/projects/dynamicfusion/papers/DynamicFusion.pdf">[pdf]</a></h3>
-    <p><em>Richard Newcombe, Dieter Fox, Steve Seitz</em></p>
-    <ul>
-        <li><a href="https://blog.csdn.net/fuguangping/article/details/105766665">[reference]</a></li>
-    </ul>
-    <h3>[ToG 2017] Real-time geometry, albedo and motion reconstruction using a single rgbd camera <a
-            href="https://www.guokaiwen.com/main.pdf">[pdf]</a></h3>
-    <p><em>K. Guo, F. Xu, T. Yu, X. Liu, Q. Dai, and Y. Liu</em></p>
-    <h3>[ICCV 2017] Bodyfusion: Real-time capture of human motion and surface geometry using a single depth camera <a
-            href="https://openaccess.thecvf.com/content_ICCV_2017/papers/Yu_BodyFusion_Real-Time_Capture_ICCV_2017_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>T. Yu, K. Guo, F. Xu, Y. Dong, Z. Su, J. Zhao, J. Li, Q. Dai, and Y. Liu</em></p>
-    <h3>[ECCV 2016] Volumedeform: Real-time volumetric nonrigid reconstruction <a
-            href="https://graphics.stanford.edu/~niessner/papers/2016/5volumeDeform/innmann2016deform.pdf">[pdf]</a>
-    </h3>
-    <p><em>M. Innmann, M. Zollhofer, M. Nießner, C. Theobalt, and M. Stamminger.</em></p>
-    <h3>[ECCV 2018] ArticulatedFusion: Real-time Reconstruction of Motion, Geometry and Segmentation Using a Single
-        Depth Camera <a
-            href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Chao_Li_ArticulatedFusion_Real-time_Reconstruction_ECCV_2018_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Chao Li, Zheheng Zhao, and Xiaohu Guo</em></p>
-    <h3>[CVPR 2014, TPAMI 2016] Real-Time Simultaneous Pose and Shape Estimation for Articulated Objects Using a Single
-        Depth Camera <a
-            href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.663.8898&amp;rep=rep1&amp;type=pdf">[pdf]</a>
-        <a href="https://ieeexplore.ieee.org/document/7457693">[pdf]</a>
-    </h3>
-    <p><em>Mao Ye, Yang Shen, Chao Du, Zhigeng Pan, Ruigang Yang</em></p>
-    <p><a href="#contents">[back to top]</a></p>
-    <hr>
-    <h2>Video Prediction and Pose Transfer</h2>
-    <h3>[NeurIPS 2016] Generating Videos with Scene Dynamics <a href="https://arxiv.org/abs/1609.02612">[pdf]</a></h3>
-    <p><em>Carl Vondrick, Hamed Pirsiavash, Antonio Torralba</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/4.PNG" alt=""></li>
-    </ul>
-    <h3>[ICLR 2016] Deep multi-scale video prediction beyond mean square error <a
-            href="https://arxiv.org/abs/1511.05440">[pdf]</a></h3>
-    <p><em>Michael Mathieu, Camille Couprie, Yann LeCun</em></p>
-    <h3>[ICCV 2017] The Pose Knows: Video Forecasting by Generating Pose Futures <a
-            href="https://arxiv.org/abs/1705.00053">[pdf]</a></h3>
-    <p><em>Jacob Walker, Kenneth Marino, Abhinav Gupta, Martial Hebert</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/5.PNG" alt=""></li>
-    </ul>
-    <h3>[ECCV 2018] Deep Video Generation, Prediction and Completion of Human Action Sequences <a
-            href="https://arxiv.org/abs/1711.08682">[pdf]</a></h3>
-    <p><em>Haoye Cai, Chunyan Bai, Yu-Wing Tai, Chi-Keung Tang</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/6.PNG" alt=""></li>
-    </ul>
-    <h3>[ECCV 2018] Pose Guided Human Video Generation <a href="https://arxiv.org/abs/1807.11152">[PDF]</a></h3>
-    <p><em>Ceyuan Yang, Zhe Wang, Xinge Zhu, Chen Huang, Jianping Shi, Dahua Lin</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/7.PNG" alt=""></li>
-    </ul>
-    <h3>[NeurIPS 2018] Video Prediction via Selective Sampling <a
-            href="https://papers.nips.cc/paper/7442-video-prediction-via-selective-sampling.pdf">[pdf]</a></h3>
-    <p><em>Jingwei Xu, Bingbing Ni, Xiaokang Yang</em></p>
-    <h3>[ICML 2018] Stochastic Video Generation with a Learned Prior <a
-            href="https://arxiv.org/abs/1802.07687">[pdf]</a></h3>
-    <p><em>Emily Denton, Rob Fergus</em></p>
-    <h3>[ICLR 2018] Stochastic Variational Video Prediction <a href="https://arxiv.org/abs/1710.11252">[pdf]</a></h3>
-    <p><em>Mohammad Babaeizadeh, Chelsea Finn, Dumitru Erhan, Roy H. Campbell, Sergey Levine</em></p>
-    <h3>[CVPR 2019] Learning to Film from Professional Human Motion Videos <a
-            href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Huang_Learning_to_Film_From_Professional_Human_Motion_Videos_CVPR_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Chong Huang, Chuan-En Lin, Zhenyu Yang, Yan Kong, Peng Chen, Xin Yang, Kwang-Ting Cheng</em></p>
-    <h3>[ICCV 2019] Improved Conditional VRNNs for Video Prediction <a
-            href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Castrejon_Improved_Conditional_VRNNs_for_Video_Prediction_ICCV_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Lluis Castrejon, Nicolas Ballas, Aaron Courville</em></p>
-    <h3>[ICCV 2019] Compositional Video Prediction <a
-            href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Ye_Compositional_Video_Prediction_ICCV_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Yufei Ye, Maneesh Singh, Abhinav Gupta, Shubham Tulsiani</em></p>
-    <h3>[NeurIPS 2019] High Fidelity Video Prediction with Large Stochastic Recurrent Neural Networks <a
-            href="https://arxiv.org/abs/1911.01655">[pdf]</a></h3>
-    <p><em>Ruben Villegas, Arkanath Pathak, Harini Kannan, Dumitru Erhan, Quoc V. Le, Honglak Lee</em></p>
-    <h3>[ICML 2018] Hierarchical Long-term Video Prediction without Supervision <a
-            href="https://arxiv.org/abs/1806.04768">[pdf]</a></h3>
-    <p><em>Nevan Wichers, Ruben Villegas, Dumitru Erhan, Honglak Lee</em></p>
-    <ul>
-        <li>visual analogy network (VAN), Deep visual analogy-making, NeurIPS 2015</li>
-    </ul>
-    <h3>[ICML 2017] Learning to Generate Long-term Future via Hierarchical Prediction <a
-            href="https://arxiv.org/abs/1704.05831">[pdf]</a></h3>
-    <p><em>Ruben Villegas, Jimei Yang, Yuliang Zou, Sungryull Sohn, Xunyu Lin, Honglak Lee</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/10.png" alt=""></li>
-    </ul>
-    <h3>[ECCV 2018] Flow-Grounded Spatial-Temporal Video Prediction from Still Images <a
-            href="https://arxiv.org/abs/1807.09755">[pdf]</a></h3>
-    <p><em>Yijun Li, Chen Fang, Jimei Yang, Zhaowen Wang, Xin Lu, Ming-Hsuan Yang</em></p>
-    <h3>[ICML 2020] Stochastic Latent Residual Video Prediction <a href="https://arxiv.org/pdf/2002.09219">[pdf]</a>
-    </h3>
-    <p><em>Jean-Yves Franceschi, Edouard Delasalles, Mickaël Chen, Sylvain Lamprier, Patrick Gallinari</em></p>
-    <h3>[CVPR 2020] Exploring Spatial-Temporal Multi-Frequency Analysis for High-Fidelity and Temporal-Consistency Video
-        Prediction <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Jin_Exploring_Spatial-Temporal_Multi-Frequency_Analysis_for_High-Fidelity_and_Temporal-Consistency_Video_Prediction_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Beibei Jin, Yu Hu, Qiankun Tang, Jingyu Niu, Zhiping Shi, Yinhe Han, Xiaowei Li</em></p>
-    <h3>[CVPR 2020] G3AN: Disentangling Appearance and Motion for Video Generation <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Wang_G3AN_Disentangling_Appearance_and_Motion_for_Video_Generation_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Yaohui Wang, Piotr Bilinski, Francois Bremond, Antitza Dantcheva</em></p>
-    <h3>[CVPR 2020] Future Video Synthesis With Object Motion Prediction <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Wu_Future_Video_Synthesis_With_Object_Motion_Prediction_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Yue Wu, Rongrong Gao, Jaesik Park, Qifeng Chen</em></p>
-    <h3>[CVPR 2020] Non-Adversarial Video Synthesis With Learned Priors <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Aich_Non-Adversarial_Video_Synthesis_With_Learned_Priors_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Abhishek Aich, Akash Gupta, Rameswar Panda, Rakib Hyder, M. Salman Asif, Amit K. Roy-Chowdhury</em></p>
-    <h3>[CVPR 2020] Probabilistic Video Prediction From Noisy Data With a Posterior Confidence <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Wang_Probabilistic_Video_Prediction_From_Noisy_Data_With_a_Posterior_Confidence_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Yunbo Wang, Jiajun Wu, Mingsheng Long, Joshua B. Tenenbaum</em></p>
-    <h3>[CVPR 2020] Disentangling Physical Dynamics From Unknown Factors for Unsupervised Video Prediction <a
-            href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Le_Guen_Disentangling_Physical_Dynamics_From_Unknown_Factors_for_Unsupervised_Video_Prediction_CVPR_2020_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Vincent Le Guen, Nicolas Thome</em></p>
-    <h3>Pose Transfer</h3>
-    <h3>[NeurIPS 2019] Unsupervised Keypoint Learning for Guiding Class-Conditional Video Prediction <a
-            href="https://papers.nips.cc/paper/8637-unsupervised-keypoint-learning-for-guiding-class-conditional-video-prediction.pdf">[pdf]</a>
-    </h3>
-    <p><em>Yunji Kim, Seonghyeon Nam, In Cho, and Seon Joo Kim</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/8.PNG" alt=""></li>
-        <li>[NeurIPS 2018] Unsupervised learning of object landmarks through conditional image generation <a
-                href="https://arxiv.org/abs/1806.07823">[pdf]</a></li>
-        <li><img src="../assets/fig_research_diary/9.png" alt=""></li>
-    </ul>
-    <h3>[ICCV 2019] Everybody Dance Now <a href="https://arxiv.org/abs/1808.07371">[pdf]</a></h3>
-    <p><em>Caroline Chan, Shiry Ginosar, Tinghui Zhou, Alexei A. Efros</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/12.PNG" alt=""></li>
-    </ul>
-    <h3>[CVPR 2018] Synthesizing Images of Humans in Unseen Poses <a href="https://arxiv.org/abs/1804.07739">[pdf]</a>
-    </h3>
-    <p><em>Guha Balakrishnan, Amy Zhao, Adrian V. Dalca, Fredo Durand, John Guttag</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/13.PNG" alt=""></li>
-    </ul>
-    <h3>[CVPR 2019] Animating Arbitrary Objects via Deep Motion Transfer <a
-            href="https://arxiv.org/abs/1812.08861">[pdf]</a></h3>
-    <p><em>Aliaksandr Siarohin, Stéphane Lathuilière, Sergey Tulyakov, Elisa Ricci, Nicu Sebe</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/14.PNG" alt=""></li>
-    </ul>
-    <h3>[NeurIPS 2019] Few-shot Video-to-Video Synthesis <a
-            href="https://papers.nips.cc/paper/8746-few-shot-video-to-video-synthesis.pdf">[pdf]</a></h3>
-    <p><em>Ting-Chun Wang, Ming-Yu Liu, Andrew Tao, Guilin Liu, Jan Kautz, Bryan Catanzaro</em></p>
-    <h3>[CVPR 2019] Dense Intrinsic Appearance Flow for Human Pose Transfer <a
-            href="https://arxiv.org/abs/1903.11326">[pdf]</a></h3>
-    <p><em>Yining Li, Chen Huang, Chen Change Loy</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/15.PNG" alt=""></li>
-    </ul>
-    <h3>[ICCV 2019] Liquid Warping GAN: A Unified Framework for Human Motion Imitation, Appearance Transfer and Novel
-        View Synthesis <a
-            href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Liu_Liquid_Warping_GAN_A_Unified_Framework_for_Human_Motion_Imitation_ICCV_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Wen Liu, Zhixin Piao, Jie Min, Wenhan Luo, Lin Ma, Shenghua Gao</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/16.PNG" alt=""></li>
-        <li>The first body mesh recovery module will estimate the 3D mesh of \(I_s\) and \(I_r\), and render their
-            correspondence maps, \(C_s\) and \(C_t\).</li>
-        <li>We calculate the transformation flow \(T \in \mathbb{R}^{H×W×2}\) by matching the correspondences between
-            source correspondence map with its mesh face coordinates \(f_s\) and reference correspondence map. Here
-            \(H×W\) is the size of image. Consequently, a front image \(I_{ft}\) and a masked background image
-            \(I_{bg}\) are derived from masking the source image \(I_s\) based on \(C_s\). Finally, we warp the source
-            image \(I_s\) by the transformation flow \(T\), and obtain the warped image \(I_{syn}\).</li>
-        <li>Correspondences: Each pixel of an IUV image refers to a body part index \(I\), and \((U, V)\) coordinates
-            that map to a unique point on the body model surface.</li>
-    </ul>
-    <h3>[CVPR 2018] Unsupervised person image synthesis in arbitrary poses <a
-            href="https://arxiv.org/abs/1809.10280">[pdf]</a></h3>
-    <p><em>Albert Pumarola, Antonio Agudo, Alberto Sanfeliu, Francesc Moreno-Noguer</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/17.PNG" alt=""></li>
-    </ul>
-    <h3>[ECCV 2018] Dense pose transfer <a href="https://arxiv.org/abs/1809.01995">[pdf]</a></h3>
-    <p><em>Natalia Neverova, Rıza Alp G¨uler, and Iasonas Kokkinos</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/18.PNG" alt=""></li>
-    </ul>
-    <h3>[NeurIPS 2017] Pose guided person image generation <a href="https://arxiv.org/abs/1705.09368">[pdf]</a></h3>
-    <p><em>Liqian Ma, Xu Jia, Qianru Sun, Bernt Schiele, Tinne Tuytelaars and Luc Van Gool</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/19.PNG" alt=""></li>
-    </ul>
-    <h3>[CVPR 2018] A variational u-net for conditional appearance and shape generation <a
-            href="https://arxiv.org/abs/1804.04694">[pdf]</a></h3>
-    <p><em>Patrick Esser, Ekaterina Sutter, and Bj¨orn Ommer</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/20.PNG" alt=""></li>
-    </ul>
-    <h3>[CVPR 2018] Deformable gans for pose-based human image generation <a
-            href="https://arxiv.org/abs/1801.00055">[pdf]</a></h3>
-    <p><em>Aliaksandr Siarohin, Enver Sangineto, Stphane Lathuilire, and Nicu Sebe</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/21.PNG" alt=""></li>
-    </ul>
-    <h3>[NeurIPS 2018] Soft-gated warping-gan for pose-guided person image synthesis <a
-            href="https://arxiv.org/abs/1810.11610">[pdf]</a></h3>
-    <p><em>Haoye Dong, Xiaodan Liang, Ke Gong, Hanjiang Lai, Jia Zhu, and Jian Yin</em></p>
-    <h3>[NeurIPS 2015] Spatial transformer networks <a href="https://arxiv.org/abs/1506.02025">[pdf]</a></h3>
-    <p><em>Max Jaderberg, Karen Simonyan, Andrew Zisserman, and Koray Kavukcuoglu</em></p>
-    <ul>
-        <li>The combination of the localisation network, grid generator, and sampler form a spatial transformer.</li>
-    </ul>
-    <p><a href="#contents">[back to top]</a></p>
-    <hr>
-    <h2>Representation learning</h2>
-    <h3>[ArXiv 2020] A Simple Framework for Contrastive Learning of Visual Representations <a
-            href="https://arxiv.org/abs/2002.05709">[pdf]</a></h3>
-    <p><em>Ting Chen, Simon Kornblith, Mohammad Norouzi, Geoffrey Hinton</em></p>
-    <h3>[ICLR 2020] Contrastive Representation Distillation <a href="https://arxiv.org/abs/1910.10699">[pdf]</a></h3>
-    <p><em>Yonglong Tian, Dilip Krishnan, Phillip Isola</em></p>
-    <ul>
-        <li>Examples include distilling a large network into a smaller one, transferring knowledge from one sensory
-            modality to a second, or ensembling a collection of models into a single estimator. <strong>Knowledge
-                distillation, the standard approach to these problems, minimizes the KL divergence between the
-                probabilistic outputs of a teacher and student network.</strong> We demonstrate that this objective
-            ignores important structural knowledge of the teacher network. This motivates an alternative objective by
-            which we train a student to capture significantly more information in the teacher’s representation of the
-            data. We formulate this objective as contrastive learning. Experiments demonstrate that our resulting new
-            objective outperforms knowledge distillation and other cutting-edge distillers on a variety of knowledge
-            transfer tasks, including single model compression, ensemble distillation, and cross-modal transfer.</li>
-        <li>Motivation: Representational knowledge is structured – the dimensions exhibit complex interdependencies. The
-            original KD objective introduced in (Hinton et al., 2015, Distilling the knowledge in a neural network)
-            treats all dimensions as independent, conditioned on the input.</li>
-    </ul>
-    <h3>[ICLR 2020] Momentum Contrast for Unsupervised Visual Representation Learning <a
-            href="https://arxiv.org/abs/1911.05722">[pdf]</a></h3>
-    <p><em>Kaiming He, Haoqi Fan, Yuxin Wu, Saining Xie, Ross Girshick</em></p>
-    <ul>
-        <li>From a perspective on contrastive learning as dictionary look-up, we build a dynamic dictionary with a queue
-            and a moving-averaged encoder. This enables building a large and consistent dictionary on-the-fly that
-            facilitates contrastive unsupervised learning. This suggests that the gap between unsupervised and
-            supervised representation learning has been largely closed in many vision tasks.</li>
-        <li>The “keys” (tokens) in the dictionary are sampled from data (e.g., images or patches) and are represented by
-            an encoder network. Unsupervised learning trains encoders to perform dictionary look-up: an encoded “query”
-            should be similar to its matching key and dissimilar to others. Learning is formulated as minimizing a
-            contrastive loss</li>
-        <li>contrastive learning: Dimensionality reduction by learning an invariant mapping, CVPR 2006</li>
-        <li><img src="../assets/fig_research_diary/1.PNG" alt=""></li>
-    </ul>
-    <h3>[ICLR 2019] Learning deep representations by mutual information estimation and maximization <a
-            href="https://arxiv.org/abs/1808.06670">[pdf]</a></h3>
-    <p><em>R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Adam Trischler, and Yoshua Bengio</em>
-    </p>
-    <h3>[ICCV 2019] Rethinking ImageNet pre-training <a href="https://arxiv.org/abs/1811.08883">[pdf]</a></h3>
-    <p><em>Kaiming He, Ross Girshick, Piotr Dollár</em></p>
-    <h3>[NeurIPS] Learning Representations by Maximizing Mutual Information Across Views <a
-            href="https://arxiv.org/abs/1906.00910">[pdf]</a></h3>
-    <p><em>Philip Bachman, R Devon Hjelm, William Buchwalter</em></p>
-    <h3>[arXiv 2019] Data-Efficient Image Recognition with Contrastive Predictive Coding <a
-            href="https://arxiv.org/abs/1905.09272">[pdf]</a></h3>
-    <p><em>Olivier J. Hénaff, Aravind Srinivas, Jeffrey De Fauw, Ali Razavi, Carl Doersch, S. M. Ali Eslami, Aaron van
-            den Oord</em></p>
-    <h3>[ICCV 2019] Local aggregation for unsupervised learning of visual embeddings <a
-            href="https://arxiv.org/abs/1903.12355">[pdf]</a></h3>
-    <p><em>Chengxu Zhuang, Alex Lin Zhai, Daniel Yamins</em></p>
-    <h3>[CVPR 2019] Self-Supervised Representation Learning by Rotation Feature Decoupling <a
-            href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Feng_Self-Supervised_Representation_Learning_by_Rotation_Feature_Decoupling_CVPR_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Zeyu Feng, Chang Xu, Dacheng Tao</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/3.PNG" alt=""></li>
-    </ul>
-    <h3>[CVPR 2018 spotlight] Unsupervised feature learning via non-parametric instance discrimination <a
-            href="https://arxiv.org/pdf/1805.01978v1.pdf">[pdf]</a></h3>
-    <p><em>Zhirong Wu, Yuanjun Xiong, Stella Yu, and Dahua Lin</em></p>
-    <ul>
-        <li><img src="../assets/fig_research_diary/2.PNG" alt=""></li>
-        <li>noise constative estimation (NCE) and proximal regularization: \(J_{NCE}(\theta) = -E_{P_d}\big[\log h(i,
-            \mathbf{v}_i^{(t-1)}) - \lambda |\mathbf{v}_i^{(t-1)}-\mathbf{v}_i^{(t)}|<em>2^2 \big] - m\cdot
-                E</em>{P_n}\big[\log (1-h(i, \mathbf{v'}^{(t-1)}))\big]\). \(P_d\) means data distribution and \(P_n\)
-            means noise distribution (uniform).</li>
-    </ul>
-    <h3>[NeurIPS 2014] Discriminative unsupervised feature learning with convolutional neural networks <a
-            href="https://arxiv.org/abs/1406.6909">[pdf]</a></h3>
-    <p><em>Alexey Dosovitskiy, Philipp Fischer, Jost Tobias Springenberg, Martin Riedmiller, Thomas Brox</em></p>
-    <h3>[arXiv 2018] Representation learning with contrastive predictive coding <a
-            href="https://arxiv.org/abs/1807.03748">[pdf]</a></h3>
-    <p><em>Aaron van den Oord, Yazhe Li, and Oriol Vinyals</em></p>
-    <p><a href="#contents">[back to top]</a></p>
-    <hr>
-    <h2>Others</h2>
-    <h3>[ICML 2020] Generalizing Convolutional Neural Networks for Equivariance to Lie Groups on Arbitrary Continuous
-        Data <a href="https://arxiv.org/abs/2002.12880">[pd]</a></h3>
-    <p><em>Marc Finzi, Samuel Stanton, Pavel Izmailov, Andrew Gordon Wilson</em></p>
-    <h3>[ICML 2020] Training Binary Neural Networks through Learning with Noisy Supervision <a
-            href="https://proceedings.icml.cc/static/paper_files/icml/2020/181-Paper.pdf">[pdf]</a></h3>
-    <p><em>Kai Han, Yunhe Wang, Yixing Xu, Chunjing Xu, Enhua Wu, Chang Xu</em></p>
-    <h3>[ICML 2020] Learning Flat Latent Manifolds with VAEs <a href="https://arxiv.org/abs/2002.04881">[pd]</a></h3>
-    <p><em>Nutan Chen, Alexej Klushyn, Francesco Ferroni, Justin Bayer, Patrick van der Smagt</em></p>
-    <h3>[CVPR 2018] Neural 3D Mesh Renderer <a href="https://arxiv.org/abs/1711.07566">[pdf]</a></h3>
-    <p><em>Hiroharu Kato, Yoshitaka Ushiku, Tatsuya Harada</em></p>
-    <ul>
-        <li>Therefore, in this work, we propose an approximate gradient for rasterization that enables the integration
-            of rendering into neural networks.</li>
-        <li><img src="../assets/fig_research_diary/11.PNG" alt=""></li>
-    </ul>
-    <h3>[ICCV 2019] Deep Meta Metric Learning <a
-            href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Chen_Deep_Meta_Metric_Learning_ICCV_2019_paper.pdf">[pdf]</a>
-    </h3>
-    <p><em>Guangyi Chen, Tianren Zhang, Jiwen Lu, Jie Zhou</em></p>
-    <h3>[AAAI 2020] Hybrid Graph Neural Networks for Crowd Counting <a href="https://arxiv.org/abs/2002.00092">[pdf]</a>
-    </h3>
-    <p><em>Ao Luo, Fan Yang, Xin Li, Dong Nie, Zhicheng Jiao, Shangchen Zhou, Hong Cheng</em></p>
-    <h3>[ICLR 2020] Inductive Matrix Completion Based on Graph Neural Networks <a
-            href="https://arxiv.org/abs/1904.12058">[pdf]</a></h3>
-    <p><em>Muhan Zhang, Yixin Chen</em></p>
-    <h3>[NeurIPS] Quaternion Knowledge Graph Embeddings <a href="https://arxiv.org/abs/1904.10281">[pdf]</a></h3>
-    <p><em>Shuai Zhang, Yi Tay, Lina Yao, Qi Liu</em></p>
-    <h3>[ICML 2019] EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks <a
-            href="https://arxiv.org/abs/1905.11946">[pdf]</a></h3>
-    <p><em>Mingxing Tan, Quoc V. Le</em></p>
-    <h3>[ICLR 2020] Geom-GCN: Geometric Graph Convolutional Networks <a
-            href="https://arxiv.org/abs/2002.05287">[pdf]</a></h3>
-    <p><em>Hongbin Pei, Bingzhe Wei, Kevin Chen-Chuan Chang, Yu Lei, Bo Yang</em></p>
-    <ul>
-        <li>Message-passing neural networks (MPNNs) have been successfully applied to representation learning on graphs
-            in a variety of real-world applications. However, two fundamental weaknesses of MPNNs’ aggregators limit
-            their ability to represent graph-structured data: <strong>losing the structural information of nodes in
-                neighborhoods and lacking the ability to capture long-range dependencies in disassortative
-                graphs</strong>. Few studies have noticed the weaknesses from different perspectives. From the
-            observations on classical neural network and network geometry, we propose a novel geometric aggregation
-            scheme for graph neural networks to overcome the two weaknesses. The behind basic idea is the aggregation on
-            a graph can benefit from a continuous space underlying the graph. The proposed aggregation scheme is
-            permutation-invariant and consists of three modules, node embedding, structural neighborhood, and bi-level
-            aggregation.</li>
-    </ul>
-    <h3>[NeurIPS 2019] General E(2) - Equivariant Steerable CNNs <a href="https://arxiv.org/abs/1911.08251">[pdf]</a>
-    </h3>
-    <p><em>Maurice Weiler, Gabriele Cesa</em></p>
-    <h3>[CVPR 2020] DualConvMesh-Net: Joint Geodesic and Euclidean Convolutions on 3D Meshes <a
-            href="https://arxiv.org/abs/2004.01002">[pdf]</a></h3>
-    <p><em>Jonas Schult, Francis Engelmann, Theodora Kontogianni, Bastian Leibe</em></p>
-    <h3>[SIGGRAPH 2020] CNNs on Surfaces using Rotation-Equivariant Features <a
-            href="https://arxiv.org/abs/2006.01570">[pdf]</a></h3>
-    <p><em>Ruben Wiersma, Elmar Eisemann, Klaus Hildebrandt</em></p>
-    <h3>Accelerating 3D Deep Learning with PyTorch3D <a href="https://arxiv.org/pdf/2007.08501">[pdf]</a></h3>
-    <p><em>Nikhila Ravi, Jeremy Reizenstein, David Novotny, Taylor Gordon, Wan-Yen Lo, Justin Johnson, Georgia
-            Gkioxari</em></p>
-    <h3>On the Continuity of Rotation Representations in Neural Networks <a
-            href="https://arxiv.org/abs/1812.07035">[pdf]</a></h3>
-    <p><em>Yi Zhou, Connelly Barnes, Jingwan Lu, Jimei Yang, Hao Li</em></p>
-    <h3>[CVPR 2020] Adversarial Examples Improve Image Recognition <a href="https://arxiv.org/abs/1911.09665">[pdf]</a>
-    </h3>
-    <p><em>Cihang Xie, Mingxing Tan, Boqing Gong, Jiang Wang, Alan Yuille, Quoc V. Le</em></p>
-    <h3>[NeurIPS 2020] A Closer Look at Accuracy vs. Robustness <a href="https://arxiv.org/abs/2003.02460">[pdf]</a>
-    </h3>
-    <p><em>Yao-Yuan Yang, Cyrus Rashtchian, Hongyang Zhang, Ruslan Salakhutdinov, Kamalika Chaudhuri</em></p>
-    <h3>[ICML 2019] EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks <a
-            href="https://arxiv.org/abs/1905.11946">[pdf]</a></h3>
-    <p><em>Mingxing Tan, Quoc V. Le</em></p>
-    <p><a href="#contents">[back to top]</a></p>
-    <hr>
-    <h2>Transformer</h2>
-    <h3>Spatially Sparse Convolution Library <a href="https://github.com/traveller59/spconv">[link]</a></h3>
-    <h3>Submanifold Sparse Convolutional Networks <a href="https://github.com/facebookresearch/SparseConvNet">[link]</a>
-    </h3>
-    <h3>[ICCV 2021] Voxel Transformer for 3D Object Detection <a href="https://github.com/PointsCoder/VOTR">[pdf]</a>
-    </h3>
-    <p><em>Jiageng Mao, Yujing Xue, Minzhe Niu, Haoyue Bai, Jiashi Feng, Xiaodan Liang, Hang Xu, Chunjing Xu</em></p>
-    <ul>
-        <li>we propose the sparse voxel module and the submanifold voxel module, which can operate on the empty and
-            non-empty voxel positions effectively.</li>
-    </ul>
-    <h3>[ArXiv 2021] A Survey on Vision Transformer <a href="https://arxiv.org/abs/2012.12556">[pdf]</a></h3>
-    <p><em>Kai Han, Yunhe Wang, Hanting Chen, Xinghao Chen, Jianyuan Guo, Zhenhua Liu, Yehui Tang, An Xiao, Chunjing Xu,
-            Yixing Xu, Zhaohui Yang, Yiman Zhang, Dacheng Tao</em></p>
-    <h3>[ICCV 2021] Swin Transformer: Hierarchical Vision Transformer using Shifted Windows <a
-            href="https://arxiv.org/abs/2103.14030">[pdf]</a></h3>
-    <p><em>Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo</em></p>
-    <ul>
-        <li><img src="../assets/fig_transformer/12.png" alt=""></li>
-        <li>Relative position bias</li>
-    </ul>
-    <h3>[CVPR 2021] Bottleneck Transformers for Visual Recognition <a href="https://arxiv.org/abs/2101.11605">[pdf]</a>
-    </h3>
-    <p><em>Aravind Srinivas, Tsung-Yi Lin, Niki Parmar, Jonathon Shlens, Pieter Abbeel, Ashish Vaswani</em></p>
-    <h3>[ArXiv 2021] 3D Human Pose Estimation with Spatial and Temporal Transformers <a
-            href="https://arxiv.org/pdf/2103.10455.pdf">[pdf]</a></h3>
-    <p><em>Ce Zheng, Sijie Zhu, Matias Mendieta, Taojiannan Yang, Chen Chen, Zhengming Ding</em></p>
-    <h3>[NeurIPS 2021] Post-Training Quantization for Vision Transformer <a
-            href="https://arxiv.org/abs/2106.14156">[pdf]</a></h3>
-    <p><em>Zhenhua Liu, Yunhe Wang, Kai Han, Siwei Ma, Wen Gao</em></p>
-    <h3>[CVPR 2020] LiDAR-based Online 3D Video Object Detection with Graph-based Message Passing and Spatiotemporal
-        Transformer Attention <a href="https://arxiv.org/abs/2004.01389">[pdf]</a></h3>
-    <p><em>Junbo Yin, Jianbing Shen, Chenye Guan, Dingfu Zhou, Ruigang Yang</em></p>
-    <h3>[ArXiv 2021] Mesh Graphormer <a href="https://arxiv.org/pdf/2104.00272.pdf">[pdf]</a></h3>
-    <p><em>Kevin Lin, Lijuan Wang, Zicheng Liu</em></p>
-    <ul>
-        <li><img src="../assets/fig_transformer/8.png" alt=""></li>
-    </ul>
-    <h3>[CVPR 2021] End-to-end human pose and mesh reconstruction with transformers <a
-            href="https://arxiv.org/pdf/2012.09760.pdf">[pdf]</a></h3>
-    <p><em>Kevin Lin, Lijuan Wang, Zicheng Liu</em></p>
-    <ul>
-        <li><img src="../assets/fig_transformer/7.png" alt=""></li>
-    </ul>
-    <h3>[ECCV 2020] Non-autoregressive structured modeling for 3d hand pose estimation <a
-            href="https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123700018.pdf">[pdf]</a></h3>
-    <p><em>Lin Huang, Jianchao Tan, Ji Liu, and Junsong Yuan</em></p>
-    <ul>
-        <li><img src="../assets/fig_transformer/6.png" alt=""></li>
-    </ul>
-    <h3>[ArXiv 2021] CvT: Introducing Convolutions to Vision Transformers <a
-            href="https://arxiv.org/abs/2103.15808.pdf">[pdf]</a></h3>
-    <p><em>Haiping Wu, Bin Xiao, Noel Codella, Mengchen Liu, Xiyang Dai, Lu Yuan, Lei Zhang</em></p>
-    <ul>
-        <li><img src="../assets/fig_transformer/9.png" alt=""></li>
-        <li><img src="../assets/fig_transformer/10.png" alt=""></li>
-    </ul>
-    <h3>[ICCV 2021] Point transformer <a href="https://arxiv.org/pdf/2012.09164.pdf">[pdf]</a></h3>
-    <p><em>Hengshuang Zhao, Li Jiang, Jiaya Jia, Philip Torr, Vladlen Koltun</em></p>
-    <ul>
-        <li><img src="../assets/fig_transformer/11.png" alt=""></li>
-    </ul>
-    <h3>[CVPR 2021] End-to-end video instance segmentation with transformers <a
-            href="https://arxiv.org/pdf/2011.14503.pdf">[pdf]</a></h3>
-    <p><em>Yuqing Wang, Zhaoliang Xu, Xinlong Wang, Chunhua Shen, Baoshan Cheng, Hao Shen, Huaxia Xia</em></p>
-    <ul>
-        <li><img src="../assets/fig_transformer/5.png" alt=""></li>
-    </ul>
-    <h3>[ArXiv 2021] A Survey on Visual Transformer <a href="https://arxiv.org/abs/2012.12556.pdf">[pdf]</a></h3>
-    <p><em>Kai Han, Yunhe Wang, Hanting Chen, Xinghao Chen, Jianyuan Guo, Zhenhua Liu, Yehui Tang, An Xiao, Chunjing Xu,
-            Yixing Xu, Zhaohui Yang, Yiman Zhang, Dacheng Tao</em></p>
-    <h3>[AAAI 2021] Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting <a
-            href="https://arxiv.org/abs/2012.07436.pdf">[pdf]</a></h3>
-    <p><em>Haoyi Zhou, Shanghang Zhang, Jieqi Peng, Shuai Zhang, Jianxin Li, Hui Xiong, Wancai Zhang</em></p>
-    <h3>[ECCV 2020] End-to-end object detection with transformers <a
-            href="https://arxiv.org/abs/2005.12872.pdf">[pdf]</a></h3>
-    <p><em>Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, Sergey Zagoruyko</em>
-    </p>
-    <ul>
-        <li><img src="../assets/fig_transformer/4.png" alt=""></li>
-    </ul>
-    <h3>[CVPR 2020] Actor-Transformers for Group Activity Recognition <a
-            href="https://arxiv.org/pdf/2003.12737.pdf">[pdf]</a></h3>
-    <p><em>Kirill Gavrilyuk, Ryan Sanford, Mehrsan Javan, Cees G. M. Snoek</em></p>
-    <h3>[ICLR 2021] An image is worth 16x16 words: Transformers for image recognition at scale <a
-            href="https://openreview.net/pdf?id=YicbFdNTTy">[pdf]</a></h3>
-    <p><em>Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner,
-            Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil Houlsby</em></p>
-    <ul>
-        <li><img src="../assets/fig_transformer/3.png" alt=""></li>
-    </ul>
-    <h3>[ICML 2020] Generative pretraining from pixels <a
-            href="https://cdn.openai.com/papers/Generative_Pretraining_from_Pixels_V2.pdf">[pdf]</a></h3>
-    <p><em>Mark Chen, Alec Radford, Rewon Child, Jeffrey Wu, Heewoo Jun, David Luan, and Ilya Sutskever</em></p>
-    <ul>
-        <li><img src="../assets/fig_transformer/2.png" alt=""></li>
-    </ul>
-    <h3>[ArXiv 2020] Visual Transformers: Token-based Image Representation and Processing for Computer Vision <a
-            href="https://arxiv.org/pdf/2006.03677.pdf">[pdf]</a></h3>
-    <p><em>Bichen Wu, Chenfeng Xu, Xiaoliang Dai, Alvin Wan, Peizhao Zhang, Zhicheng Yan, Masayoshi Tomizuka, Joseph
-            Gonzalez, Kurt Keutzer, Peter Vajda</em></p>
-    <ul>
-        <li>semantic segmentation with transformer</li>
-        <li><img src="../assets/fig_transformer/1.png" alt=""></li>
-    </ul>
-    <h3>[ICML 2018] Image transformer <a href="https://arxiv.org/pdf/1802.05751.pdf">[pdf]</a></h3>
-    <p><em>Niki Parmar, Ashish Vaswani, Jakob Uszkoreit, Łukasz Kaiser, Noam Shazeer, Alexander Ku, Dustin Tran</em></p>
-    <p><a href="#contents">[back to top]</a></p>
-    <hr>
+        <h1>Blog Event-Based Vision</h1>
+        <h2>Contents</h2>
+        <ul>
+                <li><a href="#event-based-vision">Event-based vision</a></li>
+                <li><a href="#spiking-neural-networks">Spiking Neural Networks</a></li>
+                <li><a href="#6d-pose-estimation">6D Pose Estimation</a></li>
+                <li><a href="#optimization-human-shape-reconstruction">Optimization Human Shape Reconstruction</a></li>
+                <li><a href="#video-prediction-and-pose-transfer">Video prediction and Pose transfer</a></li>
+                <li><a href="#representation-learning">Representation learning</a></li>
+                <li><a href="#others">Others</a></li>
+                <li><a href="#transformer">Transformer</a></li>
+        </ul>
+        <hr>
+        <h2>Event-based vision</h2>
+        <h3>research group: <a
+                        href="http://rpg.ifi.uzh.ch/research_dvs.html">http://rpg.ifi.uzh.ch/research_dvs.html</a>
+        </h3>
+        <h3>resources: <a
+                        href="https://github.com/uzh-rpg/event-based_vision_resources">https://github.com/uzh-rpg/event-based_vision_resources</a>
+        </h3>
+        <h3>advantages</h3>
+        <ul>
+                <li>Event cameras have several advantages over traditional cameras: a latency in the order of
+                        microseconds, a
+                        very high dynamic range (140 dB compared to 60 dB of traditional cameras), and very low power
+                        consumption
+                        (10mW vs 1.5W of traditional cameras). Moreover, since all pixels capture light independently,
+                        such sensors
+                        do not suffer from motion blur.</li>
+        </ul>
+        <h3>[TPAMI 2020] Event-based Vision: A Survey <a href="https://arxiv.org/abs/1904.08405">[pdf]</a></h3>
+        <p><em>Guillermo Gallego, Tobi Delbruck, Garrick Orchard, Chiara Bartolozzi, Brian Taba, Andrea Censi, Stefan
+                        Leutenegger, Andrew Davison, Joerg Conradt, Kostas Daniilidis, Davide Scaramuzza</em></p>
+        <h3>[CVPR 2020] EventCap: Monocular 3D Capture of High-Speed Human Motions using an Event Camera <a
+                        href="https://arxiv.org/abs/1908.11505">[pdf]</a></h3>
+        <p><em>Lan Xu, Weipeng Xu, Vladislav Golyanik, Marc Habermann, Lu Fang, Christian Theobalt</em></p>
+        <h3>[ECCV 2020] Spike-FlowNet: Event-based Optical Flow Estimation with Energy-Efficient Hybrid Neural Networks
+                <a href="https://arxiv.org/abs/2003.06696">[pdf]</a></h3>
+        <p><em>Chankyu Lee, Adarsh Kumar Kosta, Alex Zihao Zhu, Kenneth Chaney, Kostas Daniilidis, Kaushik Roy</em></p>
+        <ul>
+                <li>SNN decodes event streams and ANN encodes optical flow. Simplest IF neuron model is used in this
+                        paper.</li>
+                <li>Self-supervised warping loss (optical flow between neighboring frames).</li>
+        </ul>
+        <h3>[CVPR 2020] Single Image Optical Flow Estimation With an Event Camera <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Pan_Single_Image_Optical_Flow_Estimation_With_an_Event_Camera_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Liyuan Pan, Miaomiao Liu, Richard Hartley</em></p>
+        <h3>[CVPR 2018] Pwc-net: Cnns for optical flow using pyramid, warping, and cost volume <a
+                        href="https://arxiv.org/abs/1709.02371">[pdf]</a> <a
+                        href="https://github.com/NVlabs/PWC-Net">[code]</a>
+        </h3>
+        <p><em>Deqing Sun, Xiaodong Yang, Ming-Yu Liu, Jan Kautz</em></p>
+        <h3>[CVPR 2020] Learning to Super Resolve Intensity Images From Events <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/I._Learning_to_Super_Resolve_Intensity_Images_From_Events_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>S. Mohammad Mostafavi I., Jonghyun Choi, Kuk-Jin Yoon</em></p>
+        <h3>[CVPR 2020] Learning Event-Based Motion Deblurring <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Jiang_Learning_Event-Based_Motion_Deblurring_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Zhe Jiang, Yu Zhang, Dongqing Zou, Jimmy Ren, Jiancheng Lv, Yebin Liu</em></p>
+        <h3>[CVPR 2020] Video to Events: Recycling Video Datasets for Event Cameras <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Gehrig_Video_to_Events_Recycling_Video_Datasets_for_Event_Cameras_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Daniel Gehrig, Mathias Gehrig, Javier Hidalgo-Carrio, Davide Scaramuzza</em></p>
+        <h3>[CVPR 2020] 4D Visualization of Dynamic Events From Unconstrained Multi-View Videos <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Bansal_4D_Visualization_of_Dynamic_Events_From_Unconstrained_Multi-View_Videos_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Aayush Bansal, Minh Vo, Yaser Sheikh, Deva Ramanan, Srinivasa Narasimhan</em></p>
+        <h3>[CVPR 2020] Globally Optimal Contrast Maximisation for Event-Based Motion Estimation <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Globally_Optimal_Contrast_Maximisation_for_Event-Based_Motion_Estimation_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Daqi Liu, Alvaro Parra, Tat-Jun Chin</em></p>
+        <h3>[CVPR 2020] Learning Visual Motion Segmentation Using Event Surfaces <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Mitrokhin_Learning_Visual_Motion_Segmentation_Using_Event_Surfaces_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Anton Mitrokhin, Zhiyuan Hua, Cornelia Fermuller, Yiannis Aloimonos</em></p>
+        <h3>[CVPR 2020] EventSR: From Asynchronous Events to Image Reconstruction, Restoration, and Super-Resolution via
+                End-to-End Adversarial Learning <a href="https://arxiv.org/pdf/2003.07640.pdf">[pdf]</a></h3>
+        <p><em>Lin Wang, Tae-Kyun Kim, and Kuk-Jin Yoon</em></p>
+        <h3>[ICCV 2019] Learning an event sequence embedding for dense event-based deep stereo <a
+                        href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Tulyakov_Learning_an_Event_Sequence_Embedding_for_Dense_Event-Based_Deep_Stereo_ICCV_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Stepan Tulyakov, Francois Fleuret, Martin Kiefel, Peter Gehler, Michael Hirsch</em></p>
+        <h3>[ICCV 2019] End-to-End Learning of Representations for Asynchronous Event-Based Data <a
+                        href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Gehrig_End-to-End_Learning_of_Representations_for_Asynchronous_Event-Based_Data_ICCV_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Daniel Gehrig, Antonio Loquercio, Konstantinos G. Derpanis, Davide Scaramuzza</em></p>
+        <h3>[CVPR 2019] Event-based High Dynamic Range Image and Very High Frame Rate Video Generation using Conditional
+                Generative Adversarial Networks <a href="https://arxiv.org/abs/1811.08230">[pdf]</a></h3>
+        <p><em>S. Mohammad Mostafavi I., Lin Wang, Yo-Sung Ho, Kuk-Jin Yoon</em></p>
+        <h3>[CVPR 2019] Unsupervised Event-Based Learning of Optical Flow, Depth, and Egomotion <a
+                        href="https://arxiv.org/abs/1812.08156">[pdf]</a></h3>
+        <p><em>Alex Zihao Zhu, Liangzhe Yuan, Kenneth Chaney, Kostas Daniilidis</em></p>
+        <h3>[IROS 2018] Event-based Moving Object Detection and Tracking <a
+                        href="https://arxiv.org/abs/1803.04523">[pdf]</a></h3>
+        <p><em>Anton Mitrokhin, Cornelia Fermuller, Chethan Parameshwara, Yiannis Aloimonos</em></p>
+        <h3>[CVPR 2019] Bringing a Blurry Frame Alive at High Frame-Rate With an Event Camera <a
+                        href="https://arxiv.org/abs/1811.10180">[pdf]</a></h3>
+        <p><em>Liyuan Pan, Cedric Scheerlinck, Xin Yu, Richard Hartley, Miaomiao Liu, Yuchao Dai</em></p>
+        <h3>[CVPR 2019] Focus Is All You Need: Loss Functions For Event-based Vision <a
+                        href="https://arxiv.org/abs/1904.07235">[pdf]</a></h3>
+        <p><em>Guillermo Gallego, Mathias Gehrig, Davide Scaramuzza</em></p>
+        <h3>[CVPR 2019] Event Cameras, Contrast Maximization and Reward Functions: An Analysis <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Stoffregen_Event_Cameras_Contrast_Maximization_and_Reward_Functions_An_Analysis_CVPR_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Timo Stoffregen, Lindsay Kleeman</em></p>
+        <h3>[TPAMI 2018] Event-based, 6-DOF Camera Tracking from Photometric Depth Maps <a
+                        href="http://rpg.ifi.uzh.ch/docs/PAMI17_Gallego.pdf">[pdf]</a></h3>
+        <p><em>Guillermo Gallego, Jon E.A. Lund, Elias Mueggler, Henri Rebecq, Tobi Delbruck, Davide Scaramuzza</em></p>
+        <h3>[IJCV 2017, BMVC 2016] EMVS: Event-based Multi-View Stereo - 3D Reconstruction with an Event Camera in
+                Real-Time
+                <a href="https://supitalp.github.io/research/publication/emvs_ijcv/">[pdf]</a>
+        </h3>
+        <p><em>Henri Rebecq, Guillermo Gallego, Elias Mueggler, Davide Scaramuzza</em></p>
+        <h3>[ECCV 2018] Asynchronous, Photometric Feature Tracking using Events and Frames <a
+                        href="https://arxiv.org/abs/1807.09713">[pdf]</a></h3>
+        <p><em>Daniel Gehrig, Henri Rebecq, Guillermo Gallego, Davide Scaramuzza</em></p>
+        <h3>[CVPR 2018] A Unifying Contrast Maximization Framework for Event Cameras, with Applications to Motion, Depth
+                and
+                Optical Flow Estimation <a href="https://arxiv.org/abs/1804.01306">[pdf]</a></h3>
+        <p><em>Guillermo Gallego, Henri Rebecq, Davide Scaramuzza</em></p>
+        <ul>
+                <li>We present a unifying framework to solve several computer vision problems with event cameras:
+                        motion, depth
+                        and optical flow estimation. The main idea of our framework is to find the point trajectories on
+                        the image
+                        plane that are best aligned with the event data by maximizing an objective function: the
+                        contrast of an
+                        image of warped events. Our method implicitly handles data association between the events, and
+                        therefore,
+                        does not rely on additional appearance information about the scene. In addition to accurately
+                        recovering the
+                        motion parameters of the problem, our framework produces motion-corrected edge-like images with
+                        high dynamic
+                        range that can be used for further scene analysis.</li>
+        </ul>
+        <h3>[ECCV 2018] Semi-Dense 3D Reconstruction with a Stereo Event Camera <a
+                        href="https://arxiv.org/abs/1807.07429">[pdf]</a></h3>
+        <p><em>Yi Zhou, Guillermo Gallego, Henri Rebecq, Laurent Kneip, Hongdong Li, Davide Scaramuzza</em></p>
+        <h3>[CVPR 2019, TPAMI 2020] Events-to-Video: Bringing Modern Computer Vision to Event Cameras <a
+                        href="https://arxiv.org/abs/1904.08298">[pdf]</a> <a
+                        href="https://arxiv.org/pdf/1906.07165.pdf">[pdf]</a>
+        </h3>
+        <p><em>Henri Rebecq, René Ranftl, Vladlen Koltun, Davide Scaramuzza</em></p>
+        <ul>
+                <li>Since <strong>the output of event cameras is fundamentally different from conventional
+                                cameras</strong>, it
+                        is commonly accepted that they require the development of specialized algorithms to accommodate
+                        the
+                        particular nature of events.</li>
+                <li>We propose a novel recurrent network to reconstruct videos from a stream of events, and train it on
+                        a large
+                        amount of simulated event data.</li>
+        </ul>
+        <h3>[ECCV 2018 workshop] Unsupervised event-based optical flow using motion compensation <a
+                        href="https://arxiv.org/abs/1812.08156">[pdf]</a></h3>
+        <p><em>Alex Zihao Zhu, Liangzhe Yuan, Kenneth Chaney, Kostas Daniilidis</em></p>
+        <h3>[Scientific Report] A Spiking Neural Network Model of Depth from Defocus for Event-based Neuromorphic Vision
+                <a href="https://www.nature.com/articles/s41598-019-40064-0.pdf">[pdf]</a></h3>
+        <p><em>Germain Haessig, Xavier Berthelon, Sio-Hoi Ieng &amp; Ryad Benosman</em></p>
+        <h3>[CVPR 2017] A Low Power, Fully Event-Based Gesture Recognition System <a
+                        href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Amir_A_Low_Power_CVPR_2017_paper.pdf">[pdf]</a>
+                <a href="http://research.ibm.com/dvsgesture/">[dataset]</a>
+        </h3>
+        <p><em>Arnon Amir, Brian Taba, David Berg, Timothy Melano, Jeffrey McKinstry, Carmelo Di Nolfo, Tapan Nayak,
+                        Alexander Andreopoulos, Guillaume Garreau, Marcela Mendoza, Jeff Kusnitz, Michael Debole, Steve
+                        Esser, Tobi
+                        Delbruck, Myron Flickner, and Dharmendra Modha</em></p>
+        <h3>[CVPR 2019] EV-Gait: Event-Based Robust Gait Recognition Using Dynamic Vision Sensors <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_EV-Gait_Event-Based_Robust_Gait_Recognition_Using_Dynamic_Vision_Sensors_CVPR_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Yanxiang Wang, Bowen Du, Yiran Shen, Kai Wu, Guangrong Zhao, Jianguo Sun, Hongkai Wen</em></p>
+        <h3>[CVPR workshop 2019] DHP19: Dynamic Vision Sensor 3D Human Pose Dataset <a
+                        href="http://openaccess.thecvf.com/content_CVPRW_2019/papers/EventVision/Calabrese_DHP19_Dynamic_Vision_Sensor_3D_Human_Pose_Dataset_CVPRW_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Enrico Calabrese, Gemma Taverni, Christopher Awai Easthope, Sophie Skriabine, Federico Corradi, Luca
+                        Longinotti, Kynan Eng, Tobi Delbruck</em></p>
+        <h3>[RoSS 2018] EV-FlowNet: Self-supervised optical flow estimation for event-based cameras <a
+                        href="https://arxiv.org/abs/1802.06898">[pdf]</a></h3>
+        <p><em>Alex Zihao Zhu, Liangzhe Yuan, Kenneth Chaney, Kostas Daniilidis</em></p>
+        <ul>
+                <li>In particular, we introduce an image based representation of a given event stream, which is fed into
+                        a
+                        self-supervised neural network as the sole input. The corresponding grayscale images captured
+                        from the same
+                        camera at the same time as the events are then used as a supervisory signal to provide a loss
+                        function at
+                        training time, given the estimated flow from the network.</li>
+        </ul>
+        <h3>[CVPR 2016] Simultaneous Optical Flow and Intensity Estimation from an Event Camera <a
+                        href="https://openaccess.thecvf.com/content_cvpr_2016/papers/Bardow_Simultaneous_Optical_Flow_CVPR_2016_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Patrick Bardow, Andrew J. Davison, Stefan Leutenegger</em></p>
+        <h3>[NNLS 2014] Event-Based Visual Flow <a href="https://ieeexplore.ieee.org/document/6589170">[pdf]</a> <a
+                        href="https://github.com/winswang/event-flow">[code]</a></h3>
+        <p><em>Ryad Benosman, Charles Clercq, Xavier Lagorce, Sio-Hoi Ieng, and Chiara Bartolozzi</em></p>
+        <p><a href="#contents">[back to top]</a></p>
+        <hr>
+        <h2>Spiking Neural Networks</h2>
+        <h3>[NeurIPS 2022] Online Training Through Time for Spiking Neural Networks <a
+                        href="https://arxiv.org/pdf/2210.04195.pdf">[pdf]</a></h3>
+        <p><em>Mingqing Xiao, Qingyan Meng, Zongpeng Zhang, Di He, Zhouchen Lin</em></p>
+        <h3>[NeurIPS 2022] Toward Robust Spiking Neural Network Against Adversarial Perturbation <a
+                        href="https://arxiv.org/abs/2205.01625">[pdf]</a></h3>
+        <p><em>Ling Liang, Kaidi Xu, Xing Hu, Lei Deng, Yuan Xie</em></p>
+        <h3>[NeurIPS 2022] Training Spiking Neural Networks with Local Tandem Learning <a
+                        href="https://arxiv.org/abs/2210.04532">[pdf]</a></h3>
+        <p><em>Qu Yang, Jibin Wu, Malu Zhang, Yansong Chua, Xinchao Wang, Haizhou Li</em></p>
+        <h3>[NeurIPS 2022] GLIF: A Unified Gated Leaky Integrate-and-Fire Neuron for Spiking Neural Networks <a
+                        href="https://arxiv.org/abs/2210.13768">[pdf]</a></h3>
+        <p><em>Xingting Yao, Fanrong Li, Zitao Mo, Jian Cheng</em></p>
+        <h3>[ICLR 2022] Temporal Efficient Training of Spiking Neural Network via Gradient Re-weighting <a
+                        href="https://arxiv.org/abs/2202.11946">[pdf]</a></h3>
+        <p><em>Shikuang Deng, Yuhang Li, Shanghang Zhang, Shi Gu</em></p>
+        <h3>[CVPR 2022] Event Transformer. A sparse-aware solution for efficient event data processing <a
+                        href="https://arxiv.org/abs/2204.03355">[pdf]</a></h3>
+        <p><em>Alberto Sabater, Luis Montesano, Ana C. Murillo</em></p>
+        <ul>
+                <li>Event cameras are sensors of great interest for many applications that run in low-resource and
+                        challenging
+                        environments. They log sparse illumination changes with high temporal resolution and high
+                        dynamic range,
+                        while they present minimal power consumption. However, top-performing methods often ignore
+                        specific
+                        event-data properties, leading to the development of generic but computationally expensive
+                        algorithms.
+                        Efforts toward efficient solutions usually do not achieve top-accuracy results for complex
+                        tasks. This work
+                        proposes a novel framework, Event Transformer (EvT), that effectively takes advantage of
+                        event-data
+                        properties to be highly efficient and accurate. We introduce a new patch-based event
+                        representation and a
+                        compact transformer-like architecture to process it. EvT is evaluated on different event-based
+                        benchmarks
+                        for action and gesture recognition. Evaluation results show better or comparable accuracy to the
+                        state-of-the-art while requiring significantly less computation resources, which makes EvT able
+                        to work with
+                        minimal latency both on GPU and CPU.</li>
+        </ul>
+        <h3>[CVPR 2022] Spiking Transformers for Event-based Single Object Tracking <a
+                        href="https://zhangjiqing.com/publication/stnet/">[pdf]</a></h3>
+        <p><em>Jiqing Zhang, Bo Dong, Haiwei Zhang, Jianchuan Ding, Felix Heide, Baocai Yin, Xin Yang</em></p>
+        <ul>
+                <li>Event-based cameras bring a unique capability to tracking, being able to function in challenging
+                        real-world
+                        conditions as a direct result of their high temporal resolution and high dynamic range. These
+                        imagers
+                        capture events asynchronously that encode rich temporal and spatial information. However,
+                        effectively
+                        extracting this information from events remains an open challenge. In this work, we propose a
+                        spiking
+                        transformer network, STNet, for single object tracking. STNet dynamically extracts and fuses
+                        information
+                        from both temporal and spatial domains. In particular, the proposed architecture features a
+                        transformer
+                        module to provide global spatial information and a spiking neural network (SNN) module for
+                        extracting
+                        temporal cues. The spiking threshold of the SNN module is dynamically adjusted based on the
+                        statistical cues
+                        of the spatial information, which we find essential in providing robust SNN features. We fuse
+                        both feature
+                        branches dynamically with a novel cross-domain attention fusion algorithm. Extensive experiments
+                        on two
+                        event-based datasets, FE240hz and EED, validate that the proposed STNet outperforms existing
+                        state-of-the-art methods in both tracking accuracy and speed with a significant margin.</li>
+                <li>The proposed SFE relies on a 3-layer LIF-based SNN [45] and a reduced Swin-transformer [33] to
+                        capture
+                        informative cues from the temporal and spatial domains.</li>
+        </ul>
+        <h3>[Neurips 2021] Deep Residual Learning in Spiking Neural Networks <a
+                        href="https://arxiv.org/abs/2102.04159">[pdf]</a></h3>
+        <p><em>Wei Fang, Zhaofei Yu, Yanqi Chen, Tiejun Huang, Timothée Masquelier, Yonghong Tian</em></p>
+        <ul>
+                <li>In this paper, we propose the spike element-wise (SEW) ResNet to realize residual learning in deep
+                        SNNs. We
+                        prove that the SEW ResNet can easily implement identity mapping and overcome the
+                        vanishing/exploding
+                        gradient problems of Spiking ResNet.</li>
+        </ul>
+        <h3>[ICCV 2019] Incorporating Learnable Membrane Time Constant to Enhance Learning of Spiking Neural Networks <a
+                        href="https://arxiv.org/abs/2007.05785">[pdf]</a></h3>
+        <p><em>Wei Fang, Zhaofei Yu, Yanqi Chen, Timothee Masquelier, Tiejun Huang, Yonghong Tian</em></p>
+        <h3>[Neurips 2021] Differentiable Spike: Rethinking Gradient-Descent for Training Spiking Neural Networks <a
+                        href="https://proceedings.neurips.cc/paper/2021/file/c4ca4238a0b923820dcc509a6f75849b-Paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Yuhang Li, Yufei Guo, Shanghang Zhang, Shikuang Deng, Yongqing Hai, Shi Gu</em></p>
+        <h3>[Neurips 2021] Training Feedback Spiking Neural Networks by Implicit Differentiation on the Equilibrium
+                State <a href="https://arxiv.org/pdf/2109.14247.pdf">[pdf]</a></h3>
+        <p><em>Mingqing Xiao, Qingyan Meng, Zongpeng Zhang, Yisen Wang, Zhouchen Lin</em></p>
+        <h3>[Neurips 2020] Unifying Activation- and Timing-based Learning Rules for Spiking Neural Networks <a
+                        href="https://arxiv.org/abs/2006.02642">[pdf]</a></h3>
+        <p><em>Jinseok Kim, Kyungsu Kim, Jae-Joon Kim</em></p>
+        <h3>[Neurips 2020] Temporal Spike Sequence Learning via Backpropagation for Deep Spiking Neural Networks <a
+                        href="https://arxiv.org/abs/2002.10085">[pdf]</a></h3>
+        <p><em>Wenrui Zhang, Peng Li</em></p>
+        <ul>
+                <li>We present a novel Temporal Spike Sequence Learning Backpropagation (TSSL-BP) method for training
+                        deep SNNs,
+                        null- which breaks down error backpropagation across two types of inter-neuron and intra-neuron
+                        dependencies
+                        null- and leads to improved temporal learning precision.</li>
+                <li>Wulfram Gerstner and Werner M Kistler. Spiking neuron models: Single neurons, populations,
+                        plasticity.
+                        null- Cambridge university press, 2002.</li>
+        </ul>
+        <h3>[Neurips 2021] Self-Supervised Learning of Event-Based Optical Flow with Spiking Neural Networks <a
+                        href="https://arxiv.org/abs/2106.01862">[pdf]</a><a
+                        href="https://github.com/tudelft/event_flow">[code]</a>
+        </h3>
+        <p><em>Jesse Hagenaars, Federico Paredes-Vallés, Guido de Croon</em></p>
+        <h3>[Neurips 2021] Sparse Spiking Gradient Descent <a href="https://arxiv.org/abs/2105.08810">[pdf]</a> <a
+                        href="https://github.com/npvoid/SparseSpikingBackprop">[code]</a></h3>
+        <p><em>Nicolas Perez-Nieves, Dan F.M. Goodman</em></p>
+        <ul>
+                <li>Emre O. Neftci, Hesham Mostafa, and Friedemann Zenke. Surrogate gradient learning in
+                        null- spiking neural networks: Bringing the power of gradient-based optimization to spiking
+                        neural
+                        null- networks. IEEE Signal Processing Magazine, 36(6):51–63, 2019.</li>
+                <li>Friedemann Zenke and Tim P Vogels. The remarkable robustness of surrogate gradient learning
+                        null- for instilling complex function in spiking neural networks. Neural Computation,
+                        33(4):899–925, 2021.
+                </li>
+        </ul>
+        <h3>[CVPR 2021] Temporal-wise Attention Spiking Neural Networks for Event Streams Classification <a
+                        href="https://arxiv.org/abs/2107.11711">[pdf]</a></h3>
+        <p><em>Man Yao, Huanhuan Gao, Guangshe Zhao, Dingheng Wang, Yihan Lin, Zhaoxu Yang, Guoqi Li</em></p>
+        <ul>
+                <li>Yin Bi, Aaron Chadha, Alhabib Abbas, Eirina Bourtsoulatze, and Yiannis Andreopoulos. Graph-based
+                        spatio-temporal
+                        null- feature learning for neuromorphic vision sensing. IEEE Transactions on Image Processing,
+                        29:9084–9098,
+                        2020.</li>
+                <li>Kaushik Roy, Akhilesh Jaiswal, and Priyadarshini Panda. Towards spike-based machine intelligence
+                        with
+                        neuromorphic
+                        null- computing. Nature, 575(7784):607–617, 2019.</li>
+                <li>Zhenzhi Wu, Hehui Zhang, Yihan Lin, Guoqi Li, Meng Wang, and Ye Tang. Liaf-net: Leaky integrate and
+                        analog
+                        fire
+                        null- network for lightweight and efficient spatiotemporal information processing. IEEE
+                        Transactions on
+                        Neural Networks
+                        null- and Learning Systems, pages 1–14, 2021.</li>
+                <li>Jie Hu, Li Shen, and Gang Sun. Squeeze-and-excitation networks. In Proceedings of the IEEE
+                        conference on
+                        computer
+                        null- vision and pattern recognition, pages 7132–7141, 2018.</li>
+                <li>We use the STBP [38] and the BPTT algorithm [40] to train LIF-SNNs and LIAFSNNs, respectively.</li>
+        </ul>
+        <h3>[Neurips 2018] Gradient Descent for Spiking Neural Networks <a
+                        href="https://papers.nips.cc/paper/2018/file/185e65bc40581880c4f2c82958de8cfe-Paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Dongsung Huh, Terrence J. Sejnowski</em></p>
+        <ul>
+                <li>In general, the exact gradient of a dynamical system can be calculated using either Pontryagin’s
+                        minimum
+                        principle [33], also known as backpropagation through time, or real-time recurrent learning,
+                        which yield
+                        identical results.</li>
+        </ul>
+        <h3>[ECCV 2020] Spike-FlowNet: Event-based Optical Flow Estimation with Energy-Efficient Hybrid Neural Networks
+                <a href="https://arxiv.org/abs/2003.06696">[pdf]</a></h3>
+        <p><em>Chankyu Lee, Adarsh Kumar Kosta, Alex Zihao Zhu, Kenneth Chaney, Kostas Daniilidis, Kaushik Roy</em></p>
+        <ul>
+                <li>SNN decodes event streams and ANN encodes optical flow. Simplest IF neuron model is used in this
+                        paper.</li>
+                <li>Self-supervised warping loss (optical flow between neighboring frames).</li>
+        </ul>
+        <h3>[ArXiv 2018] Deep Learning in Spiking Neural Networks <a
+                        href="https://arxiv.org/pdf/1804.08150.pdf">[pdf]</a>
+        </h3>
+        <p><em>Amirhossein Tavanaei, Masoud Ghodrati, Saeed Reza Kheradpisheh, Timothee Masquelier, Anthony S.
+                        Maida</em>
+        </p>
+        <ul>
+                <li>Fully Connected SNNs</li>
+                <li>Spiking CNN [173] [57][165][183]</li>
+                <li>ANN-to-SNN conversion</li>
+        </ul>
+        <h3>[IROS 2022] SpikeMS: Deep Spiking Neural Network for Motion Segmentation <a
+                        href="https://arxiv.org/abs/2105.06562">[pdf]</a></h3>
+        <p><em>Chethan M. Parameshwara, Simin Li, Cornelia Fermüller, Nitin J. Sanket, Matthew S. Evanusa, Yiannis
+                        Aloimonos</em></p>
+        <h3>[TPAMI 2019] Unsupervised Learning of a Hierarchical Spiking Neural Network for Optical Flow Estimation:
+                From
+                Events to Global Motion Perception <a href="https://arxiv.org/abs/1807.10936">[pdf]</a></h3>
+        <p><em>Federico Paredes-Vallés, Kirk Y. W. Scheper, Guido C. H. E. de Croon</em></p>
+        <h3>[Frontier in Neuroscience 2020] Enabling Spike-Based Backpropagation for Training Deep Neural Network
+                Architectures <a href="https://arxiv.org/abs/1903.06379">[pdf]</a></h3>
+        <p><em>Chankyu Lee, Syed Shakib Sarwar, Priyadarshini Panda, Gopalakrishnan Srinivasan, Kaushik Roy</em></p>
+        <h3>[Frontier in Neuroscience 2020] Toward Scalable, Efficient, and Accurate Deep Spiking Neural Networks With
+                Backward Residual Connections, Stochastic Softmax, and Hybridization <a
+                        href="https://arxiv.org/abs/1910.13931">[pdf]</a></h3>
+        <p><em>Priyadarshini Panda, Aparna Aketi, Kaushik Roy</em></p>
+        <h3>[Frontier in Neuroscience 2018] Spatio-temporal backpropagation for training high-performance spiking neural
+                networks <a href="https://arxiv.org/abs/1706.02609">[pdf]</a></h3>
+        <p><em>Yujie Wu, Lei Deng, Guoqi Li, Jun Zhu, Luping Shi</em></p>
+        <h3>[arXiv 2019] Surrogate Gradient Learning in Spiking Neural Networks <a
+                        href="https://arxiv.org/abs/1901.09948">[pdf]</a></h3>
+        <p><em>Emre O. Neftci, Hesham Mostafa, Friedemann Zenke</em></p>
+        <h3>[ICLR 2018] Deep rewiring: Training very sparse deep networks <a
+                        href="https://arxiv.org/abs/1711.05136">[pd]</a></h3>
+        <p><em>Guillaume Bellec, David Kappel, Wolfgang Maass, Robert Legenstein</em></p>
+        <h3>[NeurIPS 2018] Long short-term memory and learning-to-learn in networks of spiking neurons <a
+                        href="https://arxiv.org/abs/1803.09574">[pdf]</a></h3>
+        <p><em>Guillaume Bellec, Darjan Salaj, Anand Subramoney, Robert Legenstein, Wolfgang Maass</em></p>
+        <h3>[NeurIPS 2018] Slayer: Spike layer error reassignment in time <a
+                        href="https://arxiv.org/abs/1810.08646">[pdf]</a></h3>
+        <p><em>Sumit Bam Shrestha, Garrick Orchard</em></p>
+        <h3>Time structure of the activity in neural network models <a
+                        href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.51.738">[pdf]</a></h3>
+        <p><em>Wulfram Gerstner</em></p>
+        <ul>
+                <li>Spiking Response Model used in Slayer</li>
+        </ul>
+        <h3>[ICRA 2015] Spike time based unsupervised learning of receptive fields for event-driven vision <a
+                        href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=7139786&amp;tag=1">[pdf]</a>
+        </h3>
+        <p><em>Himanshu Akolkar, Stefano Panzeri and Chiara Bartolozzi</em></p>
+        <h3>Convolutional networks for fast, energy-efficient neuromorphic computing <a
+                        href="https://arxiv.org/pdf/1603.08270.pdf">[pdf]</a></h3>
+        <p><em>Steven K. Esser, Paul A. Merolla, John V. Arthur, Andrew S. Cassidy, Rathinakumar Appuswamy, Alexander
+                        Andreopoulos, David J. Berg, Jeffrey L. McKinstry, Timothy Melano, Davis R. Barch, Carmelo di
+                        Nolfo, Pallab
+                        Datta, Arnon Amir, Brian Taba, Myron D. Flickner, and Dharmendra S. Modha.</em></p>
+        <h3>A wafer-scale neuromorphic hardware system for large-scale neural modeling <a
+                        href="https://ieeexplore.ieee.org/document/5536970">[pdf]</a></h3>
+        <p><em>Johannes Schemmel, Daniel Br¨uderle, Andreas Gr¨ubl, Matthias Hock, Karlheinz Meier, and Sebastian
+                        Millner</em></p>
+        <h3>[IEEE NNLS 2018] A supervised learning algorithm for learning precise timing of multiple spikes in
+                multilayer
+                spiking neural networks <a
+                        href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8305661">[pdf]</a>
+        </h3>
+        <p><em>Aboozar Taherkhani, Ammar Belatreche, Yuhua Li, Liam P. Maguire</em></p>
+        <h3>[Frontier in Neuroscience 2017] Conversion of continuous-valued deep networks to efficient eventdriven
+                networks
+                for image classification <a
+                        href="https://www.frontiersin.org/articles/10.3389/fnins.2017.00682/full">[pdf]</a>
+        </h3>
+        <p><em>Bodo Rueckauer, Iulia-Alexandra Lungu, Yuhuang Hu, Michael Pfeiffer and Shih-Chii Liu</em></p>
+        <h3>[Frontier in Neuroscience 2016] Training Deep Spiking Neural Networks using Backpropagation <a
+                        href="https://arxiv.org/abs/1608.08782">[pdf]</a></h3>
+        <p><em>Jun Haeng Lee, Tobi Delbruck, Michael Pfeiffer</em></p>
+        <h3>[Annual Review of Neuroscience 2008] Spike Timing–Dependent Plasticity: A Hebbian Learning Rule <a
+                        href="https://www.annualreviews.org/doi/pdf/10.1146/annurev.neuro.31.060407.125639">[pdf]</a>
+        </h3>
+        <p><em>Natalia Caporale and Yang Dan</em></p>
+        <p><a href="#contents">[back to top]</a></p>
+        <hr>
+        <h2>6D Pose Estimation</h2>
+        <h3>[CVPR 2020] Learning deep network for detecting 3D object keypoints and 6D poses <a
+                        href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhao_Learning_Deep_Network_for_Detecting_3D_Object_Keypoints_and_6D_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Wanqing Zhao, Shaobo Zhang, Ziyu Guan, Wei Zhao</em></p>
+        <h3>[CVPR 2019] Pvnet: Pixel-wise voting network for 6dof pose estimation <a
+                        href="https://arxiv.org/abs/1812.11788.pdf">[pdf]</a><a
+                        href="https://zju3dv.github.io/pvnet/">[code]</a>
+        </h3>
+        <p><em>Sida Peng, Yuan Liu, Qixing Huang, Hujun Bao, Xiaowei Zhou</em></p>
+        <h3>[CVPR 2020] Pvn3d: A deep point-wise 3d keypointsvoting network for 6dof pose estimation <a
+                        href="https://arxiv.org/abs/1911.04231.pdf">[pdf]</a></h3>
+        <p><em>Yisheng He, Wei Sun, Haibin Huang, Jianran Liu, Haoqiang Fan, Jian Sun</em></p>
+        <h3>[ICCV 2019] Pix2pose: Pixel-wise coordinate regression of objects for 6d pose estimation <a
+                        href="https://arxiv.org/abs/1908.07433.pdf">[pdf]</a></h3>
+        <p><em>Kiru Park, Timothy Patten, Markus Vincze</em></p>
+        <h3>[CVPR 2018] Real-time seamless single shot 6d object pose prediction <a
+                        href="https://arxiv.org/abs/1711.08848">[pdf]</a></h3>
+        <p><em>Bugra Tekin, Sudipta N. Sinha, Pascal Fua</em></p>
+        <h3>[ECCV 2018] DeepIM: Deep iterative matching for 6d pose estimation <a
+                        href="https://arxiv.org/abs/1804.00175.pdf">[pdf]</a></h3>
+        <p><em>Yi Li, Gu Wang, Xiangyang Ji, Yu Xiang, Dieter Fox</em></p>
+        <h3>[ECCV 2018 Best Paper Award] Implicit 3D Orientation Learning for 6D Object Detection from RGB Images <a
+                        href="https://arxiv.org/abs/1902.01275.pdf">[pdf]</a></h3>
+        <p><em>Martin Sundermeyer, Zoltan-Csaba Marton, Maximilian Durner, Manuel Brucker, Rudolph Triebel</em></p>
+        <h3>[ICRA 2017] 6-dof object pose from semantic keypoints <a href="https://arxiv.org/abs/1703.04670">[pdf]</a>
+        </h3>
+        <p><em>Georgios Pavlakos, Xiaowei Zhou, Aaron Chan, Konstantinos G. Derpanis, Kostas Daniilidis</em></p>
+        <h3>[ICCV 2017] BB8: A Scalable, Accurate, Robust to Partial Occlusion Method for Predicting the 3D Poses of
+                Challenging Objects without Using Depth <a href="https://arxiv.org/pdf/1703.10896.pdf">[pdf]</a></h3>
+        <p><em>Mahdi Rad, Vincent Lepetit</em></p>
+        <p><a href="#contents">[back to top]</a></p>
+        <hr>
+        <h2>Optimization Human Shape Reconstruction</h2>
+        <h3>Background studying 1</h3>
+        <ul>
+                <li>quaternion \((w, x, y, z))\)
+                        <ul>
+                                <li><a href="https://www.zhihu.com/question/23005815">[good tutorial]</a></li>
+                                <li><a href="http://www.iri.upc.edu/files/scidoc/2068-Accurate-Computation-of-Quaternions-from-Rotation-Matrices.pdf">[Accurate
+                                                Computation of Quaternions from Rotation Matrices]</a></li>
+                                <li><a href="https://www2.cs.duke.edu/courses/fall13/compsci527/notes/rodrigues.pdf">[Rodrigues
+                                                vector
+                                                to rotation matrix]</a> <a
+                                                href="https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula">[wiki]</a>
+                                </li>
+                        </ul>
+                </li>
+        </ul>
+        <h3>Background studying 2</h3>
+        <ul>
+                <li>TSDF <a href="https://blog.csdn.net/qq_39732684/article/details/105294993">[reference]</a>
+                        <img src="./attachments/2020-polarization-clothed-human-shape.md"
+                                alt="2020-polarization-clothed-human-shape">
+                </li>
+        </ul>
+        <h3>[CVPR 2018] DoubleFusion: Real-time Capture of Human Performances with Inner Body Shapes from a Single Depth
+                Sensor <a href="https://arxiv.org/abs/1804.06023">[pdf]</a></h3>
+        <p><em>Tao Yu, Zerong Zheng, Kaiwen Guo, Jianhui Zhao, Qionghai Dai, Hao Li, Gerard Pons-Moll, Yebin Liu</em>
+        </p>
+        <h3>[CVPR 2015] Dynamicfusion: Reconstruction and tracking of non-rigid scenes in real-time <a
+                        href="https://grail.cs.washington.edu/projects/dynamicfusion/papers/DynamicFusion.pdf">[pdf]</a>
+        </h3>
+        <p><em>Richard Newcombe, Dieter Fox, Steve Seitz</em></p>
+        <ul>
+                <li><a href="https://blog.csdn.net/fuguangping/article/details/105766665">[reference]</a></li>
+        </ul>
+        <h3>[ToG 2017] Real-time geometry, albedo and motion reconstruction using a single rgbd camera <a
+                        href="https://www.guokaiwen.com/main.pdf">[pdf]</a></h3>
+        <p><em>K. Guo, F. Xu, T. Yu, X. Liu, Q. Dai, and Y. Liu</em></p>
+        <h3>[ICCV 2017] Bodyfusion: Real-time capture of human motion and surface geometry using a single depth camera
+                <a
+                        href="https://openaccess.thecvf.com/content_ICCV_2017/papers/Yu_BodyFusion_Real-Time_Capture_ICCV_2017_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>T. Yu, K. Guo, F. Xu, Y. Dong, Z. Su, J. Zhao, J. Li, Q. Dai, and Y. Liu</em></p>
+        <h3>[ECCV 2016] Volumedeform: Real-time volumetric nonrigid reconstruction <a
+                        href="https://graphics.stanford.edu/~niessner/papers/2016/5volumeDeform/innmann2016deform.pdf">[pdf]</a>
+        </h3>
+        <p><em>M. Innmann, M. Zollhofer, M. Nießner, C. Theobalt, and M. Stamminger.</em></p>
+        <h3>[ECCV 2018] ArticulatedFusion: Real-time Reconstruction of Motion, Geometry and Segmentation Using a Single
+                Depth Camera <a
+                        href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Chao_Li_ArticulatedFusion_Real-time_Reconstruction_ECCV_2018_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Chao Li, Zheheng Zhao, and Xiaohu Guo</em></p>
+        <h3>[CVPR 2014, TPAMI 2016] Real-Time Simultaneous Pose and Shape Estimation for Articulated Objects Using a
+                Single
+                Depth Camera <a
+                        href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.663.8898&amp;rep=rep1&amp;type=pdf">[pdf]</a>
+                <a href="https://ieeexplore.ieee.org/document/7457693">[pdf]</a>
+        </h3>
+        <p><em>Mao Ye, Yang Shen, Chao Du, Zhigeng Pan, Ruigang Yang</em></p>
+        <p><a href="#contents">[back to top]</a></p>
+        <hr>
+        <h2>Video Prediction and Pose Transfer</h2>
+        <h3>[NeurIPS 2016] Generating Videos with Scene Dynamics <a href="https://arxiv.org/abs/1609.02612">[pdf]</a>
+        </h3>
+        <p><em>Carl Vondrick, Hamed Pirsiavash, Antonio Torralba</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/4.PNG" alt=""></li>
+        </ul>
+        <h3>[ICLR 2016] Deep multi-scale video prediction beyond mean square error <a
+                        href="https://arxiv.org/abs/1511.05440">[pdf]</a></h3>
+        <p><em>Michael Mathieu, Camille Couprie, Yann LeCun</em></p>
+        <h3>[ICCV 2017] The Pose Knows: Video Forecasting by Generating Pose Futures <a
+                        href="https://arxiv.org/abs/1705.00053">[pdf]</a></h3>
+        <p><em>Jacob Walker, Kenneth Marino, Abhinav Gupta, Martial Hebert</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/5.PNG" alt=""></li>
+        </ul>
+        <h3>[ECCV 2018] Deep Video Generation, Prediction and Completion of Human Action Sequences <a
+                        href="https://arxiv.org/abs/1711.08682">[pdf]</a></h3>
+        <p><em>Haoye Cai, Chunyan Bai, Yu-Wing Tai, Chi-Keung Tang</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/6.PNG" alt=""></li>
+        </ul>
+        <h3>[ECCV 2018] Pose Guided Human Video Generation <a href="https://arxiv.org/abs/1807.11152">[PDF]</a></h3>
+        <p><em>Ceyuan Yang, Zhe Wang, Xinge Zhu, Chen Huang, Jianping Shi, Dahua Lin</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/7.PNG" alt=""></li>
+        </ul>
+        <h3>[NeurIPS 2018] Video Prediction via Selective Sampling <a
+                        href="https://papers.nips.cc/paper/7442-video-prediction-via-selective-sampling.pdf">[pdf]</a>
+        </h3>
+        <p><em>Jingwei Xu, Bingbing Ni, Xiaokang Yang</em></p>
+        <h3>[ICML 2018] Stochastic Video Generation with a Learned Prior <a
+                        href="https://arxiv.org/abs/1802.07687">[pdf]</a></h3>
+        <p><em>Emily Denton, Rob Fergus</em></p>
+        <h3>[ICLR 2018] Stochastic Variational Video Prediction <a href="https://arxiv.org/abs/1710.11252">[pdf]</a>
+        </h3>
+        <p><em>Mohammad Babaeizadeh, Chelsea Finn, Dumitru Erhan, Roy H. Campbell, Sergey Levine</em></p>
+        <h3>[CVPR 2019] Learning to Film from Professional Human Motion Videos <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Huang_Learning_to_Film_From_Professional_Human_Motion_Videos_CVPR_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Chong Huang, Chuan-En Lin, Zhenyu Yang, Yan Kong, Peng Chen, Xin Yang, Kwang-Ting Cheng</em></p>
+        <h3>[ICCV 2019] Improved Conditional VRNNs for Video Prediction <a
+                        href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Castrejon_Improved_Conditional_VRNNs_for_Video_Prediction_ICCV_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Lluis Castrejon, Nicolas Ballas, Aaron Courville</em></p>
+        <h3>[ICCV 2019] Compositional Video Prediction <a
+                        href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Ye_Compositional_Video_Prediction_ICCV_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Yufei Ye, Maneesh Singh, Abhinav Gupta, Shubham Tulsiani</em></p>
+        <h3>[NeurIPS 2019] High Fidelity Video Prediction with Large Stochastic Recurrent Neural Networks <a
+                        href="https://arxiv.org/abs/1911.01655">[pdf]</a></h3>
+        <p><em>Ruben Villegas, Arkanath Pathak, Harini Kannan, Dumitru Erhan, Quoc V. Le, Honglak Lee</em></p>
+        <h3>[ICML 2018] Hierarchical Long-term Video Prediction without Supervision <a
+                        href="https://arxiv.org/abs/1806.04768">[pdf]</a></h3>
+        <p><em>Nevan Wichers, Ruben Villegas, Dumitru Erhan, Honglak Lee</em></p>
+        <ul>
+                <li>visual analogy network (VAN), Deep visual analogy-making, NeurIPS 2015</li>
+        </ul>
+        <h3>[ICML 2017] Learning to Generate Long-term Future via Hierarchical Prediction <a
+                        href="https://arxiv.org/abs/1704.05831">[pdf]</a></h3>
+        <p><em>Ruben Villegas, Jimei Yang, Yuliang Zou, Sungryull Sohn, Xunyu Lin, Honglak Lee</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/10.png" alt=""></li>
+        </ul>
+        <h3>[ECCV 2018] Flow-Grounded Spatial-Temporal Video Prediction from Still Images <a
+                        href="https://arxiv.org/abs/1807.09755">[pdf]</a></h3>
+        <p><em>Yijun Li, Chen Fang, Jimei Yang, Zhaowen Wang, Xin Lu, Ming-Hsuan Yang</em></p>
+        <h3>[ICML 2020] Stochastic Latent Residual Video Prediction <a href="https://arxiv.org/pdf/2002.09219">[pdf]</a>
+        </h3>
+        <p><em>Jean-Yves Franceschi, Edouard Delasalles, Mickaël Chen, Sylvain Lamprier, Patrick Gallinari</em></p>
+        <h3>[CVPR 2020] Exploring Spatial-Temporal Multi-Frequency Analysis for High-Fidelity and Temporal-Consistency
+                Video
+                Prediction <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Jin_Exploring_Spatial-Temporal_Multi-Frequency_Analysis_for_High-Fidelity_and_Temporal-Consistency_Video_Prediction_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Beibei Jin, Yu Hu, Qiankun Tang, Jingyu Niu, Zhiping Shi, Yinhe Han, Xiaowei Li</em></p>
+        <h3>[CVPR 2020] G3AN: Disentangling Appearance and Motion for Video Generation <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Wang_G3AN_Disentangling_Appearance_and_Motion_for_Video_Generation_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Yaohui Wang, Piotr Bilinski, Francois Bremond, Antitza Dantcheva</em></p>
+        <h3>[CVPR 2020] Future Video Synthesis With Object Motion Prediction <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Wu_Future_Video_Synthesis_With_Object_Motion_Prediction_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Yue Wu, Rongrong Gao, Jaesik Park, Qifeng Chen</em></p>
+        <h3>[CVPR 2020] Non-Adversarial Video Synthesis With Learned Priors <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Aich_Non-Adversarial_Video_Synthesis_With_Learned_Priors_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Abhishek Aich, Akash Gupta, Rameswar Panda, Rakib Hyder, M. Salman Asif, Amit K. Roy-Chowdhury</em></p>
+        <h3>[CVPR 2020] Probabilistic Video Prediction From Noisy Data With a Posterior Confidence <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Wang_Probabilistic_Video_Prediction_From_Noisy_Data_With_a_Posterior_Confidence_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Yunbo Wang, Jiajun Wu, Mingsheng Long, Joshua B. Tenenbaum</em></p>
+        <h3>[CVPR 2020] Disentangling Physical Dynamics From Unknown Factors for Unsupervised Video Prediction <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Le_Guen_Disentangling_Physical_Dynamics_From_Unknown_Factors_for_Unsupervised_Video_Prediction_CVPR_2020_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Vincent Le Guen, Nicolas Thome</em></p>
+        <h3>Pose Transfer</h3>
+        <h3>[NeurIPS 2019] Unsupervised Keypoint Learning for Guiding Class-Conditional Video Prediction <a
+                        href="https://papers.nips.cc/paper/8637-unsupervised-keypoint-learning-for-guiding-class-conditional-video-prediction.pdf">[pdf]</a>
+        </h3>
+        <p><em>Yunji Kim, Seonghyeon Nam, In Cho, and Seon Joo Kim</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/8.PNG" alt=""></li>
+                <li>[NeurIPS 2018] Unsupervised learning of object landmarks through conditional image generation <a
+                                href="https://arxiv.org/abs/1806.07823">[pdf]</a></li>
+                <li><img src="../assets/fig_research_diary/9.png" alt=""></li>
+        </ul>
+        <h3>[ICCV 2019] Everybody Dance Now <a href="https://arxiv.org/abs/1808.07371">[pdf]</a></h3>
+        <p><em>Caroline Chan, Shiry Ginosar, Tinghui Zhou, Alexei A. Efros</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/12.PNG" alt=""></li>
+        </ul>
+        <h3>[CVPR 2018] Synthesizing Images of Humans in Unseen Poses <a
+                        href="https://arxiv.org/abs/1804.07739">[pdf]</a>
+        </h3>
+        <p><em>Guha Balakrishnan, Amy Zhao, Adrian V. Dalca, Fredo Durand, John Guttag</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/13.PNG" alt=""></li>
+        </ul>
+        <h3>[CVPR 2019] Animating Arbitrary Objects via Deep Motion Transfer <a
+                        href="https://arxiv.org/abs/1812.08861">[pdf]</a></h3>
+        <p><em>Aliaksandr Siarohin, Stéphane Lathuilière, Sergey Tulyakov, Elisa Ricci, Nicu Sebe</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/14.PNG" alt=""></li>
+        </ul>
+        <h3>[NeurIPS 2019] Few-shot Video-to-Video Synthesis <a
+                        href="https://papers.nips.cc/paper/8746-few-shot-video-to-video-synthesis.pdf">[pdf]</a></h3>
+        <p><em>Ting-Chun Wang, Ming-Yu Liu, Andrew Tao, Guilin Liu, Jan Kautz, Bryan Catanzaro</em></p>
+        <h3>[CVPR 2019] Dense Intrinsic Appearance Flow for Human Pose Transfer <a
+                        href="https://arxiv.org/abs/1903.11326">[pdf]</a></h3>
+        <p><em>Yining Li, Chen Huang, Chen Change Loy</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/15.PNG" alt=""></li>
+        </ul>
+        <h3>[ICCV 2019] Liquid Warping GAN: A Unified Framework for Human Motion Imitation, Appearance Transfer and
+                Novel
+                View Synthesis <a
+                        href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Liu_Liquid_Warping_GAN_A_Unified_Framework_for_Human_Motion_Imitation_ICCV_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Wen Liu, Zhixin Piao, Jie Min, Wenhan Luo, Lin Ma, Shenghua Gao</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/16.PNG" alt=""></li>
+                <li>The first body mesh recovery module will estimate the 3D mesh of \(I_s\) and \(I_r\), and render
+                        their
+                        correspondence maps, \(C_s\) and \(C_t\).</li>
+                <li>We calculate the transformation flow \(T \in \mathbb{R}^{H×W×2}\) by matching the correspondences
+                        between
+                        source correspondence map with its mesh face coordinates \(f_s\) and reference correspondence
+                        map. Here
+                        \(H×W\) is the size of image. Consequently, a front image \(I_{ft}\) and a masked background
+                        image
+                        \(I_{bg}\) are derived from masking the source image \(I_s\) based on \(C_s\). Finally, we warp
+                        the source
+                        image \(I_s\) by the transformation flow \(T\), and obtain the warped image \(I_{syn}\).</li>
+                <li>Correspondences: Each pixel of an IUV image refers to a body part index \(I\), and \((U, V)\)
+                        coordinates
+                        that map to a unique point on the body model surface.</li>
+        </ul>
+        <h3>[CVPR 2018] Unsupervised person image synthesis in arbitrary poses <a
+                        href="https://arxiv.org/abs/1809.10280">[pdf]</a></h3>
+        <p><em>Albert Pumarola, Antonio Agudo, Alberto Sanfeliu, Francesc Moreno-Noguer</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/17.PNG" alt=""></li>
+        </ul>
+        <h3>[ECCV 2018] Dense pose transfer <a href="https://arxiv.org/abs/1809.01995">[pdf]</a></h3>
+        <p><em>Natalia Neverova, Rıza Alp G¨uler, and Iasonas Kokkinos</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/18.PNG" alt=""></li>
+        </ul>
+        <h3>[NeurIPS 2017] Pose guided person image generation <a href="https://arxiv.org/abs/1705.09368">[pdf]</a></h3>
+        <p><em>Liqian Ma, Xu Jia, Qianru Sun, Bernt Schiele, Tinne Tuytelaars and Luc Van Gool</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/19.PNG" alt=""></li>
+        </ul>
+        <h3>[CVPR 2018] A variational u-net for conditional appearance and shape generation <a
+                        href="https://arxiv.org/abs/1804.04694">[pdf]</a></h3>
+        <p><em>Patrick Esser, Ekaterina Sutter, and Bj¨orn Ommer</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/20.PNG" alt=""></li>
+        </ul>
+        <h3>[CVPR 2018] Deformable gans for pose-based human image generation <a
+                        href="https://arxiv.org/abs/1801.00055">[pdf]</a></h3>
+        <p><em>Aliaksandr Siarohin, Enver Sangineto, Stphane Lathuilire, and Nicu Sebe</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/21.PNG" alt=""></li>
+        </ul>
+        <h3>[NeurIPS 2018] Soft-gated warping-gan for pose-guided person image synthesis <a
+                        href="https://arxiv.org/abs/1810.11610">[pdf]</a></h3>
+        <p><em>Haoye Dong, Xiaodan Liang, Ke Gong, Hanjiang Lai, Jia Zhu, and Jian Yin</em></p>
+        <h3>[NeurIPS 2015] Spatial transformer networks <a href="https://arxiv.org/abs/1506.02025">[pdf]</a></h3>
+        <p><em>Max Jaderberg, Karen Simonyan, Andrew Zisserman, and Koray Kavukcuoglu</em></p>
+        <ul>
+                <li>The combination of the localisation network, grid generator, and sampler form a spatial transformer.
+                </li>
+        </ul>
+        <p><a href="#contents">[back to top]</a></p>
+        <hr>
+        <h2>Representation learning</h2>
+        <h3>[ArXiv 2020] A Simple Framework for Contrastive Learning of Visual Representations <a
+                        href="https://arxiv.org/abs/2002.05709">[pdf]</a></h3>
+        <p><em>Ting Chen, Simon Kornblith, Mohammad Norouzi, Geoffrey Hinton</em></p>
+        <h3>[ICLR 2020] Contrastive Representation Distillation <a href="https://arxiv.org/abs/1910.10699">[pdf]</a>
+        </h3>
+        <p><em>Yonglong Tian, Dilip Krishnan, Phillip Isola</em></p>
+        <ul>
+                <li>Examples include distilling a large network into a smaller one, transferring knowledge from one
+                        sensory
+                        modality to a second, or ensembling a collection of models into a single estimator.
+                        <strong>Knowledge
+                                distillation, the standard approach to these problems, minimizes the KL divergence
+                                between the
+                                probabilistic outputs of a teacher and student network.</strong> We demonstrate that
+                        this objective
+                        ignores important structural knowledge of the teacher network. This motivates an alternative
+                        objective by
+                        which we train a student to capture significantly more information in the teacher’s
+                        representation of the
+                        data. We formulate this objective as contrastive learning. Experiments demonstrate that our
+                        resulting new
+                        objective outperforms knowledge distillation and other cutting-edge distillers on a variety of
+                        knowledge
+                        transfer tasks, including single model compression, ensemble distillation, and cross-modal
+                        transfer.</li>
+                <li>Motivation: Representational knowledge is structured – the dimensions exhibit complex
+                        interdependencies. The
+                        original KD objective introduced in (Hinton et al., 2015, Distilling the knowledge in a neural
+                        network)
+                        treats all dimensions as independent, conditioned on the input.</li>
+        </ul>
+        <h3>[ICLR 2020] Momentum Contrast for Unsupervised Visual Representation Learning <a
+                        href="https://arxiv.org/abs/1911.05722">[pdf]</a></h3>
+        <p><em>Kaiming He, Haoqi Fan, Yuxin Wu, Saining Xie, Ross Girshick</em></p>
+        <ul>
+                <li>From a perspective on contrastive learning as dictionary look-up, we build a dynamic dictionary with
+                        a queue
+                        and a moving-averaged encoder. This enables building a large and consistent dictionary
+                        on-the-fly that
+                        facilitates contrastive unsupervised learning. This suggests that the gap between unsupervised
+                        and
+                        supervised representation learning has been largely closed in many vision tasks.</li>
+                <li>The “keys” (tokens) in the dictionary are sampled from data (e.g., images or patches) and are
+                        represented by
+                        an encoder network. Unsupervised learning trains encoders to perform dictionary look-up: an
+                        encoded “query”
+                        should be similar to its matching key and dissimilar to others. Learning is formulated as
+                        minimizing a
+                        contrastive loss</li>
+                <li>contrastive learning: Dimensionality reduction by learning an invariant mapping, CVPR 2006</li>
+                <li><img src="../assets/fig_research_diary/1.PNG" alt=""></li>
+        </ul>
+        <h3>[ICLR 2019] Learning deep representations by mutual information estimation and maximization <a
+                        href="https://arxiv.org/abs/1808.06670">[pdf]</a></h3>
+        <p><em>R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Adam Trischler, and Yoshua
+                        Bengio</em>
+        </p>
+        <h3>[ICCV 2019] Rethinking ImageNet pre-training <a href="https://arxiv.org/abs/1811.08883">[pdf]</a></h3>
+        <p><em>Kaiming He, Ross Girshick, Piotr Dollár</em></p>
+        <h3>[NeurIPS] Learning Representations by Maximizing Mutual Information Across Views <a
+                        href="https://arxiv.org/abs/1906.00910">[pdf]</a></h3>
+        <p><em>Philip Bachman, R Devon Hjelm, William Buchwalter</em></p>
+        <h3>[arXiv 2019] Data-Efficient Image Recognition with Contrastive Predictive Coding <a
+                        href="https://arxiv.org/abs/1905.09272">[pdf]</a></h3>
+        <p><em>Olivier J. Hénaff, Aravind Srinivas, Jeffrey De Fauw, Ali Razavi, Carl Doersch, S. M. Ali Eslami, Aaron
+                        van
+                        den Oord</em></p>
+        <h3>[ICCV 2019] Local aggregation for unsupervised learning of visual embeddings <a
+                        href="https://arxiv.org/abs/1903.12355">[pdf]</a></h3>
+        <p><em>Chengxu Zhuang, Alex Lin Zhai, Daniel Yamins</em></p>
+        <h3>[CVPR 2019] Self-Supervised Representation Learning by Rotation Feature Decoupling <a
+                        href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Feng_Self-Supervised_Representation_Learning_by_Rotation_Feature_Decoupling_CVPR_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Zeyu Feng, Chang Xu, Dacheng Tao</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/3.PNG" alt=""></li>
+        </ul>
+        <h3>[CVPR 2018 spotlight] Unsupervised feature learning via non-parametric instance discrimination <a
+                        href="https://arxiv.org/pdf/1805.01978v1.pdf">[pdf]</a></h3>
+        <p><em>Zhirong Wu, Yuanjun Xiong, Stella Yu, and Dahua Lin</em></p>
+        <ul>
+                <li><img src="../assets/fig_research_diary/2.PNG" alt=""></li>
+                <li>noise constative estimation (NCE) and proximal regularization: \(J_{NCE}(\theta) = -E_{P_d}\big[\log
+                        h(i,
+                        \mathbf{v}_i^{(t-1)}) - \lambda |\mathbf{v}_i^{(t-1)}-\mathbf{v}_i^{(t)}|<em>2^2 \big] - m\cdot
+                                E</em>{P_n}\big[\log (1-h(i, \mathbf{v'}^{(t-1)}))\big]\). \(P_d\) means data
+                        distribution and \(P_n\)
+                        means noise distribution (uniform).</li>
+        </ul>
+        <h3>[NeurIPS 2014] Discriminative unsupervised feature learning with convolutional neural networks <a
+                        href="https://arxiv.org/abs/1406.6909">[pdf]</a></h3>
+        <p><em>Alexey Dosovitskiy, Philipp Fischer, Jost Tobias Springenberg, Martin Riedmiller, Thomas Brox</em></p>
+        <h3>[arXiv 2018] Representation learning with contrastive predictive coding <a
+                        href="https://arxiv.org/abs/1807.03748">[pdf]</a></h3>
+        <p><em>Aaron van den Oord, Yazhe Li, and Oriol Vinyals</em></p>
+        <p><a href="#contents">[back to top]</a></p>
+        <hr>
+        <h2>Others</h2>
+        <h3>[ICML 2020] Generalizing Convolutional Neural Networks for Equivariance to Lie Groups on Arbitrary
+                Continuous
+                Data <a href="https://arxiv.org/abs/2002.12880">[pd]</a></h3>
+        <p><em>Marc Finzi, Samuel Stanton, Pavel Izmailov, Andrew Gordon Wilson</em></p>
+        <h3>[ICML 2020] Training Binary Neural Networks through Learning with Noisy Supervision <a
+                        href="https://proceedings.icml.cc/static/paper_files/icml/2020/181-Paper.pdf">[pdf]</a></h3>
+        <p><em>Kai Han, Yunhe Wang, Yixing Xu, Chunjing Xu, Enhua Wu, Chang Xu</em></p>
+        <h3>[ICML 2020] Learning Flat Latent Manifolds with VAEs <a href="https://arxiv.org/abs/2002.04881">[pd]</a>
+        </h3>
+        <p><em>Nutan Chen, Alexej Klushyn, Francesco Ferroni, Justin Bayer, Patrick van der Smagt</em></p>
+        <h3>[CVPR 2018] Neural 3D Mesh Renderer <a href="https://arxiv.org/abs/1711.07566">[pdf]</a></h3>
+        <p><em>Hiroharu Kato, Yoshitaka Ushiku, Tatsuya Harada</em></p>
+        <ul>
+                <li>Therefore, in this work, we propose an approximate gradient for rasterization that enables the
+                        integration
+                        of rendering into neural networks.</li>
+                <li><img src="../assets/fig_research_diary/11.PNG" alt=""></li>
+        </ul>
+        <h3>[ICCV 2019] Deep Meta Metric Learning <a
+                        href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Chen_Deep_Meta_Metric_Learning_ICCV_2019_paper.pdf">[pdf]</a>
+        </h3>
+        <p><em>Guangyi Chen, Tianren Zhang, Jiwen Lu, Jie Zhou</em></p>
+        <h3>[AAAI 2020] Hybrid Graph Neural Networks for Crowd Counting <a
+                        href="https://arxiv.org/abs/2002.00092">[pdf]</a>
+        </h3>
+        <p><em>Ao Luo, Fan Yang, Xin Li, Dong Nie, Zhicheng Jiao, Shangchen Zhou, Hong Cheng</em></p>
+        <h3>[ICLR 2020] Inductive Matrix Completion Based on Graph Neural Networks <a
+                        href="https://arxiv.org/abs/1904.12058">[pdf]</a></h3>
+        <p><em>Muhan Zhang, Yixin Chen</em></p>
+        <h3>[NeurIPS] Quaternion Knowledge Graph Embeddings <a href="https://arxiv.org/abs/1904.10281">[pdf]</a></h3>
+        <p><em>Shuai Zhang, Yi Tay, Lina Yao, Qi Liu</em></p>
+        <h3>[ICML 2019] EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks <a
+                        href="https://arxiv.org/abs/1905.11946">[pdf]</a></h3>
+        <p><em>Mingxing Tan, Quoc V. Le</em></p>
+        <h3>[ICLR 2020] Geom-GCN: Geometric Graph Convolutional Networks <a
+                        href="https://arxiv.org/abs/2002.05287">[pdf]</a></h3>
+        <p><em>Hongbin Pei, Bingzhe Wei, Kevin Chen-Chuan Chang, Yu Lei, Bo Yang</em></p>
+        <ul>
+                <li>Message-passing neural networks (MPNNs) have been successfully applied to representation learning on
+                        graphs
+                        in a variety of real-world applications. However, two fundamental weaknesses of MPNNs’
+                        aggregators limit
+                        their ability to represent graph-structured data: <strong>losing the structural information of
+                                nodes in
+                                neighborhoods and lacking the ability to capture long-range dependencies in
+                                disassortative
+                                graphs</strong>. Few studies have noticed the weaknesses from different perspectives.
+                        From the
+                        observations on classical neural network and network geometry, we propose a novel geometric
+                        aggregation
+                        scheme for graph neural networks to overcome the two weaknesses. The behind basic idea is the
+                        aggregation on
+                        a graph can benefit from a continuous space underlying the graph. The proposed aggregation
+                        scheme is
+                        permutation-invariant and consists of three modules, node embedding, structural neighborhood,
+                        and bi-level
+                        aggregation.</li>
+        </ul>
+        <h3>[NeurIPS 2019] General E(2) - Equivariant Steerable CNNs <a
+                        href="https://arxiv.org/abs/1911.08251">[pdf]</a>
+        </h3>
+        <p><em>Maurice Weiler, Gabriele Cesa</em></p>
+        <h3>[CVPR 2020] DualConvMesh-Net: Joint Geodesic and Euclidean Convolutions on 3D Meshes <a
+                        href="https://arxiv.org/abs/2004.01002">[pdf]</a></h3>
+        <p><em>Jonas Schult, Francis Engelmann, Theodora Kontogianni, Bastian Leibe</em></p>
+        <h3>[SIGGRAPH 2020] CNNs on Surfaces using Rotation-Equivariant Features <a
+                        href="https://arxiv.org/abs/2006.01570">[pdf]</a></h3>
+        <p><em>Ruben Wiersma, Elmar Eisemann, Klaus Hildebrandt</em></p>
+        <h3>Accelerating 3D Deep Learning with PyTorch3D <a href="https://arxiv.org/pdf/2007.08501">[pdf]</a></h3>
+        <p><em>Nikhila Ravi, Jeremy Reizenstein, David Novotny, Taylor Gordon, Wan-Yen Lo, Justin Johnson, Georgia
+                        Gkioxari</em></p>
+        <h3>On the Continuity of Rotation Representations in Neural Networks <a
+                        href="https://arxiv.org/abs/1812.07035">[pdf]</a></h3>
+        <p><em>Yi Zhou, Connelly Barnes, Jingwan Lu, Jimei Yang, Hao Li</em></p>
+        <h3>[CVPR 2020] Adversarial Examples Improve Image Recognition <a
+                        href="https://arxiv.org/abs/1911.09665">[pdf]</a>
+        </h3>
+        <p><em>Cihang Xie, Mingxing Tan, Boqing Gong, Jiang Wang, Alan Yuille, Quoc V. Le</em></p>
+        <h3>[NeurIPS 2020] A Closer Look at Accuracy vs. Robustness <a href="https://arxiv.org/abs/2003.02460">[pdf]</a>
+        </h3>
+        <p><em>Yao-Yuan Yang, Cyrus Rashtchian, Hongyang Zhang, Ruslan Salakhutdinov, Kamalika Chaudhuri</em></p>
+        <h3>[ICML 2019] EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks <a
+                        href="https://arxiv.org/abs/1905.11946">[pdf]</a></h3>
+        <p><em>Mingxing Tan, Quoc V. Le</em></p>
+        <p><a href="#contents">[back to top]</a></p>
+        <hr>
+        <h2>Transformer</h2>
+        <h3>Spatially Sparse Convolution Library <a href="https://github.com/traveller59/spconv">[link]</a></h3>
+        <h3>Submanifold Sparse Convolutional Networks <a
+                        href="https://github.com/facebookresearch/SparseConvNet">[link]</a>
+        </h3>
+        <h3>[ICCV 2021] Voxel Transformer for 3D Object Detection <a
+                        href="https://github.com/PointsCoder/VOTR">[pdf]</a>
+        </h3>
+        <p><em>Jiageng Mao, Yujing Xue, Minzhe Niu, Haoyue Bai, Jiashi Feng, Xiaodan Liang, Hang Xu, Chunjing Xu</em>
+        </p>
+        <ul>
+                <li>we propose the sparse voxel module and the submanifold voxel module, which can operate on the empty
+                        and
+                        non-empty voxel positions effectively.</li>
+        </ul>
+        <h3>[ArXiv 2021] A Survey on Vision Transformer <a href="https://arxiv.org/abs/2012.12556">[pdf]</a></h3>
+        <p><em>Kai Han, Yunhe Wang, Hanting Chen, Xinghao Chen, Jianyuan Guo, Zhenhua Liu, Yehui Tang, An Xiao, Chunjing
+                        Xu,
+                        Yixing Xu, Zhaohui Yang, Yiman Zhang, Dacheng Tao</em></p>
+        <h3>[ICCV 2021] Swin Transformer: Hierarchical Vision Transformer using Shifted Windows <a
+                        href="https://arxiv.org/abs/2103.14030">[pdf]</a></h3>
+        <p><em>Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo</em></p>
+        <ul>
+                <li><img src="../assets/fig_transformer/12.png" alt=""></li>
+                <li>Relative position bias</li>
+        </ul>
+        <h3>[CVPR 2021] Bottleneck Transformers for Visual Recognition <a
+                        href="https://arxiv.org/abs/2101.11605">[pdf]</a>
+        </h3>
+        <p><em>Aravind Srinivas, Tsung-Yi Lin, Niki Parmar, Jonathon Shlens, Pieter Abbeel, Ashish Vaswani</em></p>
+        <h3>[ArXiv 2021] 3D Human Pose Estimation with Spatial and Temporal Transformers <a
+                        href="https://arxiv.org/pdf/2103.10455.pdf">[pdf]</a></h3>
+        <p><em>Ce Zheng, Sijie Zhu, Matias Mendieta, Taojiannan Yang, Chen Chen, Zhengming Ding</em></p>
+        <h3>[NeurIPS 2021] Post-Training Quantization for Vision Transformer <a
+                        href="https://arxiv.org/abs/2106.14156">[pdf]</a></h3>
+        <p><em>Zhenhua Liu, Yunhe Wang, Kai Han, Siwei Ma, Wen Gao</em></p>
+        <h3>[CVPR 2020] LiDAR-based Online 3D Video Object Detection with Graph-based Message Passing and Spatiotemporal
+                Transformer Attention <a href="https://arxiv.org/abs/2004.01389">[pdf]</a></h3>
+        <p><em>Junbo Yin, Jianbing Shen, Chenye Guan, Dingfu Zhou, Ruigang Yang</em></p>
+        <h3>[ArXiv 2021] Mesh Graphormer <a href="https://arxiv.org/pdf/2104.00272.pdf">[pdf]</a></h3>
+        <p><em>Kevin Lin, Lijuan Wang, Zicheng Liu</em></p>
+        <ul>
+                <li><img src="../assets/fig_transformer/8.png" alt=""></li>
+        </ul>
+        <h3>[CVPR 2021] End-to-end human pose and mesh reconstruction with transformers <a
+                        href="https://arxiv.org/pdf/2012.09760.pdf">[pdf]</a></h3>
+        <p><em>Kevin Lin, Lijuan Wang, Zicheng Liu</em></p>
+        <ul>
+                <li><img src="../assets/fig_transformer/7.png" alt=""></li>
+        </ul>
+        <h3>[ECCV 2020] Non-autoregressive structured modeling for 3d hand pose estimation <a
+                        href="https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123700018.pdf">[pdf]</a></h3>
+        <p><em>Lin Huang, Jianchao Tan, Ji Liu, and Junsong Yuan</em></p>
+        <ul>
+                <li><img src="../assets/fig_transformer/6.png" alt=""></li>
+        </ul>
+        <h3>[ArXiv 2021] CvT: Introducing Convolutions to Vision Transformers <a
+                        href="https://arxiv.org/abs/2103.15808.pdf">[pdf]</a></h3>
+        <p><em>Haiping Wu, Bin Xiao, Noel Codella, Mengchen Liu, Xiyang Dai, Lu Yuan, Lei Zhang</em></p>
+        <ul>
+                <li><img src="../assets/fig_transformer/9.png" alt=""></li>
+                <li><img src="../assets/fig_transformer/10.png" alt=""></li>
+        </ul>
+        <h3>[ICCV 2021] Point transformer <a href="https://arxiv.org/pdf/2012.09164.pdf">[pdf]</a></h3>
+        <p><em>Hengshuang Zhao, Li Jiang, Jiaya Jia, Philip Torr, Vladlen Koltun</em></p>
+        <ul>
+                <li><img src="../assets/fig_transformer/11.png" alt=""></li>
+        </ul>
+        <h3>[CVPR 2021] End-to-end video instance segmentation with transformers <a
+                        href="https://arxiv.org/pdf/2011.14503.pdf">[pdf]</a></h3>
+        <p><em>Yuqing Wang, Zhaoliang Xu, Xinlong Wang, Chunhua Shen, Baoshan Cheng, Hao Shen, Huaxia Xia</em></p>
+        <ul>
+                <li><img src="../assets/fig_transformer/5.png" alt=""></li>
+        </ul>
+        <h3>[ArXiv 2021] A Survey on Visual Transformer <a href="https://arxiv.org/abs/2012.12556.pdf">[pdf]</a></h3>
+        <p><em>Kai Han, Yunhe Wang, Hanting Chen, Xinghao Chen, Jianyuan Guo, Zhenhua Liu, Yehui Tang, An Xiao, Chunjing
+                        Xu,
+                        Yixing Xu, Zhaohui Yang, Yiman Zhang, Dacheng Tao</em></p>
+        <h3>[AAAI 2021] Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting <a
+                        href="https://arxiv.org/abs/2012.07436.pdf">[pdf]</a></h3>
+        <p><em>Haoyi Zhou, Shanghang Zhang, Jieqi Peng, Shuai Zhang, Jianxin Li, Hui Xiong, Wancai Zhang</em></p>
+        <h3>[ECCV 2020] End-to-end object detection with transformers <a
+                        href="https://arxiv.org/abs/2005.12872.pdf">[pdf]</a></h3>
+        <p><em>Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, Sergey
+                        Zagoruyko</em>
+        </p>
+        <ul>
+                <li><img src="../assets/fig_transformer/4.png" alt=""></li>
+        </ul>
+        <h3>[CVPR 2020] Actor-Transformers for Group Activity Recognition <a
+                        href="https://arxiv.org/pdf/2003.12737.pdf">[pdf]</a></h3>
+        <p><em>Kirill Gavrilyuk, Ryan Sanford, Mehrsan Javan, Cees G. M. Snoek</em></p>
+        <h3>[ICLR 2021] An image is worth 16x16 words: Transformers for image recognition at scale <a
+                        href="https://openreview.net/pdf?id=YicbFdNTTy">[pdf]</a></h3>
+        <p><em>Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas
+                        Unterthiner,
+                        Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil
+                        Houlsby</em></p>
+        <ul>
+                <li><img src="../assets/fig_transformer/3.png" alt=""></li>
+        </ul>
+        <h3>[ICML 2020] Generative pretraining from pixels <a
+                        href="https://cdn.openai.com/papers/Generative_Pretraining_from_Pixels_V2.pdf">[pdf]</a></h3>
+        <p><em>Mark Chen, Alec Radford, Rewon Child, Jeffrey Wu, Heewoo Jun, David Luan, and Ilya Sutskever</em></p>
+        <ul>
+                <li><img src="../assets/fig_transformer/2.png" alt=""></li>
+        </ul>
+        <h3>[ArXiv 2020] Visual Transformers: Token-based Image Representation and Processing for Computer Vision <a
+                        href="https://arxiv.org/pdf/2006.03677.pdf">[pdf]</a></h3>
+        <p><em>Bichen Wu, Chenfeng Xu, Xiaoliang Dai, Alvin Wan, Peizhao Zhang, Zhicheng Yan, Masayoshi Tomizuka, Joseph
+                        Gonzalez, Kurt Keutzer, Peter Vajda</em></p>
+        <ul>
+                <li>semantic segmentation with transformer</li>
+                <li><img src="../assets/fig_transformer/1.png" alt=""></li>
+        </ul>
+        <h3>[ICML 2018] Image transformer <a href="https://arxiv.org/pdf/1802.05751.pdf">[pdf]</a></h3>
+        <p><em>Niki Parmar, Ashish Vaswani, Jakob Uszkoreit, Łukasz Kaiser, Noam Shazeer, Alexander Ku, Dustin Tran</em>
+        </p>
+        <p><a href="#contents">[back to top]</a></p>
+        <hr>
 
 </body>
