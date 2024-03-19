@@ -69,7 +69,8 @@
     - 选择安装[miniconda](https://blog.csdn.net/m0_73625420/article/details/128313467)，较为节省空间。然后使用conda创建若干个虚拟环境。
     - conda与pip安装模块的区别：conda能够自动匹配合适的模块版本，pip只默认安装最新的模块版本。所以尽量使用conda install来安装模块，如果没有比如opencv-python，可以再用pip install。
     - conda安装torch时，可以选择对应的cuda版本，因为conda在安装torch时会同时安装cuda，所以安装时选择好对应的cuda版本。其次，pytorch3d的安装也可以通过conda，从而避免版本冲突导致的无法使用的问题。而pip是没法做到这一点的。
-  - docker
+  - docker 实验室暂时还未启用，之前在企业用过，感觉非常好用，完全不用担心环境配置的问题
+  - 补充内容可以参考 [设备配置](https://pengsida.notion.site/59569d7b66954578b21bf1dc6ea35776)。
 - **Latex相关**
   - **Overleaf在线编辑**。写论文通常会使用latex，通常会议、期刊或毕业论文已经提供了对应的模板，写论文需要做的就是往模板里添加自己的内容。
   - **公式编写**。可以参考这个[指导教程](https://zhuanlan.zhihu.com/p/570153914)，并在overleaf上自己创建一个项目尝试编辑公式。主要用到的有：各种符号，特殊字符、上标，下标，分式，多行公式并列等。
@@ -82,39 +83,69 @@
 **<u>写文档是一个非常有必要的习惯，是对平时工作的一个记录和积累，在需要用到的时候可以给你提供便利，磨刀不误砍柴功，例如将来某个时候需要参考、做汇报时需要素材、需要经常解决常见问题等等。</u>**
 
 - **课程学习文档**
-  - 样例来自于我们组的同学：[随机过程]()、[机器学习]()
+  - 样例来自于我们组的同学：[随机过程](https://github.com/JimmyZou/project_page_example/blob/main/notes/stochastic%20process.md)、[机器学习](https://github.com/JimmyZou/project_page_example/blob/main/notes/machine_learning.md)。
+  - 如果Latex公式没法在网页上显示，请安装chrome的MathJax插件或者在vscode中打开。
   - 如果文档太长，可以在markdown中设置目录跳转，如下图所示：
     - <img src="../assets/fig_guidance/markdown目录.png" alt="alt text" style="width:400px" />
     - <img src="../assets/fig_guidance/markdown目录2.png" alt="alt text" style="width:200px" />
-  - 但是发现转成html之后，目录跳转功能没法使用，暂未解决。**（解决有奖！）**
+  - 但是发现转成html之后，目录跳转功能没法使用，暂未解决。（**解决有奖！**）
 - **论文阅读文档**
+  - 样例来自于我自己：[论文阅读记录](https://jimmyzou.github.io/src/blog_human_shape_recon.html)。
+  - 用markdown中记录论文的重要内容，[上述对应的md文件](https://github.com/JimmyZou/JimmyZou.github.io/blob/main/src/blog_human_shape_recon.md)，包括出处、标题、作者、PDF链接、代码链接、摘要、pipeline图。大部分内容在arXiv的论文页（非pdf页）就有。
+  - 另外一种方式，在看论文的时候，把部分画图或展现方式非常有借鉴意义的部分截取下来，总结在一个PPT里。之后自己写论文的时候，能够借鉴别人的优点来展现自己的工作。Credit to [Wei Ji](https://scholar.google.com/citations?user=G4uCKHcAAAAJ&hl=en)
 - **实验日志文档**
+  - 样例来自于我们组的同学：[实验文档1](https://github.com/JimmyZou/project_page_example/blob/main/notes/audio2text.md)、[实验文档2](https://github.com/JimmyZou/project_page_example/blob/main/notes/motion_diffusion_model.md)。
+  - 主要用于记录实验中遇到的问题，这样下次自己或者同学遇到相同问题的时候，能迅速提供参考。
 
 #### 3. PPT
 
-- 画论文中的插图
-- 做汇报
-  - 如何做学术报告幻灯片 [[Link]](https://pengsida.notion.site/slides-810f02670691444f8c94cc3d5b76dcbc)
+- **画论文中的插图**
+  - PPT里非常好用的三个技巧：1. 组合不同图形，实现大图中不同小模块的构建； 2. 手动输入模块的宽度和高度，能够迅速保证不同模块的大小一致； 3. 自动对齐，选中不同的（组合）模块，左右上下居中对齐都可以（不要再用鼠标对齐了！）。
+  - 部分比较好看的模块，主要通过“小模块叠加+3D视图+旋转”构造，需要花时间在图形设置中尝试不同参数看效果。
+  - PPT中的额外插件：OneKey Lite，ThreeD等。（暂未尝试，用过的同学，**反馈有奖！**）
+- **实验室日常科研工作汇报**
+  - **汇报PPT的大忌**（重要性按顺序递减）：前后幻灯片格式不统一（图片或文字区域来回跳跃）、大段文字内容（无法抓住重点）或文字太小（无法突出重点）、包含复杂的图（无法明白哪个地方是重点）、废话多（3个词可以概括的内容写一整句话）
+  - **做PPT的目的**：希望**用PPT更加直观、简洁展现自己想要表达的内容**，而不是把PPT作为一个笔记本给观众看。
+  - **做PPT的要点**：与上述大忌对应
+    - **前后幻灯片格式一致**：标题部分、文字内容、插图在每一页幻灯片中的位置尽量固定，字号和字体一致，空间允许的情况下尽量用**更大号**的字体。
+    - **文字内容要简洁**：文字内容尽量不要用一整句话，把**关键词**总结出来，与本页幻灯片的目的不相关的内容去掉。不同层次的内容要用能轻易分别不同大小的字号或字体，要尽量突出内容层次。更加详细的内容可以放在最后的附录，需要的时候才展示。
+    - **插图的展示**：插图通常有两类作用，展示方法流程和展示视觉结果。对于方法流程，可以分别给每一部分加上注释，强调图中该**区域的重点**。有些部分不需要过多解释的话就跳过这一部分，将重点部分标出，并用简短文字强调特点。对于视觉结果，需要把需要突出对比的部分放大或标出，然后用简短的文字解释哪里不好。插图较为灵活，所以简短文字的位置可以比较自由。
+      - <img src="../assets/fig_guidance/ppt插图.png" alt="alt text" style="width:600px" />
+    - **插入视频的展示**：一定要用PPT里内置的插入视频导入，```ctrl c```和```ctrl v```并不会真正导入PPT，换一台电脑就找不到视频，无法播放。
+- **学术报告幻灯片**
+  - 参考 [如何做学术报告幻灯片](https://pengsida.notion.site/slides-810f02670691444f8c94cc3d5b76dcbc)。
 
 #### 4. 课程
 
+参考 [入门3D Vision的科研](https://github.com/pengsida/learning_research/blob/master/getting_started_in_research.md)
+
+- 机器学习
+  - 西瓜书 周志华老师著
+  - 多伦多大学 [机器学习课程1](https://www.cs.toronto.edu/~rahulgk/courses/csc311_f22/index.html)，[机器学习课程2](https://erdogdu.github.io/csc412/)
+- 计算机视觉
+  - 斯坦福大学 [计算机视觉与三维重建](https://web.stanford.edu/class/cs231a/) [深度学习与计算机视觉](http://cs231n.stanford.edu/)
+  - 图宾根大学 [三维计算机视觉](https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/autonomous-vision/lectures/computer-vision/)
+- 计算机图形学
+  - 如果对传统图形学的知识感兴趣，还需要看[GAMES101-现代计算机图形学入门](https://games-cn.org/intro-graphics/)、[GAMES202-高质量实时渲染](https://sites.cs.ucsb.edu/~lingqi/teaching/games202.html)（闫令琪老师开的课，讲得特别好）。
+  - 如果对motion synthesis/computer animation感兴趣，还需要看[GAMES105-计算机角色动画基础](https://games-105.github.io/)（刘利斌老师开的课，讲得特别好）。
+
 #### 5. 英语
+
+- **主要依靠平时积累**：科研中用到的词汇比较有限（专有名词或概念除外），句型和表达也比较有限。所以如果英语不算好的同学，建议在看论文的过程中，积累不认识的单词到文档中或借助在线翻译软件（有道之类的）。可能刚开始阅读英文论文速度较慢，但是需要坚持锻炼和记忆。即使像我这样没有语言天赋的人也能做到，虽然当年学英语的过程实在是太痛苦了。
 
 ---
 ### 培养科研能力 research capability
 
-科研能力
+博士生应该具有的能力、如何锻炼这些能力、如何做科研项目：[参考1](https://github.com/pengsida/learning_research/blob/master/getting_advanced_in_research.md)[1]，[参考2](https://pengsida.notion.site/research-project-b43507ef26d044bd888ac29f4736e116)[1]。
 
-入门3D Vision的科研[[Link]](https://github.com/pengsida/learning_research/blob/master/getting_started_in_research.md)
-
-博士生应该具有的能力、如何锻炼这些能力、如何做科研项目[[Link]](https://github.com/pengsida/learning_research/blob/master/getting_advanced_in_research.md)[[link]](https://pengsida.notion.site/research-project-b43507ef26d044bd888ac29f4736e116)
+未完待续...
 
 ---
 ### 四、论文撰写 paper writing
 
-论文写作模板[[Link]](https://pengsida.notion.site/c1a22465a0fa4b15a12985223916048e)
+论文写作模板：[参考](https://pengsida.notion.site/c1a22465a0fa4b15a12985223916048e)[1]。
 
-
+未完待续...
 
 ---
 ### 参考文档 Reference
