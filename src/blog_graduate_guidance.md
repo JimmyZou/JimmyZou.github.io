@@ -1,9 +1,32 @@
 ## 博士生成长之路 Path to A Senior PhD
+
+---
+### Contents
+
+- [博士生成长之路 Path to A Senior PhD](#博士生成长之路-path-to-a-senior-phd)
+  - [Contents](#contents)
+  - [欢迎大家补充和交流](#欢迎大家补充和交流)
+  - [动机 Motivation](#动机-motivation)
+    - [“要不要读博士”，是一个非常**重要**和**严肃**的问题。](#要不要读博士是一个非常重要和严肃的问题)
+    - [1. 我的性格和能力适合读博士？](#1-我的性格和能力适合读博士)
+    - [2. 我读博士是为了什么？](#2-我读博士是为了什么)
+    - [3. 我能接受最坏的结果吗？](#3-我能接受最坏的结果吗)
+    - [4. 如果你看到这里还没有被我劝退，那么恭喜你，你已经成功迈出了第一步！](#4-如果你看到这里还没有被我劝退那么恭喜你你已经成功迈出了第一步)
+  - [科研必备技能 Research Skills](#科研必备技能-research-skills)
+    - [1. 代码相关](#1-代码相关)
+    - [2. 文档](#2-文档)
+    - [3. PPT](#3-ppt)
+    - [4. 课程](#4-课程)
+    - [5. 英语](#5-英语)
+  - [培养科研能力 Research Capability](#培养科研能力-research-capability)
+  - [论文撰写 Paper Writing](#论文撰写-paper-writing)
+  - [参考文档 Reference](#参考文档-reference)
+
 ---
 ### 欢迎大家补充和交流
 
 ---
-### 一、动机 motivation
+### 动机 Motivation
 
 ---
 
@@ -43,8 +66,10 @@
 
 #### 4. 如果你看到这里还没有被我劝退，那么恭喜你，你已经成功迈出了第一步！
 
+[[回到目录]](#contents)
+
 ---
-### 二、科研必备技能 research skills
+### 科研必备技能 Research Skills
 
 #### 1. 代码相关
 
@@ -133,21 +158,30 @@
 
 - **主要依靠平时积累**：科研中用到的词汇比较有限（专有名词或概念除外），句型和表达也比较有限。所以如果英语不算好的同学，建议在看论文的过程中，积累不认识的单词到文档中或借助在线翻译软件（有道之类的）。可能刚开始阅读英文论文速度较慢，但是需要坚持锻炼和记忆。即使像我这样没有语言天赋的人也能做到，虽然当年学英语的过程实在是太痛苦了。
 
+
+[[回到目录]](#contents)
+
 ---
-### 培养科研能力 research capability
+### 培养科研能力 Research Capability
 
 博士生应该具有的能力、如何锻炼这些能力、如何做科研项目：[参考1](https://github.com/pengsida/learning_research/blob/master/getting_advanced_in_research.md)[1]，[参考2](https://pengsida.notion.site/research-project-b43507ef26d044bd888ac29f4736e116)[1]。
 
 未完待续...
 
+[[回到目录]](#contents)
+
 ---
-### 四、论文撰写 paper writing
+### 论文撰写 Paper Writing
 
 论文写作模板：[参考](https://pengsida.notion.site/c1a22465a0fa4b15a12985223916048e)[1]。
 
 未完待续...
 
+[[回到目录]](#contents)
+
 ---
 ### 参考文档 Reference
 [1] [Learning Research by Sida Peng from ZJU](https://github.com/pengsida/learning_research)
+
+[[回到目录]](#contents)
 
