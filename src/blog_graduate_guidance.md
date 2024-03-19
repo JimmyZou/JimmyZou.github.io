@@ -1,10 +1,10 @@
 ## 博士生成长之路 Path to A Senior PhD
 
 ---
-### Contents
+### 目录
 
 - [博士生成长之路 Path to A Senior PhD](#博士生成长之路-path-to-a-senior-phd)
-  - [Contents](#contents)
+  - [目录](#目录)
   - [欢迎大家补充和交流](#欢迎大家补充和交流)
   - [动机 Motivation](#动机-motivation)
     - [“要不要读博士”，是一个非常**重要**和**严肃**的问题。](#要不要读博士是一个非常重要和严肃的问题)
@@ -12,15 +12,19 @@
     - [2. 我读博士是为了什么？](#2-我读博士是为了什么)
     - [3. 我能接受最坏的结果吗？](#3-我能接受最坏的结果吗)
     - [4. 如果你看到这里还没有被我劝退，那么恭喜你，你已经成功迈出了第一步！](#4-如果你看到这里还没有被我劝退那么恭喜你你已经成功迈出了第一步)
+    - [\[回到目录\]](#回到目录)
   - [科研必备技能 Research Skills](#科研必备技能-research-skills)
     - [1. 代码相关](#1-代码相关)
     - [2. 文档](#2-文档)
     - [3. PPT](#3-ppt)
     - [4. 课程](#4-课程)
     - [5. 英语](#5-英语)
+    - [\[回到目录\]](#回到目录-1)
   - [培养科研能力 Research Capability](#培养科研能力-research-capability)
+    - [\[回到目录\]](#回到目录-2)
   - [论文撰写 Paper Writing](#论文撰写-paper-writing)
   - [参考文档 Reference](#参考文档-reference)
+    - [\[回到目录\]](#回到目录-3)
 
 ---
 ### 欢迎大家补充和交流
@@ -66,7 +70,7 @@
 
 #### 4. 如果你看到这里还没有被我劝退，那么恭喜你，你已经成功迈出了第一步！
 
-[[回到目录]](#contents)
+#### [[回到目录]](#目录)
 
 ---
 ### 科研必备技能 Research Skills
@@ -113,7 +117,7 @@
   - 如果文档太长，可以在markdown中设置目录跳转，如下图所示：
     - <img src="../assets/fig_guidance/markdown目录.png" alt="alt text" style="width:400px" />
     - <img src="../assets/fig_guidance/markdown目录2.png" alt="alt text" style="width:200px" />
-  - 但是发现转成html之后，目录跳转功能没法使用，暂未解决。（**解决有奖！**）
+  - 但是发现转成html之后，目录跳转功能没法顺利转换，需要手动在html中设置。（**解决有奖！**）
 - **论文阅读文档**
   - 样例来自于我自己：[论文阅读记录](https://jimmyzou.github.io/src/blog_human_shape_recon.html)。
   - 用markdown中记录论文的重要内容，[上述对应的md文件](https://github.com/JimmyZou/JimmyZou.github.io/blob/main/src/blog_human_shape_recon.md)，包括出处、标题、作者、PDF链接、代码链接、摘要、pipeline图。大部分内容在arXiv的论文页（非pdf页）就有。
@@ -159,7 +163,7 @@
 - **主要依靠平时积累**：科研中用到的词汇比较有限（专有名词或概念除外），句型和表达也比较有限。所以如果英语不算好的同学，建议在看论文的过程中，积累不认识的单词到文档中或借助在线翻译软件（有道之类的）。可能刚开始阅读英文论文速度较慢，但是需要坚持锻炼和记忆。即使像我这样没有语言天赋的人也能做到，虽然当年学英语的过程实在是太痛苦了。
 
 
-[[回到目录]](#contents)
+#### [[回到目录]](#目录)
 
 ---
 ### 培养科研能力 Research Capability
@@ -168,7 +172,7 @@
 
 未完待续...
 
-[[回到目录]](#contents)
+#### [[回到目录]](#目录)
 
 ---
 ### 论文撰写 Paper Writing
@@ -177,11 +181,11 @@
 
 未完待续...
 
-[[回到目录]](#contents)
+[[回到目录]](#目录)
 
 ---
 ### 参考文档 Reference
 [1] [Learning Research by Sida Peng from ZJU](https://github.com/pengsida/learning_research)
 
-[[回到目录]](#contents)
+#### [[回到目录]](#目录)
 
