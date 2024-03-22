@@ -6,6 +6,7 @@
  - [2D Generation](#2d-generation)
  - [3D Generation](#3d-generation)
  - [Other Interesting Works](#other-interesting-works)
+ - [Audio Related Notes](#audio-related-notes)
 
 ---
 ## Fundation Models
@@ -108,6 +109,11 @@ _Lijun Yu, Yong Cheng, Zhiruo Wang, Vivek Kumar, Wolfgang Macherey, Yanping Huan
 ### [CVPR 2023] DynIBaR: Neural Dynamic Image-Based Rendering [[pdf]](https://arxiv.org/abs/2211.11082) [[project]](https://blog.research.google/2023/09/dynibar-space-time-view-synthesis-from.html)
 _Zhengqi Li, Qianqian Wang, Forrester Cole, Richard Tucker, Noah Snavely_
 
+
+### [arXiv 2024] Explorative Inbetweening of Time and Space [[pdf]](https://arxiv.org/pdf/2403.14611.pdf)
+_Haiwen Feng, Zheng Ding, Zhihao Xia, Simon Niklaus, Victoria Abrevaya, Michael J. Black1, Xuaner Zhang_
+- ![](../assets/fig_generative_models/26.png)
+
 ---
 ## 3D Generation
 
@@ -147,6 +153,33 @@ _Amit Raj, Srinivas Kaza, Ben Poole, Michael Niemeyer, Nataniel Ruiz, Ben Milden
 - ![](../assets/fig_generative_models/23.png)
 - ![](../assets/fig_generative_models/24.png)
 
+### [arXiv 2024] Gaussian Frosting: Editable Complex Radiance Fields with Real-Time Rendering [[pdf]](https://arxiv.org/pdf/2403.14554.pdf)
+_Antoine Guédon, Vincent Lepetit_
+- ![](../assets/fig_generative_models/25.png)
+
+### [arXiv 2024] GRM: Large Gaussian Reconstruction Model for Efficient 3D Reconstruction and Generation [[pdf]](https://arxiv.org/pdf/2403.14621.pdf)
+_Yinghao Xu, Zifan Shi, Wang Yifan, Hansheng Chen, Ceyuan Yang, Sida Peng, Yujun Shen, Gordon Wetzstein_
+- ![](../assets/fig_generative_models/26.png)
+
+### [arXiv 2024] UV Gaussians: Joint Learning of Mesh Deformation and Gaussian Textures for Human Avatar Modeling
+_Yujiao Jiang, Qingmin Liao, Xiaoyu Li, Li Ma, Qi Zhang, Chaopeng Zhang, Zongqing Lu, Ying Shan_
+- ![](../assets/fig_generative_models/28.png)
+
+### [arXiv 2024] 3D-VLA: A 3D Vision-Language-Action Generative World Model [[pdf]](https://arxiv.org/abs/2403.09631)
+_Haoyu Zhen, Xiaowen Qiu, Peihao Chen, Jincheng Yang, Xin Yan, Yilun Du, Yining Hong, Chuang Gan_
+- To this end, we propose 3D-VLA by introducing a new family of embodied foundation models that seamlessly link 3D perception, reasoning, and action through a generative world model. Specifically, 3D-VLA is built on top of a 3D-based large language model (LLM), and a set of interaction tokens is introduced to engage with the embodied environment. Furthermore, to inject generation abilities into the model, we train a series of embodied diffusion models and align them into the LLM for predicting the goal images and point clouds. To train our 3D-VLA, we curate a large-scale 3D embodied instruction dataset by extracting vast 3D-related information from existing robotics datasets.
+- ![](../assets/fig_generative_models/29.png)
+
+### [arXiv 2024] Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation [[pdf]](https://arxiv.org/abs/2403.04436)
+_Tairan He, Zhengyi Luo, Wenli Xiao, Chong Zhang, Kris Kitani, Changliu Liu, Guanya Shi_
+- ![](../assets/fig_generative_models/30.png)
+
+### [arXiv 2024] Giving a Hand to Diffusion Models: a Two-Stage Approach to Improving Conditional Human Image Generation
+_Anton Pelykh, Ozge Mercanoglu Sincan, Richard Bowden_
+- ![](../assets/fig_generative_models/31.png)
+
+### [arXiv 2024] DiffPoseTalk: Speech-Driven Stylistic 3D Facial Animation and Head Pose Generation via Diffusion Models [[pdf]](https://arxiv.org/abs/2310.00434)
+_Zhiyao Sun, Tian Lv, Sheng Ye, Matthieu Gaetan Lin, Jenny Sheng, Yu-Hui Wen, Minjing Yu, Yong-jin Liu_
 
 ---
 ## Other Interesting Works
@@ -169,4 +202,12 @@ _Yichen Xie, Chenfeng Xu, Marie-Julie Rakotosaona, Patrick Rim, Federico Tombari
 
 ### [ICCV 2023] Audiovisual Masked Autoencoders [[pdf]](https://arxiv.org/abs/2212.05922)
 _Mariana-Iuliana Georgescu, Eduardo Fonseca, Radu Tudor Ionescu, Mario Lucic, Cordelia Schmid, Anurag Arnab_
+
+
+---
+## Audio Related Notes
+
+### VALL-E [[pdf]](https://arxiv.org/pdf/2301.02111.pdf) [[re-implement]](https://github.com/lifeiteng/vall-e/tree/main)
+
+### EnCodec: High Fidelity Neural Audio Compression [[pdf]](https://arxiv.org/pdf/2306.06546.pdf) [[code]](https://github.com/facebookresearch/encodec)
 
