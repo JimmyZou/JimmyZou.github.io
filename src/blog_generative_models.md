@@ -141,6 +141,47 @@ _Fangzhou Hong, Mingyuan Zhang, Liang Pan, Zhongang Cai, Lei Yang, Ziwei Liu_
 
 ### [arXiv 2024] SemanticHuman-HD: High-Resolution Semantic Disentangled 3D Human Generation [[pdf]](https://arxiv.org/abs/2403.10166)
 _Peng Zheng, Tao Liu, Zili Yi, Rui Ma_
+### [ICCV 2023] Synthesizing Diverse Human Motions in 3D Indoor Scenes [[pdf]](https://arxiv.org/pdf/2305.12411.pdf)
+_Kaifeng Zhao, Yan Zhang, Shaofei Wang, Thabo Beeler, Siyu Tang_
+- ![](../assets/fig_generative_models/21.png)
+
+### [ICCV 2023] AvatarCraft: Transforming Text into Neural Human Avatars with Parameterized Shape and Pose Control
+_Ruixiang Jiang, Can Wang, Jingbo Zhang, Menglei Chai, Mingming He, Dongdong Chen, Jing Liao_
+- ![](../assets/fig_generative_models/22.png)
+
+### [ICCV 2023] DreamBooth3D: Subject-Driven Text-to-3D Generation [[pdf]](https://arxiv.org/pdf/2303.13508.pdf)
+_Amit Raj, Srinivas Kaza, Ben Poole, Michael Niemeyer, Nataniel Ruiz, Ben Mildenhall, Shiran Zada, Kfir Aberman, Michael Rubinstein, Jonathan Barron, Yuanzhen Li, Varun Jampani_
+- Our approach combines recent advances in personalizing text-to-image models (DreamBooth) with text-to-3D generation (DreamFusion). We find that naively combining these methods fails to yield satisfactory subject-specific 3D assets due to personalized text-to-image models overfitting to the input viewpoints of the subject. We overcome this through a 3-stage optimization strategy where we jointly leverage the 3D consistency of neural radiance fields together with the personalization capability of text-to-image models. 
+- ![](../assets/fig_generative_models/23.png)
+- ![](../assets/fig_generative_models/24.png)
+
+### [arXiv 2024] Gaussian Frosting: Editable Complex Radiance Fields with Real-Time Rendering [[pdf]](https://arxiv.org/pdf/2403.14554.pdf)
+_Antoine Guédon, Vincent Lepetit_
+- ![](../assets/fig_generative_models/25.png)
+
+### [arXiv 2024] GRM: Large Gaussian Reconstruction Model for Efficient 3D Reconstruction and Generation [[pdf]](https://arxiv.org/pdf/2403.14621.pdf)
+_Yinghao Xu, Zifan Shi, Wang Yifan, Hansheng Chen, Ceyuan Yang, Sida Peng, Yujun Shen, Gordon Wetzstein_
+- ![](../assets/fig_generative_models/26.png)
+
+### [arXiv 2024] UV Gaussians: Joint Learning of Mesh Deformation and Gaussian Textures for Human Avatar Modeling
+_Yujiao Jiang, Qingmin Liao, Xiaoyu Li, Li Ma, Qi Zhang, Chaopeng Zhang, Zongqing Lu, Ying Shan_
+- ![](../assets/fig_generative_models/28.png)
+
+### [arXiv 2024] 3D-VLA: A 3D Vision-Language-Action Generative World Model [[pdf]](https://arxiv.org/abs/2403.09631)
+_Haoyu Zhen, Xiaowen Qiu, Peihao Chen, Jincheng Yang, Xin Yan, Yilun Du, Yining Hong, Chuang Gan_
+- To this end, we propose 3D-VLA by introducing a new family of embodied foundation models that seamlessly link 3D perception, reasoning, and action through a generative world model. Specifically, 3D-VLA is built on top of a 3D-based large language model (LLM), and a set of interaction tokens is introduced to engage with the embodied environment. Furthermore, to inject generation abilities into the model, we train a series of embodied diffusion models and align them into the LLM for predicting the goal images and point clouds. To train our 3D-VLA, we curate a large-scale 3D embodied instruction dataset by extracting vast 3D-related information from existing robotics datasets.
+- ![](../assets/fig_generative_models/29.png)
+
+### [arXiv 2024] Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation [[pdf]](https://arxiv.org/abs/2403.04436)
+_Tairan He, Zhengyi Luo, Wenli Xiao, Chong Zhang, Kris Kitani, Changliu Liu, Guanya Shi_
+- ![](../assets/fig_generative_models/30.png)
+
+### [arXiv 2024] Giving a Hand to Diffusion Models: a Two-Stage Approach to Improving Conditional Human Image Generation
+_Anton Pelykh, Ozge Mercanoglu Sincan, Richard Bowden_
+- ![](../assets/fig_generative_models/31.png)
+
+### [arXiv 2024] DiffPoseTalk: Speech-Driven Stylistic 3D Facial Animation and Head Pose Generation via Diffusion Models [[pdf]](https://arxiv.org/abs/2310.00434)
+_Zhiyao Sun, Tian Lv, Sheng Ye, Matthieu Gaetan Lin, Jenny Sheng, Yu-Hui Wen, Minjing Yu, Yong-jin Liu_
 
 ---
 ## Other Interesting Works
