@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Blog</title>
+    <meta name="description" content="Blog Generative Models Related." />
+    <meta name="keywords" content="xxx" />
+    <link rel="stylesheet" href="../css/style.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<style>
+    body {
+        max-width: 120ch;
+        min-height: 100vh;
+    }
+
+    h1 {
+        font-size: 2.0rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        font-size: 1.0rem;
+    }
+
+    h4 {
+        font-size: 1.0rem;
+    }
+</style>
+
+<body>
+    <h1>Blog Generative Models Related</h1>
+    <hr>
+    <h2 id="contents">Contents</h2>
+    <ul>
+        <li><a href="#fundation-models">Fundation Models</a></li>
+        <li><a href="#2d-generation">2D Generation</a></li>
+        <li><a href="#3d-generation">3D Generation</a></li>
+        <li><a href="#other-interesting-works">Other Interesting Works</a></li>
+        <li><a href="#audio-related-notes">Audio Related Notes</a></li>
+    </ul>
+    <hr>
+    <h2 id="fundation-models">Fundation Models</h2>
+    <h3>[!!!] [Meta AI] Segment Anything <a href="https://arxiv.org/abs/2304.02643">[pdf]</a></h3>
+    <p><em>Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura Gustafson, Tete Xiao, Spencer
+            Whitehead, Alexander C. Berg, Wan-Yen Lo, Piotr Dollár, Ross Girshick</em></p>
+    <ul>
+        <li>We take inspiration from NLP, where the next token prediction task is used for foundation model pre-training
+            and to solve diverse downstream tasks via prompt engineering.</li>
+        <li>Task generalization vs multi-task segmentation</li>
+        <li>MAE pre-trained Vision Transformer (ViT)</li>
+        <li>The data engine has three stages: (1) a model-assisted manual annotation stage, (2) a semi-automatic stage
+            with a mix of automatically predicted masks and model-assisted annotation, and (3) a fully automatic stage
+            in which our model generates masks without annotator input.</li>
+        <li>Specifically, we prompt SAM to (1) perform edge detection, (2) segment everything, i.e. object proposal
+            generation, (3) segment detected objects, i.e. instance segmentation, and (4), as a proof-of-concept, to
+            segment objects from free-form text. These four tasks differ significantly from the promptable segmentation
+            task that SAM was trained on and are implemented via prompt engineering.</li>
+        <li><img src="../assets/fig_generative_models/8.png" alt=""></li>
+        <li><img src="../assets/fig_generative_models/9.png" alt=""></li>
+    </ul>
+    <h3>[!!!] [arXiv 2024] Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets <a
+            href="https://arxiv.org/abs/2311.15127">[pdf]</a></h3>
+    <p><em>Andreas Blattmann, Tim Dockhorn, Sumith Kulal, Daniel Mendelevitch, Maciej Kilian, Dominik Lorenz, Yam Levi,
+            Zion English, Vikram Voleti, Adam Letts, Varun Jampani, Robin Rombach</em></p>
+    <ul>
+        <li>In this paper, we identify and evaluate three different stages for successful training of video LDMs:
+            text-to-image pretraining, video pretraining, and high-quality video finetuning.</li>
+        <li>We demonstrate the necessity of a well-curated pretraining dataset.</li>
+        <li>Our model provides a strong multi-view 3D-prior.</li>
+        <li>Our model provides a powerful motion representation for downstream tasks such as image-to-video generation
+            and adaptability to camera motion-specific LoRA modules.</li>
+    </ul>
+    <h3>[!!!] [OpenAI] CLIP: Learning transferable visual models from natural language supervision <a
+            href="https://arxiv.org/abs/2103.00020">[pdf]</a></h3>
+    <p><em>Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry,
+            Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, Ilya Sutskever</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/10.png" alt=""></li>
+        <li>To address this, we constructed a new dataset of 400 million (image, text) pairs collected form a variety of
+            publicly available sources on the Internet. To attempt to cover as broad a set of visual concepts as
+            possible, we search for (image, text) pairs as part of the construction process whose text includes one of a
+            set of 500,000 queries. We approximately class balance the results by including up to 20,000 (image, text)
+            pairs per query. The resulting dataset has a similar total word count as the WebText dataset used to train
+            GPT-2. We refer to this dataset as WIT for WebImageText.</li>
+    </ul>
+    <h3>[ICML 2021] ALIGN: Scaling up visual and vision-language representation learning with noisy text supervision <a
+            href="https://arxiv.org/abs/2102.05918">[pdf]</a></h3>
+    <p><em>Chao Jia, Yinfei Yang, Ye Xia, Yi-Ting Chen, Zarana Parekh, Hieu Pham, Quoc V. Le, Yunhsuan Sung, Zhen Li,
+            Tom Duerig</em></p>
+    <h3>[OpenAI] DALL-E: Zero-Shot Text-to-Image Generation <a href="https://arxiv.org/abs/2102.12092">[pdf]</a></h3>
+    <p><em>Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, Ilya
+            Sutskever</em></p>
+    <ul>
+        <li>We created a dataset of a similar scale to JFT-300M by collecting 250 million text-images pairs from the
+            internet</li>
+        <li>Stage One: Learning the Visual Codebook</li>
+        <li>Stage Two: Learning the Prior</li>
+    </ul>
+    <h3>[OpenAI] Grokking: Generalization beyond Overfitting on Small Algorithmic Datasets <a
+            href="https://arxiv.org/pdf/2201.02177.pdf">[pdf]</a></h3>
+    <p><em>Alethea Power, Yuri Burda, Harri Edwards, Igor Babuschkin, and Vedant Misra</em></p>
+    <h3>[!!!] [Google Research] VideoPoet: A Large Language Model for Zero-Shot Video Generation <a
+            href="https://arxiv.org/abs/2312.14125">[pdf]</a> <a
+            href="https://sites.research.google/videopoet/">[project]</a></h3>
+    <p><em>Dan Kondratyuk, Lijun Yu, Xiuye Gu, José Lezama, Jonathan Huang, Rachel Hornung, Hartwig Adam, Hassan Akbari,
+            Yair Alon, Vighnesh Birodkar, Yong Cheng, Ming-Chang Chiu, Josh Dillon, Irfan Essa, Agrim Gupta, Meera Hahn,
+            Anja Hauth, David Hendon, Alonso Martinez, David Minnen, David Ross, Grant Schindler, Mikhail Sirotenko,
+            Kihyuk Sohn, Krishna Somandepalli, Huisheng Wang, Jimmy Yan, Ming-Hsuan Yang, Xuan Yang, Bryan Seybold, Lu
+            Jiang</em></p>
+    <ul>
+        <li>A pre-trained MAGVIT V2 video tokenizer and a SoundStream audio tokenizer transform images, video, and audio
+            clips with variable lengths into a sequence of discrete codes in a unified vocabulary.</li>
+        <li>An autoregressive language model learns across video, image, audio, and text modalities to autoregressively
+            predict the next video or audio token in the sequence.</li>
+        <li>A mixture of multimodal generative learning objectives are introduced into the LLM training framework,
+            including text-to-video, text-to-image, image-to-video, video frame continuation, video inpainting and
+            outpainting, video stylization, and video-to-audio. Furthermore, such tasks can be composed together for
+            additional zero-shot capabilities (e.g., text-to-audio).</li>
+        <li>Datasets. We train on a total of 1B image-text pairs and ∼270M videos (∼100M with paired text, of which ∼50M
+            are used for high-quality finetuning, and ∼170M with paired audio) from the public internet and other
+            sources, i.e. around 2 trillion tokens across all modalities. The data has been filtered to remove egregious
+            content and sampled to improve contextual and demographic diversity.</li>
+        <li><img src="../assets/fig_generative_models/11.png" alt=""></li>
+        <li><img src="../assets/fig_generative_models/12.png" alt=""></li>
+    </ul>
+    <h3>[NeurIPS 2023] DaTaSeg: Taming a Universal Multi-Dataset Multi-Task Segmentation Model <a
+            href="https://arxiv.org/abs/2306.01736">[pdf]</a></h3>
+    <p><em>Xiuye Gu, Yin Cui, Jonathan Huang, Abdullah Rashwan, Xuan Yang, Xingyi Zhou, Golnaz Ghiasi, Weicheng Kuo,
+            Huizhong Chen, Liang-Chieh Chen, David A Ross</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/15.png" alt=""></li>
+    </ul>
+    <h3>[NeurIPS 2023] Module-wise Adaptive Distillation for Multimodality Foundation Models <a
+            href="https://arxiv.org/abs/2310.04550">[pdf]</a></h3>
+    <p><em>Chen Liang, Jiahui Yu, Ming-Hsuan Yang, Matthew Brown, Yin Cui, Tuo Zhao, Boqing Gong, Tianyi Zhou</em></p>
+    <h3>[NeurIPS 2023] Alternating Gradient Descent and Mixture-of-Experts for Integrated Multimodal Perception <a
+            href="https://arxiv.org/abs/2305.06324">[pdf]</a></h3>
+    <p><em>Hassan Akbari, Dan Kondratyuk, Yin Cui, Rachel Hornung, Huisheng Wang, Hartwig Adam</em></p>
+    <ul>
+        <li>IMP integrates multimodal inputs including image, video, text, and audio into a single Transformer encoder
+            with minimal modality-specific components. IMP makes use of a novel design that <strong>combines Alternating
+                Gradient Descent (AGD) and Mixture-of-Experts (MoE) for efficient model &amp; task scaling</strong>. We
+            conduct extensive empirical studies and reveal the following key insights: 1) performing gradient descent
+            updates by alternating on diverse modalities, loss functions, and tasks, with varying input resolutions,
+            efficiently improves the model. 2) sparsification with MoE on a single modalityagnostic encoder
+            substantially improves the performance, outperforming dense models that use modality-specific encoders or
+            additional fusion layers and greatly mitigates the conflicts between modalities.</li>
+        <li><img src="../assets/fig_generative_models/20.png" alt=""></li>
+    </ul>
+    <h3><a href="#contents">[Back]</a></h3>
+    <hr>
+
+    <h2 id="2d-generation">2D Generation</h2>
+    <h3>[CVPR 2023] DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation <a
+            href="https://arxiv.org/abs/2208.12242">[pdf]</a><a href="https://dreambooth.github.io/">[Porject]</a></h3>
+    <p><em>Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Yael Pritch, Michael Rubinstein, Kfir Aberman</em></p>
+    <ul>
+        <li>Paper writing is hard to follow.</li>
+        <li>In this work, we present a new approach for &quot;personalization&quot; of text-to-image diffusion models.
+            Given as input just a few images of a subject, we fine-tune a pretrained text-to-image model such that it
+            learns to bind a unique identifier with that specific subject. Once the subject is embedded in the output
+            domain of the model, the unique identifier can be used to synthesize novel photorealistic images of the
+            subject contextualized in different scenes. By leveraging the semantic prior embedded in the model with a
+            new autogenous class-specific prior preservation loss, our technique enables synthesizing the subject in
+            diverse scenes, poses, views and lighting conditions that do not appear in the reference images. We apply
+            our technique to several previously-unassailable tasks, including subject recontextualization, text-guided
+            view synthesis, and artistic rendering, all while preserving the subject's key features. We also provide a
+            new dataset and evaluation protocol for this new task of subject-driven generation.</li>
+        <li><img src="../assets/fig_generative_models/1.png" alt=""></li>
+        <li><img src="../assets/fig_generative_models/2.png" alt=""></li>
+    </ul>
+    <h3>[Siggraph 2023] 3D Gaussian Splatting for Real-Time Radiance Field Rendering <a
+            href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/">[pdf]</a></h3>
+    <ul>
+        <li>We introduce three key elements that allow us to achieve state-of-the-art visual quality while maintaining
+            competitive training times and importantly allow high-quality real-time (≥ 30 fps) novel-view synthesis at
+            1080p resolution. First, starting from sparse points produced during camera calibration, we represent the
+            scene with 3D Gaussians that preserve desirable properties of continuous volumetric radiance fields for
+            scene optimization while avoiding unnecessary computation in empty space; Second, we perform interleaved
+            optimization/density control of the 3D Gaussians, notably optimizing anisotropic covariance to achieve an
+            accurate representation of the scene; Third, we develop a fast visibility-aware rendering algorithm that
+            supports anisotropic splatting and both accelerates training and allows realtime rendering. We demonstrate
+            state-of-the-art visual quality and real-time rendering on several established datasets.</li>
+        <li><img src="../assets/fig_generative_models/4.png" alt=""></li>
+    </ul>
+    <h3>[arXiv 2024] FDGaussian: Fast Gaussian Splatting from Single Image via Geometric-aware Diffusion Model <a
+            href="https://arxiv.org/abs/2403.10242">[pdf]</a></h3>
+    <p><em>Qijun Feng, Zhen Xing, Zuxuan Wu, Yu-Gang Jiang</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/6.png" alt=""></li>
+        <li><a href="https://en.wikipedia.org/wiki/Epipolar_geometry">Epipolar Line</a> and epipolar attention, <a
+                href="https://web.stanford.edu/class/cs231a/course_notes/03-epipolar-geometry.pdf">Epopolar geometry</a>
+        </li>
+    </ul>
+    <h3>[CVM 2024] Recent Advances in 3D Gaussian Splatting <a href="https://arxiv.org/pdf/2403.11134.pdf">[pdf]</a>
+    </h3>
+    <p><em>Tong Wu, Yu-Jie Yuan, Ling-Xiao Zhang, Jie Yang, Yan-Pei Cao, Ling-Qi Yan, Lin Gao</em></p>
+    <ul>
+        <li>Gaussian Splatting for 3D Reconstruction</li>
+        <li>Gaussian Splatting for 3D Editing</li>
+        <li>Applications of Gaussian Splatting: Segmentation and Understanding, Geometry Reconstruction and SLAM,
+            Digital Human [23, 125-156]</li>
+    </ul>
+    <h3>[Google Research] StyleDrop: Text-to-Image Generation in Any Style <a
+            href="https://arxiv.org/abs/2306.00983">[pdf]</a> <a
+            href="https://blog.research.google/2023/12/styledrop-text-to-image-generation-in.html">[blog]</a></h3>
+    <p><em>Kihyuk Sohn, Nataniel Ruiz, Kimin Lee, Daniel Castro Chin, Irina Blok, Huiwen Chang, Jarred Barber, Lu Jiang,
+            Glenn Entis, Yuanzhen Li, Yuan Hao, Irfan Essa, Michael Rubinstein, Dilip Krishnan</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/14.png" alt=""></li>
+    </ul>
+    <h3>[NeurIPS 2023] SPAE: Semantic Pyramid AutoEncoder for Multimodal Generation with Frozen LLMs <a
+            href="https://arxiv.org/abs/2306.17842">[pdf]</a></h3>
+    <p><em>Lijun Yu, Yong Cheng, Zhiruo Wang, Vivek Kumar, Wolfgang Macherey, Yanping Huang, David A. Ross, Irfan Essa,
+            Yonatan Bisk, Ming-Hsuan Yang, Kevin Murphy, Alexander G. Hauptmann, Lu Jiang</em></p>
+    <ul>
+        <li>SPAE tokens have a multi-scale representation arranged in a pyramid structure. The upper layers of the
+            pyramid comprise semantic-central concepts, while the lower layers prioritize appearance representations
+            that captures the fine details for image reconstruction. This design enables us to dynamically adjust the
+            token length to accommodate various tasks, such as using fewer tokens for understanding tasks and more
+            tokens for generation tasks.</li>
+        <li>We term this approach as Streaming Average Quantization (SAQ) due to its resemblance to computing the
+            average on streaming data.</li>
+        <li>Progressive In-Context Decoding</li>
+        <li><img src="../assets/fig_generative_models/17.png" alt=""></li>
+    </ul>
+    <h3>[CVPR 2023] DynIBaR: Neural Dynamic Image-Based Rendering <a href="https://arxiv.org/abs/2211.11082">[pdf]</a>
+        <a href="https://blog.research.google/2023/09/dynibar-space-time-view-synthesis-from.html">[project]</a>
+    </h3>
+    <p><em>Zhengqi Li, Qianqian Wang, Forrester Cole, Richard Tucker, Noah Snavely</em></p>
+    <h3>[arXiv 2024] Explorative Inbetweening of Time and Space <a href="https://arxiv.org/pdf/2403.14611.pdf">[pdf]</a>
+    </h3>
+    <p><em>Haiwen Feng, Zheng Ding, Zhihao Xia, Simon Niklaus, Victoria Abrevaya, Michael J. Black1, Xuaner Zhang</em>
+    </p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/26.png" alt=""></li>
+    </ul>
+    <h3><a href="#contents">[Back]</a></h3>
+    <hr>
+
+    <h2 id="3d-generation">3D Generation</h2>
+    <h3>[arXiv 2024] V3D: Video Diffusion Models are Effective 3D Generators <a
+            href="https://heheyas.github.io/V3D/static/pdfs/V3D__arxiv_ver__.pdf">[pdf]</a> [[code]](t
+        https://github.com/heheyas/V3D)</h3>
+    <p><em>Zilong Chen, Yikai Wang, Feng Wang, Zhengyi Wang, Huaping Liu</em></p>
+    <ul>
+        <li>Motivated by recent advancements in video diffusion models, we introduce V3D, which leverages the world
+            simulation capacity of pre-trained video diffusion models to facilitate 3D generation. To fully unleash the
+            potential of video diffusion to perceive the 3D world, we further introduce geometrical consistency prior
+            and extend the video diffusion model to a multi-view consistent 3D generator. Benefiting from this, the
+            state-of-the-art video diffusion model could be fine-tuned to generate 360° orbit frames surrounding an
+            object given a single image. With our tailored reconstruction pipelines, we can generate high-quality meshes
+            or 3D Gaussians within 3 minutes. Furthermore, our method can be extended to scene-level novel view
+            synthesis, achieving precise control over the camera path with sparse input views. Extensive experiments
+            demonstrate the superior performance of the proposed approach, especially in terms of generation quality and
+            multi-view consistency.</li>
+        <li><img src="../assets/fig_generative_models/7.png" alt=""></li>
+    </ul>
+    <h3>[arXiv 2024] 3D-SceneDreamer: Text-Driven 3D-Consistent Scene Generation <a
+            href="https://arxiv.org/abs/2403.09439">[pdf]</a></h3>
+    <p><em>Frank Zhang, Yibo Zhang, Quan Zheng, Rui Ma, Wei Hua, Hujun Bao, Weiwei Xu, Changqing Zou</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/5.png" alt=""></li>
+    </ul>
+    <h3>[NeurIPS 2023] DreamHuman: Animatable 3D Avatars from Text <a href="https://arxiv.org/abs/2306.09329">[pdf]</a>
+    </h3>
+    <p><em>Nikos Kolotouros, Thiemo Alldieck, Andrei Zanfir, Eduard Gabriel Bazavan, Mihai Fieraru, Cristian
+            Sminchisescu</em></p>
+    <ul>
+        <li>The optimisation of the avatar structure is guided by the Score Distillation
+            Sampling loss powered by a text-to-image generation model.</li>
+        <li>The optimisation of the avatar structure is guided by the Score Distillation Sampling loss powered by a
+            text-to-image generation model. During training, we optimise over the NeRF, body shape, and spherical
+            harmonics illumination parameters.</li>
+        <li><img src="../assets/fig_generative_models/18.png" alt=""></li>
+    </ul>
+    <h3>[Siggraph 2022] AvatarCLIP: Zero-Shot Text-Driven Generation and Animation of 3D Avatars <a
+            href="https://arxiv.org/pdf/2205.08535">[pdf]</a></h3>
+    <p><em>Fangzhou Hong, Mingyuan Zhang, Liang Pan, Zhongang Cai, Lei Yang, Ziwei Liu</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/19.png" alt=""></li>
+    </ul>
+    <h3>[ICCV 2023] Synthesizing Diverse Human Motions in 3D Indoor Scenes <a
+            href="https://arxiv.org/pdf/2305.12411.pdf">[pdf]</a></h3>
+    <p><em>Kaifeng Zhao, Yan Zhang, Shaofei Wang, Thabo Beeler, Siyu Tang</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/21.png" alt=""></li>
+    </ul>
+    <h3>[ICCV 2023] AvatarCraft: Transforming Text into Neural Human Avatars with Parameterized Shape and Pose Control
+    </h3>
+    <p><em>Ruixiang Jiang, Can Wang, Jingbo Zhang, Menglei Chai, Mingming He, Dongdong Chen, Jing Liao</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/22.png" alt=""></li>
+    </ul>
+    <h3>[ICCV 2023] DreamBooth3D: Subject-Driven Text-to-3D Generation <a
+            href="https://arxiv.org/pdf/2303.13508.pdf">[pdf]</a></h3>
+    <p><em>Amit Raj, Srinivas Kaza, Ben Poole, Michael Niemeyer, Nataniel Ruiz, Ben Mildenhall, Shiran Zada, Kfir
+            Aberman, Michael Rubinstein, Jonathan Barron, Yuanzhen Li, Varun Jampani</em></p>
+    <ul>
+        <li>Our approach combines recent advances in personalizing text-to-image models (DreamBooth) with text-to-3D
+            generation (DreamFusion). We find that naively combining these methods fails to yield satisfactory
+            subject-specific 3D assets due to personalized text-to-image models overfitting to the input viewpoints of
+            the subject. We overcome this through a 3-stage optimization strategy where we jointly leverage the 3D
+            consistency of neural radiance fields together with the personalization capability of text-to-image models.
+        </li>
+        <li><img src="../assets/fig_generative_models/23.png" alt=""></li>
+        <li><img src="../assets/fig_generative_models/24.png" alt=""></li>
+    </ul>
+    <h3>[arXiv 2024] Gaussian Frosting: Editable Complex Radiance Fields with Real-Time Rendering <a
+            href="https://arxiv.org/pdf/2403.14554.pdf">[pdf]</a></h3>
+    <p><em>Antoine Guédon, Vincent Lepetit</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/25.png" alt=""></li>
+    </ul>
+    <h3>[arXiv 2024] GRM: Large Gaussian Reconstruction Model for Efficient 3D Reconstruction and Generation <a
+            href="https://arxiv.org/pdf/2403.14621.pdf">[pdf]</a></h3>
+    <p><em>Yinghao Xu, Zifan Shi, Wang Yifan, Hansheng Chen, Ceyuan Yang, Sida Peng, Yujun Shen, Gordon Wetzstein</em>
+    </p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/26.png" alt=""></li>
+    </ul>
+    <h3>[arXiv 2024] UV Gaussians: Joint Learning of Mesh Deformation and Gaussian Textures for Human Avatar Modeling
+    </h3>
+    <p><em>Yujiao Jiang, Qingmin Liao, Xiaoyu Li, Li Ma, Qi Zhang, Chaopeng Zhang, Zongqing Lu, Ying Shan</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/28.png" alt=""></li>
+    </ul>
+    <h3>[arXiv 2024] 3D-VLA: A 3D Vision-Language-Action Generative World Model <a
+            href="https://arxiv.org/abs/2403.09631">[pdf]</a></h3>
+    <p><em>Haoyu Zhen, Xiaowen Qiu, Peihao Chen, Jincheng Yang, Xin Yan, Yilun Du, Yining Hong, Chuang Gan</em></p>
+    <ul>
+        <li>To this end, we propose 3D-VLA by introducing a new family of embodied foundation models that seamlessly
+            link 3D perception, reasoning, and action through a generative world model. Specifically, 3D-VLA is built on
+            top of a 3D-based large language model (LLM), and a set of interaction tokens is introduced to engage with
+            the embodied environment. Furthermore, to inject generation abilities into the model, we train a series of
+            embodied diffusion models and align them into the LLM for predicting the goal images and point clouds. To
+            train our 3D-VLA, we curate a large-scale 3D embodied instruction dataset by extracting vast 3D-related
+            information from existing robotics datasets.</li>
+        <li><img src="../assets/fig_generative_models/29.png" alt=""></li>
+    </ul>
+    <h3>[arXiv 2024] Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation <a
+            href="https://arxiv.org/abs/2403.04436">[pdf]</a></h3>
+    <p><em>Tairan He, Zhengyi Luo, Wenli Xiao, Chong Zhang, Kris Kitani, Changliu Liu, Guanya Shi</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/30.png" alt=""></li>
+    </ul>
+    <h3>[arXiv 2024] Giving a Hand to Diffusion Models: a Two-Stage Approach to Improving Conditional Human Image
+        Generation</h3>
+    <p><em>Anton Pelykh, Ozge Mercanoglu Sincan, Richard Bowden</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/31.png" alt=""></li>
+    </ul>
+    <h3>[arXiv 2024] DiffPoseTalk: Speech-Driven Stylistic 3D Facial Animation and Head Pose Generation via Diffusion
+        Models <a href="https://arxiv.org/abs/2310.00434">[pdf]</a></h3>
+    <p><em>Zhiyao Sun, Tian Lv, Sheng Ye, Matthieu Gaetan Lin, Jenny Sheng, Yu-Hui Wen, Minjing Yu, Yong-jin Liu</em>
+    </p>
+    <h3><a href="#contents">[Back]</a></h3>
+    <hr>
+
+    <h2 id="other-interesting-works">Other Interesting Works</h2>
+    <h3>[Google Research] AMIE: A research AI system for diagnostic medical reasoning and conversations <a
+            href="https://arxiv.org/abs/2401.05654">[pdf]</a> <a
+            href="https://blog.research.google/2024/01/amie-research-ai-system-for-diagnostic_12.html">[blog]</a></h3>
+    <p><em>Tao Tu, Anil Palepu, Mike Schaekermann, Khaled Saab, Jan Freyberg, Ryutaro Tanno, Amy Wang, Brenna Li,
+            Mohamed Amin, Nenad Tomasev, Shekoofeh Azizi, Karan Singhal, Yong Cheng, Le Hou, Albert Webson, Kavita
+            Kulkarni, S Sara Mahdavi, Christopher Semturs, Juraj Gottweis, Joelle Barral, Katherine Chou, Greg S
+            Corrado, Yossi Matias, Alan Karthikesalingam, Vivek Natarajan</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/13.png" alt=""></li>
+    </ul>
+    <h3>[NeurIPS 2023] Towards Generalist Biomedical AI <a href="https://arxiv.org/pdf/2307.14334.pdf">[pdf]</a></h3>
+    <p><em>Tao Tu, Shekoofeh Azizi, Danny Driess, Mike Schaekermann, Mohamed Amin, Pi-Chuan Chang, Andrew Carroll, Chuck
+            Lau, Ryutaro Tanno, Ira Ktena, Basil Mustafa, Aakanksha Chowdhery, Yun Liu, Simon Kornblith, David Fleet,
+            Philip Mansfield, Sushant Prakash, Renee Wong, Sunny Virmani, Christopher Semturs, S Sara Mahdavi, Bradley
+            Green, Ewa Dominowska, Blaise Aguera y Arcas, Joelle Barral, Dale Webster, Greg S. Corrado, Yossi Matias,
+            Karan Singhal, Pete Florence, Alan Karthikesalingam, Vivek Natarajan</em></p>
+    <ul>
+        <li><img src="../assets/fig_generative_models/16.png" alt=""></li>
+    </ul>
+    <h3>[Google Research] A new quantum algorithm for classical mechanics with an exponential speedup <a
+            href="https://blog.research.google/2023/12/a-new-quantum-algorithm-for-classical.html">[pdf]</a></h3>
+    <p><em>Robin Kothari, Rolando Somma</em></p>
+    <h3>[ICCV 2023] SparseFusion: Fusing Multi-Modal Sparse Representations for Multi-Sensor 3D Object Detection <a
+            href="https://arxiv.org/abs/2304.14340">[pdf]</a></h3>
+    <p><em>Yichen Xie, Chenfeng Xu, Marie-Julie Rakotosaona, Patrick Rim, Federico Tombari, Kurt Keutzer, Masayoshi
+            Tomizuka, Wei Zhan</em></p>
+    <h3>[ICCV 2023] Audiovisual Masked Autoencoders <a href="https://arxiv.org/abs/2212.05922">[pdf]</a></h3>
+    <p><em>Mariana-Iuliana Georgescu, Eduardo Fonseca, Radu Tudor Ionescu, Mario Lucic, Cordelia Schmid, Anurag
+            Arnab</em></p>
+    <h3><a href="#contents">[Back]</a></h3>
+    <hr>
+
+    <h2 id="audio-related-notes">Audio Related Notes</h2>
+    <h3>VALL-E <a href="https://arxiv.org/pdf/2301.02111.pdf">[pdf]</a> <a
+            href="https://github.com/lifeiteng/vall-e/tree/main">[re-implement]</a></h3>
+    <h3>EnCodec: High Fidelity Neural Audio Compression <a href="https://arxiv.org/pdf/2306.06546.pdf">[pdf]</a> <a
+            href="https://github.com/facebookresearch/encodec">[code]</a></h3>
+    <h3><a href="#contents">[Back]</a></h3>
+</body>
