@@ -67,6 +67,10 @@ _Hassan Akbari, Dan Kondratyuk, Yin Cui, Rachel Hornung, Huisheng Wang, Hartwig 
 - IMP integrates multimodal inputs including image, video, text, and audio into a single Transformer encoder with minimal modality-specific components. IMP makes use of a novel design that **combines Alternating Gradient Descent (AGD) and Mixture-of-Experts (MoE) for efficient model & task scaling**. We conduct extensive empirical studies and reveal the following key insights: 1) performing gradient descent updates by alternating on diverse modalities, loss functions, and tasks, with varying input resolutions, efficiently improves the model. 2) sparsification with MoE on a single modalityagnostic encoder substantially improves the performance, outperforming dense models that use modality-specific encoders or additional fusion layers and greatly mitigates the conflicts between modalities.
 - ![](../assets/fig_generative_models/20.png)
 
+### InternVideo2: Scaling Video Foundation Models for Multimodal Video Understanding [[pdf]](https://arxiv.org/pdf/2403.15377.pdf) [[project]](https://github.com/OpenGVLab/InternVideo2)
+_Yi Wang, Kunchang Li, Xinhao Li, Jiashuo Yu, Yinan He, Guo Chen, Baoqi Pei, Rongkun Zheng, Jilan Xu, Zun Wang, Yansong Shi, Tianxiang Jiang, Songze Li, Hongjie Zhang, Yifei Huang, Yu Qiao, Yali Wang, Limin Wang_
+- ![](../assets/fig_generative_models/36.png)
+
 ---
 ## 2D Generation
 
@@ -182,6 +186,23 @@ _Anton Pelykh, Ozge Mercanoglu Sincan, Richard Bowden_
 
 ### [arXiv 2024] DiffPoseTalk: Speech-Driven Stylistic 3D Facial Animation and Head Pose Generation via Diffusion Models [[pdf]](https://arxiv.org/abs/2310.00434)
 _Zhiyao Sun, Tian Lv, Sheng Ye, Matthieu Gaetan Lin, Jenny Sheng, Yu-Hui Wen, Minjing Yu, Yong-jin Liu_
+
+### [arXiv 2024] Contact-aware Human Motion Generation from Textual Descriptions [[pdf]](https://arxiv.org/abs/2403.15709)
+_Sihan Ma, Qiong Cao, Jing Zhang, Dacheng Tao_
+- ![](../assets/fig_generative_models/32.png)
+
+### [arXiv 2024] GPT-Connect: Interaction between Text-Driven Human Motion Generator and 3D Scenes in a Training-free Manner [[pdf]](https://arxiv.org/abs/2403.14947)
+_Haoxuan Qu, Ziyan Guo, Jun Liu_
+- Yet, intuitively training a separate sceneaware motion generator in a supervised way can require a large amount of motion samples to be troublesomely collected and annotated in a large scale of different 3D scenes. To handle this task rather in a relatively convenient manner, in this paper, we propose a novel GPT-connect framework. In GPT-connect, we enable scene-aware motion sequences to be generated directly utilizing the existing blank-background human motion generator, via leveraging ChatGPT to connect the existing motion generator with the 3D scene in a totally training-free manner. 
+
+### [arXiv 2024]  AniPortrait: Audio-Driven Synthesis of Photorealistic Portrait Animation [[pdf]](https://arxiv.org/abs/2403.17694)
+_Huawei Wei, Zejun Yang, Zhisheng Wang_
+- ![](../assets/fig_generative_models/33.png)
+
+### [ICLR 2024] Structured World Modeling via Semantic Vector Quantization [[pdf]](https://arxiv.org/abs/2402.01203)
+_Yi-Fu Wu, Minseung Lee, Sungjin Ahn_
+- ![](../assets/fig_generative_models/35.png)
+- ![](../assets/fig_generative_models/34.png)
 
 ---
 ## Other Interesting Works
