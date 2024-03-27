@@ -209,7 +209,15 @@ _Mariana-Iuliana Georgescu, Eduardo Fonseca, Radu Tudor Ionescu, Mario Lucic, Co
 ---
 ## Audio Related Notes
 
-### VALL-E [[pdf]](https://arxiv.org/pdf/2301.02111.pdf) [[re-implement]](https://github.com/lifeiteng/vall-e/tree/main)
+### VALL-E: Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers [[pdf]](https://arxiv.org/pdf/2301.02111.pdf) [[re-implement]](https://github.com/lifeiteng/vall-e/tree/main)
 
 ### EnCodec: High Fidelity Neural Audio Compression [[pdf]](https://arxiv.org/pdf/2306.06546.pdf) [[code]](https://github.com/facebookresearch/encodec)
 
+### YourTTS: Towards Zero-Shot Multi-Speaker TTS and Zero-Shot Voice Conversion for everyone [[pdf]](https://arxiv.org/abs/2112.02418)
+_Edresson Casanova, Julian Weber, Christopher Shulby, Arnaldo Candido Junior, Eren Gölge, Moacir Antonelli Ponti_
+
+### Tortoise-v2: Better speech synthesis through scaling [[pdf]](https://arxiv.org/pdf/2305.07243.pdf)
+_James Betker_
+
+### Tacotron2-DDC: Natural tts synthesis by conditioning wavenet on mel spectrogram predictions [[pdf]](https://arxiv.org/abs/1712.05884)
+_Jonathan Shen, Ruoming Pang, Ron J. Weiss, Mike Schuster, Navdeep Jaitly, Zongheng Yang, Zhifeng Chen, Yu Zhang, Yuxuan Wang, RJ Skerry-Ryan, Rif A. Saurous, Yannis Agiomyrgiannakis, Yonghui Wu_
