@@ -37,7 +37,6 @@
     - [\[回到目录\]](#回到目录-3)
   - [参考文档 Reference](#参考文档-reference)
     - [\[回到目录\]](#回到目录-4)
-    - [\[回到目录\]](#回到目录-5)
 
 ---
 ### 欢迎大家补充和交流
@@ -760,7 +759,5 @@
 ---
 ### 参考文档 Reference
 [1] [Learning Research by Sida Peng from ZJU](https://github.com/pengsida/learning_research)
-
-#### [[回到目录]](#目录)
 
 #### [[回到目录]](#目录)
