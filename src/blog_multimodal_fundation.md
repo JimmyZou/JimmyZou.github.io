@@ -14,6 +14,10 @@
 - a joint visual-audio-text representation 
 - knowledge distill
 
+---
+## Some tools
+
+- [run llama2 locally](https://www.linkedin.com/pulse/three-steps-run-llama-2-7b-chat-model-any-cpu-machine-nirmal-patel-3pw9f/)
 
 ---
 ## Fundation Models
