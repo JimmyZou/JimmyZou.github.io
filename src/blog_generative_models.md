@@ -169,6 +169,22 @@ _Mariana-Iuliana Georgescu, Eduardo Fonseca, Radu Tudor Ionescu, Mario Lucic, Co
 ### VALL-E: Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers [[pdf]](https://arxiv.org/pdf/2301.02111.pdf) [[re-implement]](https://github.com/lifeiteng/vall-e/tree/main)
 
 ### EnCodec: High Fidelity Neural Audio Compression [[pdf]](https://arxiv.org/pdf/2306.06546.pdf) [[code]](https://github.com/facebookresearch/encodec)
+- With this setup, the encoder outputs 75 latent steps per second of audio at 24 kHz, and 150 at 48 kHz. 
+- For all of our models, we use at most 32 codebooks (16 for the 48kHz models) with 1024 entries each, e.g. 10 bits per codebook.
+- This discrete representation can changed again to a vector by summing the corresponding codebook entries, which is done just before going into the decoder
+- ```
+  # Instantiate a pretrained EnCodec model
+  model = EncodecModel.encodec_model_24khz()
+  # The number of codebooks used will be determined bythe bandwidth selected.
+  # E.g. for a bandwidth of 6kbps, `n_q = 8` codebooks are used.
+  # Supported bandwidths are 1.5kbps (n_q = 2), 3 kbps (n_q = 4), 6 kbps (n_q = 8) and 12 kbps (n_q =16) and 24kbps (n_q=32).
+  # For the 48 kHz model, only 3, 6, 12, and 24 kbps are supported. The number
+  # of codebooks for each is half that of the 24 kHz model as the frame rate is twice as much.
+  model.set_target_bandwidth(6.0)
+  ```
+- ![](../assets/fig_generative_models/37.png)
+- ![](../assets/fig_generative_models/38.png)
+- ![](../assets/fig_generative_models/39.png)
 
 ### YourTTS: Towards Zero-Shot Multi-Speaker TTS and Zero-Shot Voice Conversion for everyone [[pdf]](https://arxiv.org/abs/2112.02418)
 _Edresson Casanova, Julian Weber, Christopher Shulby, Arnaldo Candido Junior, Eren Gölge, Moacir Antonelli Ponti_
