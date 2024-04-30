@@ -15,9 +15,14 @@
 - knowledge distill
 
 ---
-## Some tools
+## Some Popular Papers
 
-- [run llama2 locally](https://www.linkedin.com/pulse/three-steps-run-llama-2-7b-chat-model-any-cpu-machine-nirmal-patel-3pw9f/)
+#### Efficiently Modeling Long Sequences with Structured State Spaces [[pdf]](https://arxiv.org/pdf/2111.00396)
+_Albert Gu, Karan Goel, and Christopher R´e_
+
+#### Mamba: Linear-Time Sequence Modeling with Selective State Spaces [[pdf]](https://arxiv.org/pdf/2312.00752)
+_Albert Gu and Tri Dao_
+
 
 ---
 ## Fundation Models
