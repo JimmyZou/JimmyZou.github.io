@@ -20,9 +20,26 @@
 #### Efficiently Modeling Long Sequences with Structured State Spaces [[pdf]](https://arxiv.org/pdf/2111.00396)
 _Albert Gu, Karan Goel, and Christopher R´e_
 
-#### Mamba: Linear-Time Sequence Modeling with Selective State Spaces [[pdf]](https://arxiv.org/pdf/2312.00752)
+#### Mamba: Linear-Time Sequence Modeling with Selective State Spaces [[pdf]](https://arxiv.org/pdf/2312.00752) [[blog]](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mamba-and-state)
 _Albert Gu and Tri Dao_
+- State Space Model (SSM)
+- This model is referred to as the Linear State-Space Layer (LSSL). These representations share an important property, namely that of Linear Time Invariance (LTI). LTI states that the SSMs parameters, A, B, and C, are fixed for all timesteps. This means that matrices A, B, and C are the same for every token the SSM generates.
+- ![](../assets/fig_transformer/13.png)
+- ![](../assets/fig_transformer/14.png)
+- Structured State Space for Sequences (S4)
+- SSMs + HiPPO (matrix) for handling long-range dependencies + Discretization for creating recurrent and convolution representations
+- Mamba: A Selective SSM
+- This means that for every input token, we now have different B and C matrices which solves the problem with content-awareness! Matrix A remains the same since we want the state itself to remain static but the way it is influenced (through B and C) to be dynamic.
+- ![](../assets/fig_transformer/18.png)
+- Parallelization, in contrast, seems impossible since each state can only be calculated if we have the previous state. Mamba, however, makes this possible through the parallel scan algorithm.
+- ![](../assets/fig_transformer/15.png)
+- ![](../assets/fig_transformer/16.png)
+- ![](../assets/fig_transformer/17.png)
 
+#### KAN: Kolmogorov–Arnold Networks [[pdf]](https://arxiv.org/pdf/2404.19756)
+- While MLPs place fixed activation functions on nodes (“neurons”), KANs place learnable activation functions on edges (“weights”).
+- ![](../assets/fig_transformer/19.png)
+- Vladimir Arnold and Andrey Kolmogorov established that if f is a multivariate continuous function on a bounded domain, then f can be written as a finite composition of continuous functions of a single variable and the binary operation of addition.
 
 ---
 ## Fundation Models
