@@ -10,6 +10,10 @@
 ---
 ## 2D Generation
 
+### [CVPR 2023] Adding Conditional Control to Text-to-Image Diffusion Models [[pdf]](https://arxiv.org/pdf/2302.05543)
+Lvmin Zhang, Anyi Rao, and Maneesh Agrawala_
+- ![](../assets/fig_generative_models/40.png)
+
 ### [CVPR 2023] DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation [[pdf]](https://arxiv.org/abs/2208.12242)[[Porject]](https://dreambooth.github.io/)
 _Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Yael Pritch, Michael Rubinstein, Kfir Aberman_
 - Paper writing is hard to follow.
