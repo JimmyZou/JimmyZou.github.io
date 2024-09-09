@@ -5,6 +5,7 @@
  - [Survey Paper](#survey-paper)
  - [Vision-Language Navigation](#vision-language-navigation)
  - [Embodied Agents](#embodied-agents)
+ - [SNNs](#snns)
 
 ---
 
@@ -64,6 +65,8 @@ _Suraj Nair, Aravind Rajeswaran, Vikash Kumar, Chelsea Finn, Abhinav Gupta_
 ### [arXiv 2023] Mastering Diverse Domains through World Models [[PDF]](https://arxiv.org/abs/2301.04104)
 _Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap_
 
+### [ICML 2023] BLIP-2: bootstrapping language-image pre-training with frozen image encoders and large language models [[PDF]](https://arxiv.org/pdf/2301.12597)
+
 ---
 
 ## Embodied Agents
@@ -76,9 +79,9 @@ _Jiangyong Huang, Silong Yong, Xiaojian Ma, Xiongkun Linghu, Puhao Li, Yan Wang,
 
 ---
 
-## Other related papers
+## SNNs
 
-### [ICML 2023] BLIP-2: bootstrapping language-image pre-training with frozen image encoders and large language models [[PDF]](https://arxiv.org/pdf/2301.12597)
-__
+### [arXiv 2024] Spiking Diffusion Models [[PDF]](https://www.arxiv.org/abs/2408.16467)
+_Jiahang Cao, Hanzhong Guo, Ziqing Wang, Deming Zhou, Hao Cheng, Qiang Zhang, Renjing Xu_
 
 ---
