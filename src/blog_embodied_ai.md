@@ -81,7 +81,28 @@ _Jiangyong Huang, Silong Yong, Xiaojian Ma, Xiongkun Linghu, Puhao Li, Yan Wang,
 
 ## SNNs
 
-### [arXiv 2024] Spiking Diffusion Models [[PDF]](https://www.arxiv.org/abs/2408.16467)
+### [IEEE Transactions on Artificial Intelligence 2024] Spiking Diffusion Models [[PDF]](https://www.arxiv.org/abs/2408.16467)
 _Jiahang Cao, Hanzhong Guo, Ziqing Wang, Deming Zhou, Hao Cheng, Qiang Zhang, Renjing Xu_
+- ![](../assets/fig_embodied/2.png) 
+
+### [arXiv 2023] Spiking-Diffusion: Vector Quantized Discrete Diffusion Model with Spiking Neural Networks [[PDF]](https://arxiv.org/abs/2308.10187)
+_Mingxuan Liu, Jie Gan, Rui Wen, Tao Li, Yongli Chen, Hong Chen_
+- ![](../assets/fig_embodied/1.png) 
+
+### [AAAI 2022] Fully Spiking Variational Autoencoder [[PDF]](https://arxiv.org/abs/2110.00375)
+_Hiromichi Kamata, Yusuke Mukuta, Tatsuya Harada_
+- ![](../assets/fig_embodied/3.png)
+
+### [arXiv 2023] Spiking Generative Adversarial Network with Attention Scoring Decoding [[PDF]](https://arxiv.org/abs/2305.10246)
+_Linghao Feng, Dongcheng Zhao, Yi Zeng_
+
+### [arXiv 2023] Fully Spiking Denoising Diffusion Implicit Models [[PDF]](https://arxiv.org/abs/2312.01742)
+_Ryo Watanabe, Yusuke Mukuta, Tatsuya Harada_
+- ![](../assets/fig_embodied/4.png)
+- ![](../assets/fig_embodied/5.png)
+
+### [IEEE TPAMI 2023] Fast-SNN: Fast Spiking Neural Network by Converting Quantized ANN [[PDF]](https://arxiv.org/abs/2305.19868)
+_Yangfan Hu, Qian Zheng, Xudong Jiang, Gang Pan_
+- ![](../assets/fig_embodied/6.png)
 
 ---
