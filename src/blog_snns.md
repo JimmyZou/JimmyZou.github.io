@@ -53,4 +53,7 @@ _Yeshwanth Venkatesha, Youngeun Kim, Leandros Tassiulas, Priyadarshini Panda_
 ### [IEEE TPAMI 2021] Progressive Tandem Learning for Pattern Recognition with Deep Spiking Neural Networks [[PDF]](https://arxiv.org/abs/2007.01204)
 _Jibin Wu, Chenglin Xu, Daquan Zhou, Haizhou Li, Kay Chen Tan_
 
+### [ICLR 2020] Additive Powers-of-Two Quantization: An Efficient Non-uniform Discretization for Neural Networks [[PDF]](https://arxiv.org/abs/1909.13144)
+_Yuhang Li, Xin Dong, Wei Wang_
+
 ---
