@@ -1,8 +1,9 @@
-# Blog SNNs Related
+# Blog Brain-Inspired Computation Related
 
 ---
 ## Contents
  - [SNNs](#snns)
+ - [LNNs](#lnns)
 
 ---
 
@@ -10,6 +11,13 @@
 ## SNNs
 
 ### Awesome Spiking Neural Networks [[github]](https://github.com/zhouchenlin2096/Awesome-Spiking-Neural-Networks)
+
+### [Nature Communications 2024] Spike-based dynamic computing with asynchronous sensing-computing neuromorphic chip [[PDF]](https://www.nature.com/articles/s41467-024-47811-6)
+_Man Yao, Ole Richter, Guangshe Zhao, Ning Qiao, Yannan Xing, Dingheng Wang, Tianxiang Hu, Wei Fang, Tugba Demirci, Michele De Marchi, Lei Deng, Tianyi Yan, Carsten Nielsen, Sadique Sheik, Chenxi Wu, Yonghong Tian, Bo Xu & Guoqi Li_
+
+### [Nature Communications 2024] High-performance deep spiking neural networks with 0.3 spikes per neuron [[PDF]](https://www.nature.com/articles/s41467-024-51110-5)
+_Ana Stanojevic, Stanisław Woźniak, Guillaume Bellec, Giovanni Cherubini, Angeliki Pantazi & Wulfram Gerstner_
+
 
 ### [IEEE Transactions on Artificial Intelligence 2024] Spiking Diffusion Models [[PDF]](https://www.arxiv.org/abs/2408.16467)
 _Jiahang Cao, Hanzhong Guo, Ziqing Wang, Deming Zhou, Hao Cheng, Qiang Zhang, Renjing Xu_
@@ -55,5 +63,15 @@ _Jibin Wu, Chenglin Xu, Daquan Zhou, Haizhou Li, Kay Chen Tan_
 
 ### [ICLR 2020] Additive Powers-of-Two Quantization: An Efficient Non-uniform Discretization for Neural Networks [[PDF]](https://arxiv.org/abs/1909.13144)
 _Yuhang Li, Xin Dong, Wei Wang_
+
+---
+
+## LNNs
+
+### [Nature 2022] Closed-form continuous-time neural networks [[PDF]](https://www.nature.com/articles/s42256-022-00556-7)
+_Ramin Hasani, Mathias Lechner, Alexander Amini, Lucas Liebenwein, Aaron Ray, Max Tschaikowski, Gerald Teschl & Daniela Rus_
+
+### [Nature 2020] Neural circuit policies enabling auditable autonomy [[PDF]](https://www.nature.com/articles/s42256-020-00237-3)
+_Mathias Lechner, Ramin Hasani, Alexander Amini, Thomas A. Henzinger, Daniela Rus & Radu Grosu_
 
 ---

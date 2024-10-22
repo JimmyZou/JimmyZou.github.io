@@ -3,6 +3,7 @@
 ---
 ## Contents
  - [Fundation Models](#fundation-models)
+ - [Human Animation](#human-animation)
 
 
 ---
@@ -104,3 +105,25 @@ _Hassan Akbari, Dan Kondratyuk, Yin Cui, Rachel Hornung, Huisheng Wang, Hartwig 
 _Yi Wang, Kunchang Li, Xinhao Li, Jiashuo Yu, Yinan He, Guo Chen, Baoqi Pei, Rongkun Zheng, Jilan Xu, Zun Wang, Yansong Shi, Tianxiang Jiang, Songze Li, Hongjie Zhang, Yifei Huang, Yu Qiao, Yali Wang, Limin Wang_
 - explore the use of audio information in videos to improve performance
 - ![](../assets/fig_generative_models/36.png)
+
+---
+## Human Animation
+
+### [ECCV 2024] Champ: Controllable and Consistent Human Image Animation with 3D Parametric Guidance [[PDF]](https://arxiv.org/abs/2403.14781)
+_Shenhao Zhu, Junming Leo Chen, Zuozhuo Dai, Qingkun Su, Yinghui Xu, Xun Cao, Yao Yao, Hao Zhu, Siyu Zhu_
+
+### [CVPR 2024] Animate Anyone: Consistent and Controllable Image-to-Video Synthesis for Character Animation [[PDF]](https://arxiv.org/pdf/2311.17117) [[code]](https://github.com/guoqincode/Open-AnimateAnyone)
+_Li Hu, Xin Gao, Peng Zhang, Ke Sun, Bang Zhang, Liefeng Bo_
+
+### [ICLR 2024] AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning [[PDF]](https://github.com/guoyww/AnimateDiff)
+_Yuwei Guo, Ceyuan Yang, Anyi Rao, Zhengyang Liang, Yaohui Wang, Yu Qiao, Maneesh Agrawala, Dahua Lin, Bo Dai_
+
+### [NeurIPS 2024] HumanVid: Demystifying Training Data for Camera-controllable Human Image Animation [[PDF]](https://arxiv.org/abs/2407.17438)
+_Zhenzhi Wang, Yixuan Li, Yanhong Zeng, Youqing Fang, Yuwei Guo, Wenran Liu, Jing Tan, Kai Chen, Tianfan Xue, Bo Dai, Dahua Lin_
+
+### [arXiv 2024] MimicMotion: High-Quality Human Motion Video Generation with Confidence-aware Pose Guidance [[PDF]](https://arxiv.org/abs/2406.19680)
+_Yuang Zhang, Jiaxi Gu, Li-Wen Wang, Han Wang, Junqi Cheng, Yuefeng Zhu, Fangyuan Zou_
+
+### [Siggraph Asia 2024] World-Grounded Human Motion Recovery via Gravity-View Coordinates [[PDF]](https://arxiv.org/abs/2409.06662)
+_Zehong Shen, Huaijin Pi, Yan Xia, Zhi Cen, Sida Peng, Zechen Hu, Hujun Bao, Ruizhen Hu, Xiaowei Zhou_
+
