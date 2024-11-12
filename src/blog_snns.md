@@ -90,6 +90,24 @@ _Jibin Wu, Chenglin Xu, Daquan Zhou, Haizhou Li, Kay Chen Tan_
 ### [ICLR 2020] Additive Powers-of-Two Quantization: An Efficient Non-uniform Discretization for Neural Networks [[PDF]](https://arxiv.org/abs/1909.13144)
 _Yuhang Li, Xin Dong, Wei Wang_
 
+
+---
+
+## Applications
+
+### [potential application baseline] [ICCV 2019] Video Object Segmentation using Space-Time Memory Networks [[github]](https://github.com/seoungwugoh/STM)
+_Seoung Wug Oh, Joon-Young Lee, Ning Xu, Seon Joo Kim_
+
+### [ACM MM 2024] PSSD-Transformer: Powerful Sparse Spike-Driven Transformer for Image Semantic Segmentation
+
+### [arxiv 2021] Beyond Classification: Directly Training Spiking Neural Networks for Semantic Segmentation
+
+### [Neural Networks 2024] Multi-scale full spike pattern for semantic segmentation
+
+### Accurate and Efficient Event-based Semantic Segmentation Using Adaptive Spiking Encoder-Decoder Network
+
+### A spiking neural network for image segmentation
+
 ---
 
 ## LNNs
