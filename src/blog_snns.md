@@ -21,10 +21,20 @@ _Ana Stanojevic, Stanisław Woźniak, Guillaume Bellec, Giovanni Cherubini, Ange
 ### [Nature Scientific Reports 2024] Fast learning without synaptic plasticity in spiking neural networks [[PDF]](https://www.nature.com/articles/s41598-024-55769-0?fromPaywallRec=false)
 _Anand Subramoney, Guillaume Bellec, Franz Scherr, Robert Legenstein & Wolfgang Maass_
 
+### [NeurIPS 2022] Online training through time for spiking neural networks
+
+### [ICCV 2023] Towards memory-and time-efficient backpropagation for training spiking neural networks
+
+### [AAAI 2024] Shrinking your timestep: Towards low-latency neuromorphic object recognition with spiking neural network
+
+### [NeurIPS 2023] Towards temporal spiking early-exit neural networks
+
+### [AAAI 2024] Memory-efficient reversible spiking neural networks
+
 ### [Neural Networks 2023] An Exact Mapping From ReLU Networks to Spiking Neural Networks [[PDF]](https://arxiv.org/abs/2212.12522)
 _Ana Stanojevic, Stanisław Woźniak, Guillaume Bellec, Giovanni Cherubini, Angeliki Pantazi, Wulfram Gerstner_
 
-### [NeurIPS 2024] SpikeLLM: Scaling up Spiking Neural Network to Large Language Models via Saliency-based Spiking [[PDF]](https://arxiv.org/pdf/2407.04752v1)
+### [ICLR 2024] SpikeLLM: Scaling up Spiking Neural Network to Large Language Models via Saliency-based Spiking [[PDF]](https://arxiv.org/pdf/2407.04752v1)
 _Xingrun Xing, Boyan Gao, Zheng Zhang, David A. Clifton, Shitao Xiao, Li Du, Guoqi Li, Jiajun Zhang_
 
 ### [ICML 2024] SpikeLM: Towards General Spike-Driven Language Modeling via Elastic Bi-Spiking Mechanisms [[PDF]](https://arxiv.org/abs/2406.03287)
@@ -104,9 +114,9 @@ _Seoung Wug Oh, Joon-Young Lee, Ning Xu, Seon Joo Kim_
 
 ### [Neural Networks 2024] Multi-scale full spike pattern for semantic segmentation
 
-### Accurate and Efficient Event-based Semantic Segmentation Using Adaptive Spiking Encoder-Decoder Network
+### [IEEE TNNLS 2024] Accurate and Efficient Event-based Semantic Segmentation Using Adaptive Spiking Encoder-Decoder Network
 
-### A spiking neural network for image segmentation
+### [arXiv 2021] A spiking neural network for image segmentation
 
 ---
 
