@@ -21,15 +21,20 @@ _Ana Stanojevic, Stanisław Woźniak, Guillaume Bellec, Giovanni Cherubini, Ange
 ### [Nature Scientific Reports 2024] Fast learning without synaptic plasticity in spiking neural networks [[PDF]](https://www.nature.com/articles/s41598-024-55769-0?fromPaywallRec=false)
 _Anand Subramoney, Guillaume Bellec, Franz Scherr, Robert Legenstein & Wolfgang Maass_
 
-### [NeurIPS 2022] Online training through time for spiking neural networks
+### [NeurIPS 2022] Online training through time for spiking neural networks [[PDF]](https://arxiv.org/abs/2210.04195)
+_Mingqing Xiao, Qingyan Meng, Zongpeng Zhang, Di He, Zhouchen Lin_
 
-### [ICCV 2023] Towards memory-and time-efficient backpropagation for training spiking neural networks
+### [ICCV 2023] Towards memory-and time-efficient backpropagation for training spiking neural networks [[PDF]](https://arxiv.org/abs/2302.14311)
+_Qingyan Meng, Mingqing Xiao, Shen Yan, Yisen Wang, Zhouchen Lin, Zhi-Quan Luo_
 
-### [AAAI 2024] Shrinking your timestep: Towards low-latency neuromorphic object recognition with spiking neural network
+### [AAAI 2024] Shrinking your timestep: Towards low-latency neuromorphic object recognition with spiking neural network [[PDF]](https://arxiv.org/abs/2401.01912)
+_Yongqi Ding, Lin Zuo, Mengmeng Jing, Pei He, Yongjun Xiao_
 
-### [NeurIPS 2023] Towards temporal spiking early-exit neural networks
+### [NeurIPS 2023] Towards temporal spiking early-exit neural networks [[PDF]](https://arxiv.org/abs/2304.01230)
+_Yuhang Li, Tamar Geller, Youngeun Kim, Priyadarshini Panda_
 
-### [AAAI 2024] Memory-efficient reversible spiking neural networks
+### [AAAI 2024] Memory-efficient reversible spiking neural networks [[PDF]](https://arxiv.org/abs/2312.07922)
+_Hong Zhang, Yu Zhang_
 
 ### [Neural Networks 2023] An Exact Mapping From ReLU Networks to Spiking Neural Networks [[PDF]](https://arxiv.org/abs/2212.12522)
 _Ana Stanojevic, Stanisław Woźniak, Guillaume Bellec, Giovanni Cherubini, Angeliki Pantazi, Wulfram Gerstner_

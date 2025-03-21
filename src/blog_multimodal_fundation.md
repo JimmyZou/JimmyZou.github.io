@@ -55,6 +55,9 @@ _Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura 
 - ![](../assets/fig_generative_models/8.png)
 - ![](../assets/fig_generative_models/9.png)
 
+### [!!!] [Meta AI] SAM 2: Segment Anything in Images and Videos [[PDF]](https://arxiv.org/pdf/2408.00714)
+_Nikhila Ravi, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, Roman Rädle, Chloe Rolland, Laura Gustafson, Eric Mintun, Junting Pan, Kalyan Vasudev Alwala, Nicolas Carion, Chao-Yuan Wu, Ross Girshick, Piotr Dollár, Christoph Feichtenhofer_
+
 ### [!!!] [arXiv 2024] Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets [[pdf]](https://arxiv.org/abs/2311.15127)
 _Andreas Blattmann, Tim Dockhorn, Sumith Kulal, Daniel Mendelevitch, Maciej Kilian, Dominik Lorenz, Yam Levi, Zion English, Vikram Voleti, Adam Letts, Varun Jampani, Robin Rombach_
 - In this paper, we identify and evaluate three different stages for successful training of video LDMs: text-to-image pretraining, video pretraining, and high-quality video finetuning. 
@@ -105,6 +108,15 @@ _Hassan Akbari, Dan Kondratyuk, Yin Cui, Rachel Hornung, Huisheng Wang, Hartwig 
 _Yi Wang, Kunchang Li, Xinhao Li, Jiashuo Yu, Yinan He, Guo Chen, Baoqi Pei, Rongkun Zheng, Jilan Xu, Zun Wang, Yansong Shi, Tianxiang Jiang, Songze Li, Hongjie Zhang, Yifei Huang, Yu Qiao, Yali Wang, Limin Wang_
 - explore the use of audio information in videos to improve performance
 - ![](../assets/fig_generative_models/36.png)
+
+---
+## Video Transformer
+
+### [TPAMI 2023] Video Transformers: A Survey [[PDF]](https://arxiv.org/abs/2201.05991)
+_Javier Selva, Anders S. Johansen, Sergio Escalera, Kamal Nasrollahi, Thomas B. Moeslund, Albert Clapés_
+
+### [NeurIPS 2022] VideoMAE: Masked Autoencoders are Data-Efficient Learners for Self-Supervised Video Pre-Training [[PDF]](https://arxiv.org/abs/2203.12602)
+_Zhan Tong, Yibing Song, Jue Wang, Limin Wang_
 
 ---
 ## Human Animation
