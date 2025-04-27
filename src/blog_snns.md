@@ -21,6 +21,9 @@ _Ana Stanojevic, Stanisław Woźniak, Guillaume Bellec, Giovanni Cherubini, Ange
 ### [Nature Scientific Reports 2024] Fast learning without synaptic plasticity in spiking neural networks [[PDF]](https://www.nature.com/articles/s41598-024-55769-0?fromPaywallRec=false)
 _Anand Subramoney, Guillaume Bellec, Franz Scherr, Robert Legenstein & Wolfgang Maass_
 
+### [IEEE 2024] Brain-Inspired Computing: A Systematic Survey and Future Trends [[PDF]](https://ieeexplore.ieee.org/document/10636118/authors#authors)
+_Guoqi Li, Lei Deng, Huajin Tang, Gang Pan, Yonghong Tian, Kaushik Roy, Wolfgang Maass_
+
 ### [NeurIPS 2022] Online training through time for spiking neural networks [[PDF]](https://arxiv.org/abs/2210.04195)
 _Mingqing Xiao, Qingyan Meng, Zongpeng Zhang, Di He, Zhouchen Lin_
 

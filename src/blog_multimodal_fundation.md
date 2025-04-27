@@ -112,11 +112,24 @@ _Yi Wang, Kunchang Li, Xinhao Li, Jiashuo Yu, Yinan He, Guo Chen, Baoqi Pei, Ron
 ---
 ## Video Transformer
 
+### [ICLR 2024] Language Model Beats Diffusion -- Tokenizer is Key to Visual Generation [[pdf]](https://arxiv.org/abs/2310.05737)
+_Lijun Yu, José Lezama, Nitesh B. Gundavarapu, Luca Versari, Kihyuk Sohn, David Minnen, Yong Cheng, Vighnesh Birodkar, Agrim Gupta, Xiuye Gu, Alexander G. Hauptmann, Boqing Gong, Ming-Hsuan Yang, Irfan Essa, David A. Ross, Lu Jiang_
+- To effectively use LLMs for visual generation, one crucial component is the visual tokenizer that maps pixel-space inputs to discrete tokens appropriate for LLM learning. In this paper, we introduce MAGVIT-v2, a video tokenizer designed to generate concise and expressive tokens for both videos and images using a common token vocabulary
+
 ### [TPAMI 2023] Video Transformers: A Survey [[PDF]](https://arxiv.org/abs/2201.05991)
 _Javier Selva, Anders S. Johansen, Sergio Escalera, Kamal Nasrollahi, Thomas B. Moeslund, Albert Clapés_
 
+### [CVPR 2023] MAGVIT: Masked Generative Video Transformer [[PDF]](https://arxiv.org/abs/2212.05199)
+_Lijun Yu, Yong Cheng, Kihyuk Sohn, José Lezama, Han Zhang, Huiwen Chang, Alexander G. Hauptmann, Ming-Hsuan Yang, Yuan Hao, Irfan Essa, Lu Jiang_
+
+### [CVPR 2023] VideoMAE V2: Scaling Video Masked Autoencoders with Dual Masking [[PDF]](https://arxiv.org/abs/2303.16727)
+_Limin Wang, Bingkun Huang, Zhiyu Zhao, Zhan Tong, Yinan He, Yi Wang, Yali Wang, Yu Qiao_
+
 ### [NeurIPS 2022] VideoMAE: Masked Autoencoders are Data-Efficient Learners for Self-Supervised Video Pre-Training [[PDF]](https://arxiv.org/abs/2203.12602)
 _Zhan Tong, Yibing Song, Jue Wang, Limin Wang_
+
+### [CVPR 2022] BEVT: BERT Pretraining of Video Transformers [[PDF]](https://arxiv.org/abs/2112.01529)
+_Rui Wang, Dongdong Chen, Zuxuan Wu, Yinpeng Chen, Xiyang Dai, Mengchen Liu, Yu-Gang Jiang, Luowei Zhou, Lu Yuan_
 
 ---
 ## Human Animation
