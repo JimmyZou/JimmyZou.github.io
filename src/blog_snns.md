@@ -126,6 +126,8 @@ _Seoung Wug Oh, Joon-Young Lee, Ning Xu, Seon Joo Kim_
 
 ### [arXiv 2021] A spiking neural network for image segmentation
 
+### [NeurIPS 2024] Flex-MoE: Modeling Arbitrary modality combination via the flexible mixture of experts.
+
 ---
 
 ## LNNs
